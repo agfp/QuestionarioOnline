@@ -1,0 +1,21 @@
+{
+    "extends": ["eslint:recommended", "google"],
+    "plugins": [
+        "html"
+    ],
+     "settings": {
+        "html/html-extensions": [".html", ".vue"],
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules": {
+        "semi": "error",
+        "no-unused-vars": "warn",
+        "no-var": "warn",
+        "indent": ["warn", 4],
+        "arrow-parens": "off",
+        "comma-dangle": "off"
+    }
+}
