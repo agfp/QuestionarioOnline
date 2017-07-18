@@ -16,6 +16,10 @@
         "no-var": "warn",
         "indent": ["warn", 4],
         "arrow-parens": "off",
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "max-len": ["warn", 120],
+        "require-jsdoc": "off",
+        "no-trailing-spaces": "off",
+        "no-console": "off"
     }
 }
