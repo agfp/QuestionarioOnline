@@ -53,25 +53,26 @@
 </template>
 
 <script>
-let pages = [];
+import swal from 'sweetalert';
 
 export default {
-    name: 'questionnaire',
+    props: ['pages'],
     data() {
         return {
             page: 0,
-            pages: pages,
             answers: [],
             showPending: false
-
         };
     },
+    created() {
+
+    },
     methods: {
-        next: function() {
+        next() {
             for (let i = 0; i < this.screenQuestions.length; i++) {
                 if (!this.validate(this.screenQuestions[i])) {
                     this.showPending = true;
-                    alert('Por favor responda as perguntas marcadas em vermelho');
+                    swal('Perguntas pendentes', 'Por favor responda as perguntas marcadas em vermelho', 'error');
                     return;
                 }
             }
@@ -79,7 +80,7 @@ export default {
             this.page++;
         },
 
-        validate: function(question) {
+        validate(question) {
             function validateAnswer(answer) {
                 return answer ? Boolean(answer.trim()) : false;
             }
@@ -88,32 +89,31 @@ export default {
                 return validateAnswer(this.answers[question.id]);
             } else if (Array.isArray(question.matrix)) {
                 return true;
-            } else {
-                let answer = this.answers[question.id];
-                if (validateAnswer(answer)) {
-                    for (let i = 0; i < question.options.length; i++) {
-                        let option = question.options[i];
-                        if (option.item === answer) {
-                            if (option.textbox) {
-                                return validateAnswer(this.answers[option.id]);
-                            }
-                            break;
+            }
+            let answer = this.answers[question.id];
+            if (validateAnswer(answer)) {
+                for (let i = 0; i < question.options.length; i++) {
+                    let option = question.options[i];
+                    if (option.item === answer) {
+                        if (option.textbox) {
+                            return validateAnswer(this.answers[option.id]);
                         }
+                        break;
                     }
-                    return true;
                 }
+                return true;
             }
             return false;
         },
 
-        selectItem: function(question, answer) {
+        selectItem(question, answer) {
             let a = JSON.parse(JSON.stringify(this.answers));
             a[question.id] = answer;
             question.pending = false;
             this.answers = a;
         },
 
-        loadSubquestions: function(question) {
+        loadSubquestions(question) {
             let subQuestions = [];
             if (this.answers[question.id] && question.options) {
                 question.options.forEach(option => {
@@ -127,15 +127,17 @@ export default {
             }
             return subQuestions;
         }
-
+        //
     },
     computed: {
-        screenQuestions: function() {
+        screenQuestions() {
             let selectedQuestions = [];
-            this.pages[this.page].forEach(question => {
-                selectedQuestions.push(question);
-                selectedQuestions = selectedQuestions.concat(this.loadSubquestions(question));
-            });
+            if (this.pages) {
+                this.pages[this.page].forEach(question => {
+                    selectedQuestions.push(question);
+                    selectedQuestions = selectedQuestions.concat(this.loadSubquestions(question));
+                });
+            }
             return selectedQuestions;
         }
     }
@@ -143,6 +145,30 @@ export default {
 </script>
 
 <style scoped>
+.question {
+    margin-bottom: 5px;
+}
 
+.pending {
+    background: #FFDDDD;
+}
 
+.question-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li.question-item {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+div.option-item {
+    padding: 5px;
+}
+
+div.option-item:hover {
+    background: lightyellow;
+}
 </style>

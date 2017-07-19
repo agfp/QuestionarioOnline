@@ -1,30 +1,21 @@
-# Brunch Vue Barebones
+# questionario-online
 
-A _barebones_ skeleton with Vue for Brunch - minimal dependencies!
+> Sistema para questionários
 
-Unlike other skeletons with Vue, `brunch-vue-barebones` is based on the official scaffold provided by the Vue.js core team ([vue-cli](https://github.com/vuejs/vue-cli)). The only dependencies are `vue` and `vue-router`; configure it how you like!
+## Build Setup
 
-Thanks to @nblackburn for his work on [vue-brunch](https://github.com/nblackburn/vue-brunch)
+``` bash
+# install dependencies
+npm install
 
-## Installation
+# serve with hot reload at localhost:8080
+npm run dev
 
-Clone this repo manually
+# build for production with minification
+npm run build
 
-## Getting Started
-> Taken from supported Brunch Skeletons
+# build for production and view the bundle analyzer report
+npm run build --report
+```
 
-* Install (if you don't have them):
-    * [Node.js](http://nodejs.org): `brew install node` on OS X
-    * [Brunch](http://brunch.io): `npm install -g brunch`
-    * Brunch plugins and app dependencies: `npm install`
-* Run:
-    * `npm start` — watches the project with continuous rebuild. This will also launch HTTP server with [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history).
-    * `npm run build` — builds minified project for production
-* Learn:
-    * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
-    * Place static files you want to be copied from `app/assets/` to `public/`.
-    * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
-
-## TODO
-
-* Add support for Hot Module Reloading with [hmr-brunch](https://github.com/brunch/hmr-brunch)
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
