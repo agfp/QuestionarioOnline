@@ -2,27 +2,29 @@
 <div>
     <div v-if="loading">Loading...</div>
     <div v-else>
-        <!-- <overview :questions="questions"></overview> -->
-        <questionnaire :pages="questionnaire"></questionnaire>
+        <questionnaire v-if="!finished" :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
+        <overview v-else :questions="questions" :answers="answers"></overview>
     </div>
 </div>
 </template>
 
 <script>
 import Questionnaire from './Questionnaire';
-import Summary from './Summary';
+import Overview from './Overview';
 import { getQuestionnaire } from '../helpers';
 
 export default {
     components: {
         questionnaire: Questionnaire,
-        overview: Summary
+        overview: Overview
     },
     data() {
         return {
             loading: true,
+            finished: false,
             questionnaire: null,
-            questions: null
+            questions: null,
+            answers: null,
         };
     },
     created() {
@@ -34,7 +36,10 @@ export default {
         });
     },
     methods: {
-
+        questionnaireFinished(answers) {
+            this.answers = answers;
+            this.finished = true;
+        }
     },
 };
 </script>

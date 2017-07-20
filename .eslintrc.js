@@ -38,6 +38,7 @@ module.exports = {
     "no-use-before-define": ["error", { "functions": false, "classes": true }],
     'prefer-const': 'off',
     'no-trailing-spaces': 'off',
+    'padded-blocks': 'off',
 
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

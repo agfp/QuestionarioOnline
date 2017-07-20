@@ -4,7 +4,26 @@
     <h1>Questionário</h1>
 
     <ul class="question-list" v-for="question in screenQuestions">
-        <li class="question-item" :class="{pending: showPending && !validate(question)}">
+        <li v-if="Array.isArray(question.matrix)" class="question-item">
+            <table>
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th v-for="option in matrixOptions"><span class="intact">{{option}}</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in question.matrix" :class="{pending: showPending && !validateItem(item) }">
+                        <td>{{item.item}}</td>
+                        <td class="center" v-for="option in matrixOptions" @click="selectItem(item, option)">
+                            <input :name="item.id" :value="option" v-model="answers[item.id]" type="radio">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+
+        <li v-else class="question-item" :class="{pending: showPending && !validate(question)}">
             <div class="question">{{ question.question }}</div>
 
             <div v-if="question.textbox">
@@ -18,29 +37,15 @@
                     <input type="text" v-model="answers[option.id]" v-if="option.textbox" />
                 </div>
             </div>
-
-            <div v-if="question.matrix">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th v-for="option in matrixOptions"><span class="intact">{{option}}</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in question.matrix">
-                            <td>{{item.item}}</td>
-                            <td class="center" v-for="option in matrixOptions" @click="selectItem(item, option)">
-                                <input :name="item.id" v-model="answers[item.id]" type="radio" :value="option">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </li>
     </ul>
 
-    <button class="pure-button pure-button-primary" style="margin-top: 20px" @click="next()">Próximo</button>
+    <div class="pagination" v-if="pages != null">
+        <button class="pure-button pure-button-primary" :disabled="page === 0" @click="previous()">Anterior</button>
+        <span>Página {{page+1}} de {{pages.length}}</span>
+        <button class="pure-button pure-button-primary" @click="next()" v-if="page < pages.length - 1">Próximo</button>
+        <button class="pure-button pure-button-primary" @click="finish()" v-else>Finalizar</button>
+    </div>
 </div>
 </template>
 
@@ -58,16 +63,37 @@ export default {
         };
     },
     methods: {
+        previous() {
+            this.showPending = false;
+            this.page--;
+        },
+
         next() {
+            if (this.validatePage()) {
+                this.showPending = false;
+                this.page++;
+            }
+        },
+
+        finish() {
+            if (this.validatePage()) {
+                this.$emit('finished', this.answers);
+            }
+        },
+
+        validatePage() {
             for (let i = 0; i < this.screenQuestions.length; i++) {
                 if (!this.validate(this.screenQuestions[i])) {
                     this.showPending = true;
                     swal('Perguntas pendentes', 'Por favor responda as perguntas marcadas em vermelho', 'error');
-                    return;
+                    return false;
                 }
             }
-            this.showPending = false;
-            this.page++;
+            return true;
+        },
+
+        validateItem(item) {
+            return Boolean(this.answers[item.id]);
         },
 
         validate(question) {
@@ -78,10 +104,19 @@ export default {
             if (question.textbox) {
                 return validateAnswer(this.answers[question.id]);
             } else if (Array.isArray(question.matrix)) {
+
+                for (let i = 0; i < question.matrix.length; i++) {
+                    let item = question.matrix[i];
+                    if (!this.validateItem(item)) {
+                        return false;
+                    }
+                }
                 return true;
+
             }
             let answer = this.answers[question.id];
             if (validateAnswer(answer)) {
+
                 for (let i = 0; i < question.options.length; i++) {
                     let option = question.options[i];
                     if (option.item === answer) {
@@ -134,6 +169,10 @@ export default {
 </script>
 
 <style scoped>
+.pagination {
+    margin-top: 20px;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -144,7 +183,7 @@ thead th:not(:first-child) {
 }
 
 tbody tr:nth-child(odd) {
-   background-color: #eee;
+    background-color: #eee;
 }
 
 tbody tr:hover {
@@ -164,8 +203,8 @@ tbody td:first-child {
 }
 
 .intact {
-    display:inline-block;
-    width:80px;
+    display: inline-block;
+    width: 80px;
     font-weight: normal;
     font-size: 11pt;
 }
@@ -179,7 +218,7 @@ tbody td:first-child {
 }
 
 .pending {
-    background: #FFDDDD;
+    background: #FFDDDD !important;
 }
 
 .question-list {
