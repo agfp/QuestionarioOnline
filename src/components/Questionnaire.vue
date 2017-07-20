@@ -5,6 +5,7 @@
 
     <ul class="question-list" v-for="question in screenQuestions">
         <li v-if="Array.isArray(question.matrix)" class="question-item">
+            <div class="question">{{ question.question }}</div>
             <table>
                 <thead>
                     <tr>
