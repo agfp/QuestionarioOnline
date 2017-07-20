@@ -1,6 +1,12 @@
 <template>
 <div>
-    <div v-if="loading">Loading...</div>
+    <div v-if="loading">
+        <h2>Cole o questionário:</h2>
+        <textarea v-model="textarea"></textarea>
+        <div>
+            <button @click="newQuestionnaire">Concluido</button>
+        </div>
+    </div>
     <div v-else>
         <questionnaire v-if="!finished" :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
         <overview v-else :questions="questions" :answers="answers"></overview>
@@ -9,9 +15,10 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
 import Questionnaire from './Questionnaire';
 import Overview from './Overview';
-import { getQuestionnaire } from '../helpers';
+import Helpers from '../helpers';
 
 export default {
     components: {
@@ -20,6 +27,7 @@ export default {
     },
     data() {
         return {
+            textarea: null,
             loading: true,
             finished: false,
             questionnaire: null,
@@ -28,14 +36,25 @@ export default {
         };
     },
     created() {
-        this.loading = false;
-        getQuestionnaire().then(response => {
-            this.questionnaire = response.questionnaire;
-            this.questions = response.questions;
-            this.loading = false;
-        });
+        // getQuestionnaire().then(response => {
+        //     this.questionnaire = response.questionnaire;
+        //     this.questions = response.questions;
+        //     this.loading = false;
+        // });
     },
     methods: {
+        newQuestionnaire() {
+            try {
+                let questionnaire = JSON.parse(this.textarea);
+                let result = Helpers.prepareQuestionnaire(questionnaire);
+                this.questionnaire = result.questionnaire;
+                this.questions = result.questions;
+                this.loading = false;
+            } catch (e) {
+                swal('Questionário inválido', 'O questionário não está em formato válido', 'error');
+            }
+        },
+
         questionnaireFinished(answers) {
             this.answers = answers;
             this.finished = true;
@@ -43,3 +62,10 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+textarea {
+    width: 500px;
+    height: 500px;
+}
+</style>

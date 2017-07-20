@@ -1,19 +1,29 @@
 import axios from 'axios';
 
-export function getQuestionnaire() {
+export default {
+    getQuestionnaire,
+    prepareQuestionnaire
+};
+
+function getQuestionnaire() {
     return new Promise((resolve, reject) => {
         axios
             .get('/static/questionnaires/teste1.json')
             .then(response => {
-                const numberedQuestions = [];
-                preparePages(response.data, numberedQuestions);
-                resolve({
-                    questionnaire: response.data,
-                    questions: numberedQuestions
-                });
+                let result = prepareQuestionnaire(response.data);
+                resolve(result);
             })
             .catch(reject);
     });
+}
+
+function prepareQuestionnaire(questionnaire) {
+    let questions = [];
+    preparePages(questionnaire, questions);
+    return {
+        questionnaire,
+        questions
+    };
 }
 
 function preparePages(pages, numberedQuestions) {
