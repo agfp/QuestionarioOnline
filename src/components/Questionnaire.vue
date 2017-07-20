@@ -20,27 +20,19 @@
             </div>
 
             <div v-if="question.matrix">
-                <table class="matrix-questions">
+                <table>
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th class="rotate"><span class="intact">Nunca</span></th>
-                            <th class="rotate"><span class="intact">Raramente</span></th>
-                            <th class="rotate"><span class="intact">Algumas vezes</span></th>
-                            <th class="rotate"><span class="intact">Muitas vezes</span></th>
-                            <th class="rotate"><span class="intact">Sempre</span></th>
-                            <th class="rotate"><span class="intact">Não se aplica</span></th>
+                            <th v-for="option in matrixOptions"><span class="intact">{{option}}</span></th>
                         </tr>
                     </thead>
-                    <tbody v-for="item in question.matrix">
-                        <tr>
+                    <tbody>
+                        <tr v-for="item in question.matrix">
                             <td>{{item.item}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="center" v-for="option in matrixOptions" @click="selectItem(item, option)">
+                                <input :name="item.id" v-model="answers[item.id]" type="radio" :value="option">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,7 +40,7 @@
         </li>
     </ul>
 
-    <button class="pure-button pure-button-primary" style="margin-top: 20px" v-on:click="next()">Próximo</button>
+    <button class="pure-button pure-button-primary" style="margin-top: 20px" @click="next()">Próximo</button>
 </div>
 </template>
 
@@ -61,11 +53,9 @@ export default {
         return {
             page: 0,
             answers: [],
-            showPending: false
+            showPending: false,
+            matrixOptions: ['Nunca', 'Raramente', 'Algumas vezes', 'Muitas vezes', 'Sempre', 'Não se aplica']
         };
-    },
-    created() {
-
     },
     methods: {
         next() {
@@ -106,10 +96,10 @@ export default {
             return false;
         },
 
-        selectItem(question, answer) {
+        selectItem(item, answer) {
             let a = JSON.parse(JSON.stringify(this.answers));
-            a[question.id] = answer;
-            question.pending = false;
+            a[item.id] = answer;
+            item.pending = false;
             this.answers = a;
         },
 
@@ -127,7 +117,6 @@ export default {
             }
             return subQuestions;
         }
-        //
     },
     computed: {
         screenQuestions() {
@@ -145,6 +134,46 @@ export default {
 </script>
 
 <style scoped>
+table {
+    border-collapse: collapse;
+}
+
+thead th:not(:first-child) {
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+   background-color: #eee;
+}
+
+tbody tr:hover {
+    background: lightyellow;
+}
+
+tbody td {
+    border: 1px solid #aaa;
+}
+
+tbody td:not(:first-child) {
+    cursor: pointer;
+}
+
+tbody td:first-child {
+    padding: 6px 5px;
+}
+
+.intact {
+    display:inline-block;
+    width:80px;
+    font-weight: normal;
+    font-size: 11pt;
+}
+
+.center {
+    text-align: center;
+}
+
 .question {
     margin-bottom: 5px;
 }
