@@ -1,5 +1,6 @@
 <template>
 <div>
+    <h1>Questionário #{{hashCode}}</h1>
     <h2>Perguntas:</h2>
     <ul>
         <li v-for="q in questions">
@@ -29,7 +30,7 @@
 
 <script>
 export default {
-    props: ['questions', 'answers'],
+    props: ['questions', 'answers', 'hashCode'],
     data() {
         return {
 

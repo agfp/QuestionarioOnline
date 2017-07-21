@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export default {
     getQuestionnaire,
-    prepareQuestionnaire
+    prepareQuestionnaire,
+    hashCode
 };
 
 function getQuestionnaire() {
@@ -61,4 +62,18 @@ function prepareQuestions(questions, counter, numberedQuestions) {
         }
     });
     return counter;
+}
+
+/* eslint 'no-bitwise': 'off' */
+function hashCode(str) {
+    let hash = 0;
+    let i;
+    let chr;
+    if (str.length === 0) return hash;
+    for (i = 0; i < str.length; i++) {
+        chr = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return ((hash + 2147483647) + 1).toString(36);
 }

@@ -9,7 +9,7 @@
     </div>
     <div v-else>
         <questionnaire v-if="!finished" :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
-        <overview v-else :questions="questions" :answers="answers"></overview>
+        <overview v-else :questions="questions" :answers="answers" :hashCode="hashCode"></overview>
     </div>
 </div>
 </template>
@@ -33,6 +33,7 @@ export default {
             questionnaire: null,
             questions: null,
             answers: null,
+            hashCode: null,
         };
     },
     created() {
@@ -46,6 +47,7 @@ export default {
         newQuestionnaire() {
             try {
                 let questionnaire = JSON.parse(this.textarea);
+                this.hashCode = Helpers.hashCode(JSON.stringify(questionnaire));
                 let result = Helpers.prepareQuestionnaire(questionnaire);
                 this.questionnaire = result.questionnaire;
                 this.questions = result.questions;
