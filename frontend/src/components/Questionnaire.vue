@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th v-for="option in matrixOptions"><span class="intact">{{option}}</span></th>
+                        <th v-for="option in matrixOptions"><span>{{option}}</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -169,45 +169,44 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .pagination {
     margin-top: 20px;
 }
 
 table {
     border-collapse: collapse;
-}
 
-thead th:not(:first-child) {
-    border: 1px solid #aaa;
-    text-align: center;
-}
+    thead {
+        th:not(:first-child) {
+            border: 1px solid #aaa;
+            text-align: center;
+        }
 
-tbody tr:nth-child(odd) {
-    background-color: #eee;
-}
-
-tbody tr:hover {
-    background: lightyellow;
-}
-
-tbody td {
-    border: 1px solid #aaa;
-}
-
-tbody td:not(:first-child) {
-    cursor: pointer;
-}
-
-tbody td:first-child {
-    padding: 6px 5px;
-}
-
-.intact {
-    display: inline-block;
-    width: 80px;
-    font-weight: normal;
-    font-size: 11pt;
+        th span {
+            display: inline-block;
+            width: 80px;
+            font-weight: normal;
+            font-size: 11pt;
+        }
+    }
+    tbody {
+        tr:nth-child(odd) {
+            background-color: #eee;
+        }
+        tr:hover {
+            background: lightyellow;
+        }
+        td {
+            border: 1px solid #aaa;
+        }
+        td:not(:first-child) {
+            cursor: pointer;
+        }
+        td:first-child {
+            padding: 6px 5px;
+        }
+    }
 }
 
 .center {
@@ -235,9 +234,14 @@ li.question-item {
 
 div.option-item {
     padding: 5px;
-}
+    cursor: pointer;
 
-div.option-item:hover {
-    background: lightyellow;
+    &:hover {
+        background: lightyellow;
+    }
+
+    label, input[type=radio] {
+        cursor: pointer;
+    }
 }
 </style>
