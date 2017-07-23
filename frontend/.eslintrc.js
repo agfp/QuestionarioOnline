@@ -34,11 +34,12 @@ module.exports = {
     'prefer-const': 'warn',
     'max-len': ["warn", 120],
     'no-param-reassign': 'off',
-    'import/prefer-default-export': 'off',
+    
     "no-use-before-define": ["error", { "functions": false, "classes": true }],
     'prefer-const': 'off',
     'no-trailing-spaces': 'off',
     'padded-blocks': 'off',
+    'no-multiple-empty-lines': 'off',
 
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

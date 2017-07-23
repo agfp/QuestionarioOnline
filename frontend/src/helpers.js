@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from './api';
 
 export default {
     getQuestionnaire,
@@ -8,10 +8,9 @@ export default {
 
 function getQuestionnaire() {
     return new Promise((resolve, reject) => {
-        axios
-            .get('/static/questionnaires/teste1.json')
+        api.getQuestionnaire()
             .then(response => {
-                let result = prepareQuestionnaire(response.data);
+                let result = prepareQuestionnaire(response);
                 resolve(result);
             })
             .catch(reject);
