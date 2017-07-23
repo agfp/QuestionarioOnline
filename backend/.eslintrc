@@ -1,0 +1,34 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "no-console": "off",
+    "comma-dangle": "off",
+    "no-unused-vars": "warn",
+    "arrow-parens": "off",
+    "indent": [
+      "warn",
+      4
+    ],
+    "no-plusplus": "off",
+    "max-len": [
+      "warn",
+      120
+    ],
+    "no-param-reassign": "off",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true
+      }
+    ],
+    "no-trailing-spaces": "off",
+    "padded-blocks": "off"
+  }
+}
