@@ -14,6 +14,6 @@ export default {
     }
 };
 
-function getUrl(url, key) {
-    return `${config.baseUrl}/api/`;
-}
+// function getUrl(url, key) {
+//     return `${config.baseUrl}/api/`;
+// }

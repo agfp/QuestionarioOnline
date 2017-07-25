@@ -38,18 +38,18 @@ function prepareQuestions(questions, counter, numberedQuestions) {
         if (Array.isArray(question.matrix)) {
             numberedQuestions.push(`[${question.question}]`);
             question.matrix.forEach(item => {
-                numberedQuestions.push(`${counter} - ${item.item}`);
+                numberedQuestions.push(`${counter + 1} - ${item.item}`);
                 item.id = counter++;
                 item.pending = true;
             });
         } else {
-            numberedQuestions.push(`${counter} - ${question.question}`);
+            numberedQuestions.push(`${counter + 1} - ${question.question}`);
             question.id = counter++;
             question.pending = true;
             if (Array.isArray(question.options)) {
                 question.options.forEach(option => {
                     if (option.textbox) {
-                        numberedQuestions.push(`${counter} - ${question.question} - ${option.item}`);
+                        numberedQuestions.push(`${counter + 1} - ${question.question} - ${option.item}`);
                         option.id = counter++;
                         option.pending = true;
                     }

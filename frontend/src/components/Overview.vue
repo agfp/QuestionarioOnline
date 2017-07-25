@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th v-for="(val, index) in answers">
-                    {{index}}
+                    {{index + 1}}
                 </th>
             </tr>
         </thead>

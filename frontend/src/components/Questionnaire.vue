@@ -16,8 +16,8 @@
                 <tbody>
                     <tr v-for="item in question.matrix" :class="{pending: showPending && !validateItem(item) }">
                         <td>{{item.item}}</td>
-                        <td class="center" v-for="option in matrixOptions" @click="selectItem(item, option)">
-                            <input :name="item.id" :value="option" v-model="answers[item.id]" type="radio">
+                        <td class="center" v-for="(option, index) in matrixOptions" @click="selectItem(item, index + 1)">
+                            <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
                         </td>
                     </tr>
                 </tbody>
@@ -31,9 +31,9 @@
                 <input type="text" v-model="answers[question.id]" />
             </div>
 
-            <div v-for="option in question.options">
-                <div class="option-item" v-on:click="selectItem(question, option.item)">
-                    <input :name="question.id" :value="option.item" v-model="answers[question.id]" type="radio">
+            <div v-for="(option, index) in question.options">
+                <div class="option-item" v-on:click="selectItem(question, index + 1)">
+                    <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
                     <label>{{ option.item }}</label>
                     <input type="text" v-model="answers[option.id]" v-if="option.textbox" />
                 </div>
@@ -116,16 +116,10 @@ export default {
 
             }
             let answer = this.answers[question.id];
-            if (validateAnswer(answer)) {
-
-                for (let i = 0; i < question.options.length; i++) {
-                    let option = question.options[i];
-                    if (option.item === answer) {
-                        if (option.textbox) {
-                            return validateAnswer(this.answers[option.id]);
-                        }
-                        break;
-                    }
+            if (answer) {
+                let option = question.options[answer - 1];
+                if (option.textbox) {
+                    return validateAnswer(this.answers[option.id]);
                 }
                 return true;
             }
@@ -142,14 +136,14 @@ export default {
         loadSubquestions(question) {
             let subQuestions = [];
             if (this.answers[question.id] && question.options) {
-                question.options.forEach(option => {
-                    if (option.item === this.answers[question.id] && Array.isArray(option.subquestions)) {
-                        option.subquestions.forEach(sq => {
-                            subQuestions.push(sq);
-                            subQuestions = subQuestions.concat(this.loadSubquestions(sq));
-                        });
-                    }
-                });
+                let answer = this.answers[question.id];
+                let option = question.options[answer - 1];
+                if (Array.isArray(option.subquestions)) {
+                    option.subquestions.forEach(sq => {
+                        subQuestions.push(sq);
+                        subQuestions = subQuestions.concat(this.loadSubquestions(sq));
+                    });
+                }
             }
             return subQuestions;
         }
@@ -235,12 +229,12 @@ li.question-item {
 div.option-item {
     padding: 5px;
     cursor: pointer;
-
     &:hover {
         background: lightyellow;
     }
 
-    label, input[type=radio] {
+    input[type=radio],
+    label {
         cursor: pointer;
     }
 }
