@@ -2,7 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'axios';
 import 'sweetalert';
+
 import 'sweetalert/dist/sweetalert.css';
+import 'purecss/build/pure.css';
+import './assets/pure-css-checkbox.css';
 
 import Vue from 'vue';
 import App from './App';

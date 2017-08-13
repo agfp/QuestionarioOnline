@@ -31,11 +31,6 @@
 <script>
 export default {
     props: ['questions', 'answers', 'hashCode'],
-    data() {
-        return {
-
-        };
-    }
 };
 </script>
 

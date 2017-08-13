@@ -1,12 +1,19 @@
 <template>
 <div>
 
-    <h1>Questionário</h1>
+    <div class="title-bar">
+        <h1>{{ title }}</h1>
+    </div>
 
-    <ul class="question-list" v-for="question in screenQuestions">
-        <li v-if="Array.isArray(question.matrix)" class="question-item">
+    <ul class="question-list pure-form">
+        <li class="question-item" v-for="question in screenQuestions">
             <div class="question">{{ question.question }}</div>
-            <table>
+
+            <div v-if="question.textbox">
+                <input type="text" v-model="answers[question.id]" />
+            </div>
+
+            <table v-if="Array.isArray(question.matrix)">
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
@@ -22,20 +29,16 @@
                     </tr>
                 </tbody>
             </table>
-        </li>
 
-        <li v-else class="question-item" :class="{pending: showPending && !validate(question)}">
-            <div class="question">{{ question.question }}</div>
-
-            <div v-if="question.textbox">
-                <input type="text" v-model="answers[question.id]" />
-            </div>
-
-            <div v-for="(option, index) in question.options">
-                <div class="option-item" v-on:click="selectItem(question, index + 1)">
-                    <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
-                    <label>{{ option.item }}</label>
-                    <input type="text" v-model="answers[option.id]" v-if="option.textbox" />
+            <div v-if="Array.isArray(question.options)" :class="question.options.length > 3 ? 'options-columns' : ''">
+                <div v-for="(option, index) in question.options">
+                    <div class="option-item pure-radiobutton" v-on:click="selectItem(question, index + 1)">
+                        <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
+                        <label v-if="!option.textbox"><span class="option-item-text">{{ option.item }}</span></label>
+                        <label v-else>
+                            <input  type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
+                        </label>
+                    </div>
                 </div>
             </div>
         </li>
@@ -57,6 +60,7 @@ export default {
     props: ['pages'],
     data() {
         return {
+            title: 'Condições de Trabalho',
             page: 0,
             answers: [],
             showPending: false,
@@ -168,6 +172,22 @@ export default {
     margin-top: 20px;
 }
 
+.title-bar {
+    background: whitesmoke;
+    margin: -11px -11px 20px;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+
+    h1 {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.options-columns {
+    columns: 2;
+}
+
 table {
     border-collapse: collapse;
 
@@ -208,7 +228,10 @@ table {
 }
 
 .question {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 14pt;
+    font-weight: bold;
 }
 
 .pending {
@@ -224,6 +247,13 @@ table {
 li.question-item {
     margin-top: 10px;
     padding: 10px;
+    //border-top: 1px solid lightgray;
+
+    &:first-child {
+        border-top: 0;
+        margin-top: -10px;
+    }
+
 }
 
 div.option-item {
@@ -237,5 +267,12 @@ div.option-item {
     label {
         cursor: pointer;
     }
+}
+
+.option-item-text {
+    display: inline-block;
+    vertical-align: middle;
+    word-wrap: normal;
+    width: 95%;
 }
 </style>
