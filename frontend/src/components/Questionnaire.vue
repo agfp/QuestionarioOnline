@@ -63,9 +63,9 @@
     </ul>
 
     <div class="pagination" v-if="pages != null">
-        <button class="pure-button pure-button-primary" :disabled="page === 0" @click="previous()">Anterior</button>
-        <span>Página {{page+1}} de {{pages.length}}</span>
-        <button class="pure-button pure-button-primary" @click="next()" v-if="page < pages.length - 1">Próximo</button>
+        <button class="pure-button" :disabled="currentPage === 0" @click="previous()">Anterior</button>
+        <span>Página {{currentPage+1}} de {{pages.length}}</span>
+        <button class="pure-button pure-button-primary" @click="next()" v-if="currentPage < pages.length - 1">Próximo</button>
         <button class="pure-button pure-button-primary" @click="finish()" v-else>Finalizar</button>
     </div>
 </div>
@@ -78,8 +78,7 @@ export default {
     props: ['pages'],
     data() {
         return {
-            title: 'Condições de Trabalho',
-            page: 0,
+            currentPage: 0,
             answers: [],
             showPending: false,
             matrixOptions: ['Nunca', 'Raramente', 'Algumas vezes', 'Muitas vezes', 'Sempre', 'Não se aplica']
@@ -88,13 +87,14 @@ export default {
     methods: {
         previous() {
             this.showPending = false;
-            this.page--;
+            this.currentPage--;
         },
 
         next() {
             if (this.validatePage()) {
                 this.showPending = false;
-                this.page++;
+                this.currentPage++;
+                window.scrollTo(0, 0);
             }
         },
 
@@ -105,6 +105,8 @@ export default {
         },
 
         validatePage() {
+            return true;
+
             for (let i = 0; i < this.screenQuestions.length; i++) {
                 if (!this.validate(this.screenQuestions[i])) {
                     this.showPending = true;
@@ -184,12 +186,15 @@ export default {
         screenQuestions() {
             let selectedQuestions = [];
             if (this.pages) {
-                this.pages[this.page].forEach(question => {
+                this.pages[this.currentPage].questions.forEach(question => {
                     selectedQuestions.push(question);
                     selectedQuestions = selectedQuestions.concat(this.loadSubquestions(question));
                 });
             }
             return selectedQuestions;
+        },
+        title() {
+            return this.pages[this.currentPage].name;
         }
     }
 };
@@ -197,7 +202,14 @@ export default {
 
 <style lang="scss" scoped>
 .pagination {
-    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    background: whitesmoke;
+    border-top: 1px solid lightgray;
+
+    span {
+        margin: 0px 10px;
+    }
 }
 
 .title-bar {
@@ -231,7 +243,7 @@ table {
         th span {
             display: inline-block;
             width: 80px;
-            font-weight: normal;
+            font-weight: bold;
             font-size: 11pt;
         }
     }
@@ -264,10 +276,11 @@ table {
 }
 
 .question {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     // margin-top: 20px;
     font-size: 14pt;
     font-weight: bold;
+    line-height: 1.7;
 }
 
 .pending {

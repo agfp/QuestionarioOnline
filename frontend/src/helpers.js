@@ -29,7 +29,7 @@ function prepareQuestionnaire(questionnaire) {
 function preparePages(pages, numberedQuestions) {
     let counter = 0;
     pages.forEach(page => {
-        counter = prepareQuestions(page, counter, numberedQuestions);
+        counter = prepareQuestions(page.questions, counter, numberedQuestions);
     });
 }
 
