@@ -34,13 +34,13 @@ module.exports = {
     'prefer-const': 'warn',
     'max-len': ["warn", 120],
     'no-param-reassign': 'off',
-
     "no-use-before-define": ["error", { "functions": false, "classes": true }],
     'prefer-const': 'off',
     'no-trailing-spaces': 'off',
     'padded-blocks': 'off',
     'no-multiple-empty-lines': 'off',
     'import/first': 'off',
+    'brace-style': ['warn', 'stroustrup', { "allowSingleLine": true }],
 
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

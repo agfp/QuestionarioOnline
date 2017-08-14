@@ -19,6 +19,7 @@ import swal from 'sweetalert';
 import Questionnaire from './Questionnaire';
 import Overview from './Overview';
 import Helpers from '../helpers';
+import sample from '../assets/sample.json';
 
 export default {
     components: {
@@ -37,6 +38,10 @@ export default {
         };
     },
     created() {
+        let result = Helpers.prepareQuestionnaire(sample);
+        this.questionnaire = result.questionnaire;
+        this.questions = result.questions;
+        this.loading = false;
         // getQuestionnaire().then(response => {
         //     this.questionnaire = response.questionnaire;
         //     this.questions = response.questions;
@@ -52,7 +57,8 @@ export default {
                 this.questionnaire = result.questionnaire;
                 this.questions = result.questions;
                 this.loading = false;
-            } catch (e) {
+            }
+            catch (e) {
                 swal('Questionário inválido', 'O questionário não está em formato válido', 'error');
             }
         },

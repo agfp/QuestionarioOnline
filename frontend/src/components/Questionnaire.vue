@@ -7,37 +7,55 @@
 
     <ul class="question-list pure-form">
         <li class="question-item" v-for="question in screenQuestions">
-            <div class="question">{{ question.question }}</div>
-
-            <div v-if="question.textbox">
-                <input type="text" v-model="answers[question.id]" />
+            <div v-if="Array.isArray(question.matrix)" class="item-box">
+                <div class="question">{{ question.question }}</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th v-for="option in matrixOptions"><span>{{option}}</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in question.matrix" :class="{pending: showPending && !validateItem(item) }">
+                            <td>{{item.item}}</td>
+                            <td class="center" v-for="(option, index) in matrixOptions" @click="selectItem(item, index + 1)">
+                                <div class="pure-radiobutton">
+                                    <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
+                                    <label></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <table v-if="Array.isArray(question.matrix)">
-                <thead>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th v-for="option in matrixOptions"><span>{{option}}</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in question.matrix" :class="{pending: showPending && !validateItem(item) }">
-                        <td>{{item.item}}</td>
-                        <td class="center" v-for="(option, index) in matrixOptions" @click="selectItem(item, index + 1)">
-                            <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div v-else :class="{ pending: showPending && !validate(question), 'item-box': true }">
+                <div class="question">{{ question.question }}</div>
 
-            <div v-if="Array.isArray(question.options)" :class="question.options.length > 3 ? 'options-columns' : ''">
-                <div v-for="(option, index) in question.options">
-                    <div class="option-item pure-radiobutton" v-on:click="selectItem(question, index + 1)">
-                        <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
-                        <label v-if="!option.textbox"><span class="option-item-text">{{ option.item }}</span></label>
-                        <label v-else>
-                            <input  type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
-                        </label>
+                <div v-if="question.textbox">
+                    <input type="text" v-model="answers[question.id]" placeholder="Digite sua resposta" />
+                </div>
+
+                <div v-if="Array.isArray(question.options)" :class="question.options.length > 3 ? 'options-columns' : ''">
+                    <div v-if="question.multiple">
+                        <div v-for="option in question.options">
+                            <div class="option-item pure-checkbox" @click="toggleItem(option)">
+                                <input :name="option.id" value="1" v-model="answers[option.id]" type="checkbox">
+                                <label><span class="option-item-text">{{ option.item }}</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div v-for="(option, index) in question.options">
+                            <div class="option-item pure-radiobutton" @click="selectItem(question, index + 1)">
+                                <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
+                                <label v-if="!option.textbox"><span class="option-item-text">{{ option.item }}</span></label>
+                                <label v-else>
+                                    <input  type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,10 +124,14 @@ export default {
                 return answer ? Boolean(answer.trim()) : false;
             }
 
+            if (question.multiple) {
+                return true;
+            }
+
             if (question.textbox) {
                 return validateAnswer(this.answers[question.id]);
-            } else if (Array.isArray(question.matrix)) {
-
+            }
+            else if (Array.isArray(question.matrix)) {
                 for (let i = 0; i < question.matrix.length; i++) {
                     let item = question.matrix[i];
                     if (!this.validateItem(item)) {
@@ -134,6 +156,12 @@ export default {
             let a = JSON.parse(JSON.stringify(this.answers));
             a[item.id] = answer;
             item.pending = false;
+            this.answers = a;
+        },
+
+        toggleItem(item) {
+            let a = JSON.parse(JSON.stringify(this.answers));
+            a[item.id] = a[item.id] === 1 ? null : 1;
             this.answers = a;
         },
 
@@ -174,7 +202,6 @@ export default {
 
 .title-bar {
     background: whitesmoke;
-    margin: -11px -11px 20px;
     padding: 20px;
     border-bottom: 1px solid lightgray;
 
@@ -186,6 +213,10 @@ export default {
 
 .options-columns {
     columns: 2;
+}
+
+input[type=text] {
+    width: 320px;
 }
 
 table {
@@ -205,20 +236,25 @@ table {
         }
     }
     tbody {
-        tr:nth-child(odd) {
-            background-color: #eee;
-        }
-        tr:hover {
-            background: lightyellow;
-        }
-        td {
-            border: 1px solid #aaa;
-        }
-        td:not(:first-child) {
-            cursor: pointer;
-        }
-        td:first-child {
-            padding: 6px 5px;
+        tr {
+            &:nth-child(odd) {
+                background-color: #eee;
+            }
+            &:hover {
+                background: lightyellow;
+            }
+            td {
+                border: 1px solid #aaa;
+                &:not(:first-child) {
+                    cursor: pointer;
+                }
+                &:first-child {
+                    padding: 6px 5px;
+                }
+                label {
+                    margin-left: 21px;
+                }
+            }
         }
     }
 }
@@ -229,13 +265,17 @@ table {
 
 .question {
     margin-bottom: 10px;
-    margin-top: 20px;
+    // margin-top: 20px;
     font-size: 14pt;
     font-weight: bold;
 }
 
 .pending {
     background: #FFDDDD !important;
+}
+
+.item-box {
+    padding: 20px 30px;
 }
 
 .question-list {
@@ -246,19 +286,13 @@ table {
 
 li.question-item {
     margin-top: 10px;
-    padding: 10px;
-    //border-top: 1px solid lightgray;
-
-    &:first-child {
-        border-top: 0;
-        margin-top: -10px;
-    }
-
 }
 
 div.option-item {
     padding: 5px;
     cursor: pointer;
+    break-inside: avoid-column;
+
     &:hover {
         background: lightyellow;
     }

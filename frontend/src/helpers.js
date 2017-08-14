@@ -36,13 +36,23 @@ function preparePages(pages, numberedQuestions) {
 function prepareQuestions(questions, counter, numberedQuestions) {
     questions.forEach(question => {
         if (Array.isArray(question.matrix)) {
-            numberedQuestions.push(`[${question.question}]`);
+            numberedQuestions.push(`--- ${question.question}`);
             question.matrix.forEach(item => {
                 numberedQuestions.push(`${counter + 1} - ${item.item}`);
                 item.id = counter++;
                 item.pending = true;
             });
-        } else {
+            numberedQuestions.push('---');
+        }
+        else if (question.multiple) {
+            numberedQuestions.push(`--- ${question.question}`);
+            question.options.forEach(option => {
+                numberedQuestions.push(`${counter + 1} - ${option.item}`);
+                option.id = counter++;
+            });
+            numberedQuestions.push('---');
+        }
+        else {
             numberedQuestions.push(`${counter + 1} - ${question.question}`);
             question.id = counter++;
             question.pending = true;
