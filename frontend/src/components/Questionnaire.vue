@@ -9,25 +9,7 @@
         <li class="question-item" v-for="question in screenQuestions">
             <div v-if="Array.isArray(question.matrix)" class="item-box">
                 <div class="question">{{ question.question }}</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th v-for="option in matrixOptions"><span>{{option}}</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in question.matrix" :class="{pending: showPending && !validateItem(item) }">
-                            <td>{{item.item}}</td>
-                            <td class="center" v-for="(option, index) in matrixOptions" @click="selectItem(item, index + 1)">
-                                <div class="pure-radiobutton">
-                                    <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
-                                    <label></label>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <matrix :question="question" :show-pending="showPending" :answers="answers" @answer-clicked="matrixAnswerClicked"></matrix>
             </div>
 
             <div v-else :class="{ pending: showPending && !validate(question), 'item-box': true }">
@@ -73,15 +55,18 @@
 
 <script>
 import swal from 'sweetalert';
+import matrix from './Matrix';
 
 export default {
     props: ['pages'],
+    components: {
+        matrix
+    },
     data() {
         return {
             currentPage: 0,
             answers: [],
-            showPending: false,
-            matrixOptions: ['Nunca', 'Raramente', 'Algumas vezes', 'Muitas vezes', 'Sempre', 'Não se aplica']
+            showPending: false
         };
     },
     methods: {
@@ -154,6 +139,10 @@ export default {
             return false;
         },
 
+        matrixAnswerClicked(value) {
+            this.selectItem(value.item, value.answer);
+        },
+
         selectItem(item, answer) {
             let a = JSON.parse(JSON.stringify(this.answers));
             a[item.id] = answer;
@@ -201,17 +190,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pagination {
-    text-align: center;
-    padding: 20px;
-    background: whitesmoke;
-    border-top: 1px solid lightgray;
-
-    span {
-        margin: 0px 10px;
-    }
-}
-
 .title-bar {
     background: whitesmoke;
     padding: 20px;
@@ -229,46 +207,6 @@ export default {
 
 input[type=text] {
     width: 320px;
-}
-
-table {
-    border-collapse: collapse;
-
-    thead {
-        th:not(:first-child) {
-            border: 1px solid #aaa;
-            text-align: center;
-        }
-
-        th span {
-            display: inline-block;
-            width: 80px;
-            font-weight: bold;
-            font-size: 11pt;
-        }
-    }
-    tbody {
-        tr {
-            &:nth-child(odd) {
-                background-color: #eee;
-            }
-            &:hover {
-                background: lightyellow;
-            }
-            td {
-                border: 1px solid #aaa;
-                &:not(:first-child) {
-                    cursor: pointer;
-                }
-                &:first-child {
-                    padding: 6px 5px;
-                }
-                label {
-                    margin-left: 21px;
-                }
-            }
-        }
-    }
 }
 
 .center {
@@ -305,7 +243,6 @@ div.option-item {
     padding: 5px;
     cursor: pointer;
     break-inside: avoid-column;
-
     &:hover {
         background: lightyellow;
     }
@@ -321,5 +258,16 @@ div.option-item {
     vertical-align: middle;
     word-wrap: normal;
     width: 95%;
+}
+
+.pagination {
+    text-align: center;
+    padding: 20px;
+    background: whitesmoke;
+    border-top: 1px solid lightgray;
+
+    span {
+        margin: 0 10px;
+    }
 }
 </style>
