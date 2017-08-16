@@ -1,49 +1,31 @@
 <template>
 <div>
-
     <div class="title-bar">
         <h1>{{ title }}</h1>
     </div>
-
     <ul class="question-list pure-form">
         <li class="question-item" v-for="question in screenQuestions">
             <div v-if="Array.isArray(question.matrix)" class="item-box">
                 <div class="question">{{ question.question }}</div>
-                <matrix :question="question" :show-pending="showPending" :answers="answers" @answer-clicked="matrixAnswerClicked"></matrix>
+                <matrix :question="question"
+                        :show-pending="showPending"
+                        :answers="answers"
+                        @select="selectItem"></matrix>
             </div>
-
             <div v-else :class="{ pending: showPending && !validate(question), 'item-box': true }">
                 <div class="question">{{ question.question }}</div>
-
                 <div v-if="question.textbox">
                     <input type="text" v-model="answers[question.id]" placeholder="Digite sua resposta" />
                 </div>
-
-                <div v-if="Array.isArray(question.options)" :class="question.options.length > 3 ? 'options-columns' : ''">
-                    <div v-if="question.multiple">
-                        <div v-for="option in question.options">
-                            <div class="option-item pure-checkbox" @click="toggleItem(option)">
-                                <input :name="option.id" value="1" v-model="answers[option.id]" type="checkbox">
-                                <label><span class="option-item-text">{{ option.item }}</span></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div v-else>
-                        <div v-for="(option, index) in question.options">
-                            <div class="option-item pure-radiobutton" @click="selectItem(question, index + 1)">
-                                <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
-                                <label v-if="!option.textbox"><span class="option-item-text">{{ option.item }}</span></label>
-                                <label v-else>
-                                    <input  type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <div v-if="Array.isArray(question.options)">
+                    <options :question="question"
+                             :answers="answers"
+                             @select="selectItem"
+                             @toggle="toggleItem"></options>
                 </div>
             </div>
         </li>
     </ul>
-
     <div class="pagination" v-if="pages != null">
         <button class="pure-button" :disabled="currentPage === 0" @click="previous()">Anterior</button>
         <span>Página {{currentPage+1}} de {{pages.length}}</span>
@@ -56,11 +38,13 @@
 <script>
 import swal from 'sweetalert';
 import matrix from './Matrix';
+import options from './Options';
 
 export default {
     props: ['pages'],
     components: {
-        matrix
+        matrix,
+        options
     },
     data() {
         return {
@@ -139,14 +123,10 @@ export default {
             return false;
         },
 
-        matrixAnswerClicked(value) {
-            this.selectItem(value.item, value.answer);
-        },
-
-        selectItem(item, answer) {
+        selectItem(value) {
             let a = JSON.parse(JSON.stringify(this.answers));
-            a[item.id] = answer;
-            item.pending = false;
+            a[value.item.id] = value.answer;
+            value.item.pending = false;
             this.answers = a;
         },
 
@@ -201,16 +181,8 @@ export default {
     }
 }
 
-.options-columns {
-    columns: 2;
-}
-
 input[type=text] {
     width: 320px;
-}
-
-.center {
-    text-align: center;
 }
 
 .question {
@@ -237,27 +209,6 @@ input[type=text] {
 
 li.question-item {
     margin-top: 10px;
-}
-
-div.option-item {
-    padding: 5px;
-    cursor: pointer;
-    break-inside: avoid-column;
-    &:hover {
-        background: lightyellow;
-    }
-
-    input[type=radio],
-    label {
-        cursor: pointer;
-    }
-}
-
-.option-item-text {
-    display: inline-block;
-    vertical-align: middle;
-    word-wrap: normal;
-    width: 95%;
 }
 
 .pagination {

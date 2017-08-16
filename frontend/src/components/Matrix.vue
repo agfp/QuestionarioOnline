@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         selectItem(item, answer) {
-            this.$emit('answer-clicked', {
+            this.$emit('select', {
                 item,
                 answer
             });
