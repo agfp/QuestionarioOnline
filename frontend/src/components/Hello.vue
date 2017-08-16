@@ -6,12 +6,15 @@
     <div v-if="!consent1 && !finished1">
         <questionnaire :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
     </div>
-    <div v-if="consent2">
+    <div v-if="finished1">
+        <overview :questions="questions" :answers="answers" :hashCode="hashCode"></overview>
+    </div>
+    <!-- <div v-if="consent2">
         <consent @finished="consent2Finished"></consent>
     </div>
     <div v-if="q2">
         <questionnaire :pages="stress"></questionnaire>
-    </div>
+    </div> -->
 </div>
 </template>
 
@@ -54,6 +57,7 @@ export default {
     methods: {
         consent1Finished() {
             this.consent1 = false;
+            window.scrollTo(0, 0);
         },
         consent2Finished() {
             this.consent2 = false;
@@ -69,6 +73,7 @@ export default {
             this.answers = answers;
             this.finished1 = true;
             this.consent2 = true;
+            window.scrollTo(0, 0);
         }
     },
 };

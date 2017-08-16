@@ -17,7 +17,7 @@ export default {
 
 <style>
 body {
-    background: url(/static/background2.jpg);
+    background: url(/static/background10.svg);
     /*background-repeat: no-repeat;*/
     background-attachment: fixed;
     background-size: 100%;

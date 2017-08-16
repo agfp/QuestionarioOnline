@@ -14,10 +14,16 @@
             </div>
             <div v-else :class="{ pending: showPending && !validate(question), 'item-box': true }">
                 <div class="question">{{ question.question }}</div>
-                <div v-if="question.textbox">
+                <div class="instruction" v-if="question.instruction">
+                    {{ question.instruction }}
+                </div>
+                <div v-if="question.textbox" class="textbox-item">
                     <input type="text" v-model="answers[question.id]" placeholder="Digite sua resposta" />
                 </div>
                 <div v-if="Array.isArray(question.options)">
+                    <div v-if="question.multiple" class="instruction-alert">
+                        Pode marcar mais de uma alternativa
+                    </div>
                     <options :question="question"
                              :answers="answers"
                              @select="selectItem"
@@ -209,6 +215,19 @@ input[type=text] {
 
 li.question-item {
     margin-top: 10px;
+}
+
+.instruction {
+    font-style: italic;
+}
+
+.instruction-alert {
+    @extend .instruction;
+    color: red;
+}
+
+.textbox-item {
+    margin-top: 10px
 }
 
 .pagination {

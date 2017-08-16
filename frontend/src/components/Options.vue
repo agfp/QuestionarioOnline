@@ -14,7 +14,8 @@
                 <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
                 <label v-if="!option.textbox"><span class="option-item-text">{{ option.item }}</span></label>
                 <label v-else>
-                    <input type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
+                    {{ option.item }}
+                    <input type="text" class="pure-input" v-model="answers[option.id]" placeholder="Especifique" />
                 </label>
             </div>
         </div>
@@ -45,7 +46,7 @@ export default {
 }
 
 input[type=text] {
-    width: 320px;
+    width: 300px;
 }
 
 .option-item-text {
@@ -66,6 +67,10 @@ input[type=text] {
     input[type=radio],
     label {
         cursor: pointer;
+    }
+
+    input[type=text] {
+        margin-bottom: 4px;
     }
 }
 </style>

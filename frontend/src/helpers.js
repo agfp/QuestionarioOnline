@@ -37,7 +37,14 @@ function prepareQuestions(questions, counter, numberedQuestions) {
     questions.forEach(question => {
         if (Array.isArray(question.matrix)) {
             if (!Array.isArray(question.headers)) {
-                question.headers = ['Nunca', 'Raramente', 'Algumas vezes', 'Muitas vezes', 'Sempre', 'Não se aplica'];
+                question.headers = [
+                    'Nunca',
+                    'Raramente',
+                    'Algumas vezes',
+                    'Muitas vezes',
+                    'Todo tempo',
+                    'Não se aplica'
+                ];
             }
             numberedQuestions.push(`--- ${question.question}`);
             question.matrix.forEach(item => {
