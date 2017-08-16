@@ -1,17 +1,19 @@
 <template>
 <div>
-    <div class="header">
+    <div :class="{header: true, fixed: fixedHeader}" ref="header">
         <div class="question">&nbsp;</div>
         <div class="option" v-for="header in question.headers">{{header}}</div>
     </div>
-    <div class="row" v-for="item in question.matrix">
-        <div class="question">
-            {{item.item}}
-        </div>
-        <div v-for="(option, index) in question.headers" @click="selectItem(item, index + 1)" class="option">
-            <div class="pure-radiobutton">
-                <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
-                <label></label>
+    <div class="rows">
+        <div class="row" v-for="item in question.matrix">
+            <div class="question">
+                {{item.item}}
+            </div>
+            <div v-for="(option, index) in question.headers" @click="selectItem(item, index + 1)" class="option">
+                <div class="pure-radiobutton">
+                    <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
+                    <label></label>
+                </div>
             </div>
         </div>
     </div>
@@ -19,17 +21,28 @@
 </template>
 
 <script>
+/* global Waypoint */
+
 export default {
     props: ['question', 'showPending', 'answers'],
     data() {
-        return {};
+        return {
+            fixedHeader: false
+        };
+    },
+    mounted() {
+        /* eslint-disable no-new */
+        let that = this;
+        new Waypoint({
+            element: this.$refs.header,
+            handler(direction) {
+                that.fixedHeader = direction === 'down';
+            }
+        });
     },
     methods: {
         selectItem(item, answer) {
-            this.$emit('select', {
-                item,
-                answer
-            });
+            this.$emit('select', item, answer);
         },
         validateItem() {
             return true;
@@ -45,6 +58,11 @@ $border-color: lightgray;
 .fixed {
     position: fixed;
     top: 0;
+    z-index: 1;
+
+    .option {
+        border-bottom: 1px solid $border-color;
+    }
 }
 
 .question {
@@ -83,7 +101,7 @@ $border-color: lightgray;
 .row {
     display: flex;
     width: $matrix-width;
-    &:nth-child(odd) {
+    &:nth-child(even) {
         background-color: #eee;
     }
     &:last-child {

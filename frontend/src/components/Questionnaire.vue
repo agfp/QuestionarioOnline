@@ -123,10 +123,10 @@ export default {
             return false;
         },
 
-        selectItem(value) {
+        selectItem(item, answer) {
             let a = JSON.parse(JSON.stringify(this.answers));
-            a[value.item.id] = value.answer;
-            value.item.pending = false;
+            a[item.id] = answer;
+            item.pending = false;
             this.answers = a;
         },
 

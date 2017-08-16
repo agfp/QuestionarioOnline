@@ -14,7 +14,7 @@
                 <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
                 <label v-if="!option.textbox"><span class="option-item-text">{{ option.item }}</span></label>
                 <label v-else>
-                    <input  type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
+                    <input type="text" class="pure-input" v-model="answers[option.id]" :placeholder="option.item" />
                 </label>
             </div>
         </div>
@@ -30,10 +30,7 @@ export default {
     },
     methods: {
         selectItem(item, answer) {
-            this.$emit('select', {
-                item,
-                answer
-            });
+            this.$emit('select', item, answer);
         },
         toggleItem(option) {
             this.$emit('toggle', option);

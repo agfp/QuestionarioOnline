@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'axios';
 import 'sweetalert';
+import 'waypoints/lib/noframework.waypoints';
 
 import 'sweetalert/dist/sweetalert.css';
 import 'purecss/build/pure.css';

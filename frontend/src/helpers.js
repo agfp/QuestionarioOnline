@@ -4,7 +4,6 @@ export default {
     getQuestionnaire,
     prepareQuestionnaire,
     hashCode,
-    debounce
 };
 
 function getQuestionnaire() {
@@ -89,27 +88,4 @@ function hashCode(str) {
         hash |= 0; // Convert to 32bit integer
     }
     return ((hash + 2147483647) + 1).toString(36);
-}
-
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
-function debounce(func, wait, immediate) {
-    let timeout;
-    // eslint-disable-next-line
-    return function() {
-        let context = this;
-        // eslint-disable-next-line
-        let args = arguments;
-        // eslint-disable-next-line
-        let later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
 }

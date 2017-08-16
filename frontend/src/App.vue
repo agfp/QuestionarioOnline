@@ -3,6 +3,9 @@
     <div class="container">
         <router-view></router-view>
     </div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
 </div>
 </template>
 
