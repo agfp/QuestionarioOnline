@@ -1,72 +1,74 @@
 <template>
 <div>
-    <div v-if="loading">
-        <h2>Cole o questionário:</h2>
-        <textarea v-model="textarea"></textarea>
-        <div>
-            <button @click="newQuestionnaire">Concluido</button>
-        </div>
+    <div v-if="consent1">
+        <consent @finished="consent1Finished"></consent>
     </div>
-    <div v-else>
-        <questionnaire v-if="!finished" :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
-        <overview v-else :questions="questions" :answers="answers" :hashCode="hashCode"></overview>
+    <div v-if="!consent1 && !finished1">
+        <questionnaire :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
+    </div>
+    <div v-if="consent2">
+        <consent @finished="consent2Finished"></consent>
+    </div>
+    <div v-if="q2">
+        <questionnaire :pages="stress"></questionnaire>
     </div>
 </div>
 </template>
 
 <script>
-import swal from 'sweetalert';
-import Questionnaire from './Questionnaire';
-import Overview from './Overview';
+// import swal from 'sweetalert';
+import questionnaire from './Questionnaire';
+import overview from './Overview';
+import consent from './Consent';
 import Helpers from '../helpers';
 import sample from '../assets/questionario.json';
+import stress from '../assets/stress.json';
 
 export default {
     components: {
-        questionnaire: Questionnaire,
-        overview: Overview
+        questionnaire,
+        overview,
+        consent
     },
     data() {
         return {
             textarea: null,
-            loading: true,
-            finished: false,
+            consent1: true,
+            finished1: false,
+            consent2: false,
+            q2: false,
+            finished2: false,
             questionnaire: null,
+            stress: null,
             questions: null,
             answers: null,
             hashCode: null,
         };
     },
-    created() {
+    mounted() {
         let result = Helpers.prepareQuestionnaire(sample);
         this.questionnaire = result.questionnaire;
         this.questions = result.questions;
-        this.loading = false;
         window.scrollTo(0, 0);
-        // getQuestionnaire().then(response => {
-        //     this.questionnaire = response.questionnaire;
-        //     this.questions = response.questions;
-        //     this.loading = false;
-        // });
     },
     methods: {
-        newQuestionnaire() {
-            try {
-                let questionnaire = JSON.parse(this.textarea);
-                this.hashCode = Helpers.hashCode(JSON.stringify(questionnaire));
-                let result = Helpers.prepareQuestionnaire(questionnaire);
-                this.questionnaire = result.questionnaire;
-                this.questions = result.questions;
-                this.loading = false;
-            }
-            catch (e) {
-                swal('Questionário inválido', 'O questionário não está em formato válido', 'error');
-            }
+        consent1Finished() {
+            this.consent1 = false;
         },
+        consent2Finished() {
+            this.consent2 = false;
+            this.q2 = true;
 
+            let result = Helpers.prepareQuestionnaire(stress);
+            this.stress = result.questionnaire;
+            this.questions = result.questions;
+            window.scrollTo(0, 0);
+
+        },
         questionnaireFinished(answers) {
             this.answers = answers;
-            this.finished = true;
+            this.finished1 = true;
+            this.consent2 = true;
         }
     },
 };

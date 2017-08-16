@@ -2,14 +2,14 @@
 <div>
     <div :class="{header: true, fixed: fixedHeader}" ref="header">
         <div class="question">&nbsp;</div>
-        <div class="option" v-for="header in question.headers">{{header}}</div>
+        <div :class="{option:true, 'option-100': question.headers.length <= 5 }" v-for="header in question.headers">{{header}}</div>
     </div>
     <div class="rows">
         <div class="row" v-for="item in question.matrix">
             <div class="question">
                 {{item.item}}
             </div>
-            <div v-for="(option, index) in question.headers" @click="selectItem(item, index + 1)" class="option">
+            <div v-for="(option, index) in question.headers" @click="selectItem(item, index + 1)" :class="{option:true, 'option-100': question.headers.length <= 5 }">
                 <div class="pure-radiobutton">
                     <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
                     <label></label>
@@ -31,8 +31,8 @@ export default {
         };
     },
     mounted() {
-        /* eslint-disable no-new */
         let that = this;
+        /* eslint-disable no-new */
         new Waypoint({
             element: this.$refs.header,
             handler(direction) {
@@ -67,6 +67,10 @@ $border-color: lightgray;
 
 .question {
     flex-grow: 1;
+}
+
+.option-100 {
+    flex: 0 0 90px !important;
 }
 
 .option {
