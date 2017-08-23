@@ -5,7 +5,7 @@
         <div :class="{option:true, 'option-100': question.headers.length <= 5 }" v-for="header in question.headers">{{header}}</div>
     </div>
     <div class="rows">
-        <div class="row" v-for="item in question.matrix">
+        <div :class="{row: true, pending: showPending && !answers[item.id]}" v-for="item in question.matrix">
             <div class="question">
                 {{item.item}}
             </div>
