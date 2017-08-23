@@ -29,8 +29,21 @@
                 <div class="instruction" v-if="question.instruction">
                     {{ question.instruction }}
                 </div>
+                <div v-if="question.invalidNumber || showPending" class="instruction-alert">
+                    {{ question.validationMsg }}
+                </div>
                 <div v-if="question.textbox" class="textbox-item">
-                    <input type="text" v-model.lazy="answers[question.id]" placeholder="Digite sua resposta" @change="updateProgress" />
+                    <input v-if="question.number"
+                           type="number"
+                           v-model.lazy="answers[question.id]"
+                           placeholder="Digite sua resposta"
+                           @change="validateNumberAndUpdateProgress(question)" />
+
+                    <input v-else
+                           type="text"
+                           v-model.lazy="answers[question.id]"
+                           placeholder="Digite sua resposta"
+                           @change="updateProgress" />
                 </div>
                 <div v-if="Array.isArray(question.options)">
                     <div v-if="question.multiple" class="instruction-alert">
@@ -109,9 +122,21 @@ export default {
             }
         },
 
-        validatePage() {
-            return true;
+        validateNumber(question) {
+            let answer = parseInt(this.answers[question.id], 10);
+            return answer >= question.number.min && answer <= question.number.max;
+        },
 
+        validateNumberAndUpdateProgress(question) {
+            if (this.validateNumber(question)) {
+                this.updateProgress();
+            }
+            else {
+                question.invalidNumber = true;
+            }
+        },
+
+        validatePage() {
             for (let i = 0; i < this.screenQuestions.length; i++) {
                 if (!this.validate(this.screenQuestions[i])) {
                     this.showPending = true;
@@ -136,7 +161,7 @@ export default {
             }
 
             if (question.textbox) {
-                return validateAnswer(this.answers[question.id]);
+                return question.number ? this.validateNumber(question) : validateAnswer(this.answers[question.id]);
             }
             else if (Array.isArray(question.matrix)) {
                 for (let i = 0; i < question.matrix.length; i++) {
@@ -239,7 +264,8 @@ export default {
     }
 }
 
-input[type=text] {
+input[type=text],
+input[type=number] {
     width: 320px;
 }
 
@@ -271,6 +297,7 @@ li.question-item {
 
 .instruction {
     font-style: italic;
+    font-size: 11pt;
 }
 
 .instruction-alert {

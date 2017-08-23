@@ -24,7 +24,7 @@ import questionnaire from './Questionnaire';
 import overview from './Overview';
 import consent from './Consent';
 import Helpers from '../helpers';
-import sample from '../assets/questionario.json';
+import sample from '../assets/hc.json';
 import stress from '../assets/stress.json';
 
 export default {

@@ -46,7 +46,7 @@ export default {
 }
 
 input[type=text] {
-    width: 300px;
+    width: 280px;
 }
 
 .option-item-text {
