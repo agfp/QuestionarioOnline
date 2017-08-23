@@ -42,6 +42,7 @@ module.exports = {
     'import/first': 'off',
     'brace-style': ['warn', 'stroustrup', { "allowSingleLine": true }],
     'no-unreachable': 'warn',
+    'no-empty': 'warn',
 
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

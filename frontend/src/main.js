@@ -7,6 +7,7 @@ import 'waypoints/lib/noframework.waypoints';
 import 'sweetalert/dist/sweetalert.css';
 import 'purecss/build/pure.css';
 import './assets/pure-css-checkbox.css';
+import './assets/styles.scss';
 
 import Vue from 'vue';
 import App from './App';

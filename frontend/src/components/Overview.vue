@@ -24,8 +24,6 @@
             {{q}}
         </li>
     </ul>
-
-
 </div>
 </template>
 
@@ -37,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .overview {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;

@@ -3,6 +3,18 @@
     <div class="title-bar">
         <h1>{{ title }}</h1>
     </div>
+    <vue-circle
+          id="progress-circle"
+          class="progress-circle"
+          ref="progresscircle"
+          :start-angle="-(Math.PI / 2)"
+          :progress="0"
+          :fill="{ gradient: ['#0683C3', '#06A4C2', '#06C3C1'] }"
+          :size="100"
+          :thickness="10"
+          :show-percent="true">
+    </vue-circle>
+
     <ul class="question-list pure-form">
         <li class="question-item" v-for="question in screenQuestions">
             <div v-if="Array.isArray(question.matrix)" class="item-box">
@@ -18,7 +30,7 @@
                     {{ question.instruction }}
                 </div>
                 <div v-if="question.textbox" class="textbox-item">
-                    <input type="text" v-model="answers[question.id]" placeholder="Digite sua resposta" />
+                    <input type="text" v-model.lazy="answers[question.id]" placeholder="Digite sua resposta" @change="updateProgress" />
                 </div>
                 <div v-if="Array.isArray(question.options)">
                     <div v-if="question.multiple" class="instruction-alert">
@@ -43,6 +55,7 @@
 
 <script>
 import swal from 'sweetalert';
+import VueCircle from 'vue2-circle-progress';
 import matrix from './Matrix';
 import options from './Options';
 
@@ -50,14 +63,31 @@ export default {
     props: ['pages'],
     components: {
         matrix,
-        options
+        options,
+        VueCircle
     },
     data() {
         return {
             currentPage: 0,
             answers: [],
-            showPending: false
+            showPending: false,
+            totalSteps: 0,
+            fill: { gradient: ['red', 'green', 'blue'] }
         };
+    },
+    mounted() {
+        this.pages.forEach(page => {
+            page.questions.forEach(question => {
+                if (!question.multiple) {
+                    if (Array.isArray(question.matrix)) {
+                        this.totalSteps += question.matrix.length;
+                    }
+                    else {
+                        this.totalSteps++;
+                    }
+                }
+            });
+        });
     },
     methods: {
         previous() {
@@ -134,12 +164,34 @@ export default {
             a[item.id] = answer;
             item.pending = false;
             this.answers = a;
+            this.updateProgress();
         },
 
         toggleItem(item) {
             let a = JSON.parse(JSON.stringify(this.answers));
             a[item.id] = a[item.id] === 1 ? null : 1;
             this.answers = a;
+        },
+
+        updateProgress() {
+            let completedSteps = 0;
+            this.pages.forEach(page => {
+                page.questions.forEach(question => {
+                    if (!question.multiple) {
+                        if (Array.isArray(question.matrix)) {
+                            question.matrix.forEach(item => {
+                                if (this.validateItem(item)) {
+                                    completedSteps++;
+                                }
+                            });
+                        }
+                        else if (this.validate(question)) {
+                            completedSteps++;
+                        }
+                    }
+                });
+            });
+            this.$refs.progresscircle.updateProgress(Math.ceil((completedSteps / this.totalSteps) * 100));
         },
 
         loadSubquestions(question) {
@@ -240,4 +292,11 @@ li.question-item {
         margin: 0 10px;
     }
 }
+
+.progress-circle {
+    position: absolute;
+    right: 10px;
+    top: 22px;
+}
+
 </style>

@@ -36,5 +36,6 @@ body {
     box-shadow: 1px 1px 10px gray;
     margin-top: 5px;
     background: white;
+    position: relative;
 }
 </style>
