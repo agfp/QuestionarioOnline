@@ -277,10 +277,6 @@ input[type=number] {
     line-height: 1.7;
 }
 
-.pending {
-    background: #FFDDDD !important;
-}
-
 .item-box {
     padding: 20px 30px;
 }
