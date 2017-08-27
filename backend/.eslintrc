@@ -7,6 +7,10 @@
   },
   "extends": "airbnb-base",
   "rules": {
+    "semi": "warn",
+    'brace-style': ['warn', 'stroustrup', { "allowSingleLine": true }],
+    'prefer-template': 'warn',
+    "no-empty": "warn",
     "no-console": "off",
     "comma-dangle": "off",
     "no-unused-vars": "warn",

@@ -1,23 +1,4 @@
-
-function validateKey(req) {
-    return new Promise((resolve, reject) => {
-        const db = req.app.locals.db;
-        if (req.params.key && req.params.key.length >= 2) {
-            const findArg = {
-                allowedIds: req.params.key
-            };
-            db.collection('config').find(findArg).toArray((err, docs) => {
-                if (docs.length > 0) {
-                    resolve(docs);
-                } else {
-                    reject();
-                }
-            });
-        } else {
-            reject();
-        }
-    });
-}
+const moment = require('moment');
 
 /* eslint 'no-bitwise': 'off' */
 function hashCode(str) {
@@ -41,6 +22,17 @@ function createToken() {
     return `${uid}.${timestamp}.${hash}`;
 }
 
+function parseToken(token) {
+    if (validateToken(token)) {
+        const split = token.split('.');
+        return {
+            serverUid: split[0],
+            startTime: moment(parseInt(split[1], 36)).format()
+        };
+    }
+    return {};
+}
+
 function validateToken(token) {
     if (typeof token === 'string') {
         const split = token.split('.');
@@ -52,8 +44,7 @@ function validateToken(token) {
 }
 
 module.exports = {
-    validateKey,
     hashCode,
     createToken,
-    validateToken
+    parseToken
 };
