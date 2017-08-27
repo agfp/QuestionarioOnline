@@ -1,0 +1,81 @@
+body {
+    background: #F1F1F1;
+}
+
+#top {
+    background: url(/static/top.png) no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 145px;
+    border-bottom: solid 1px #c2c2c2;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.marca1 {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.marca2 {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.titulo {
+    text-align: center;
+    margin: auto;
+    /*border: 1px solid red;*/
+    width: 50%;
+    /*padding-top: 50px;*/
+    font-family: 'Merriweather', serif;
+    /*font-weight: bold;*/
+    font-size: 16pt;
+    height: 145px;
+    vertical-align: middle;
+    display: table;
+    text-shadow: 1px 1px lightgray;
+}
+
+.titulo div {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.titulo p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+#middle {
+    position: absolute;
+    top: 145px;
+    bottom: 0;
+    left: 100px;
+    right: 100px;
+    font-family: 'Open Sans', serif;
+    font-size: 12pt;
+}
+
+#middle p {
+    line-height: 1.6em;
+}
+
+h1 {
+    text-align: center;
+    /*color: #B10008;*/
+}
+
+.highlight {
+    border: solid 1px #c2c2c2;
+    padding: 10px 20px;
+    background: #B10008;
+    color: white;
+}
