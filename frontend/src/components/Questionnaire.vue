@@ -65,7 +65,10 @@
         <!-- <span>Página {{currentPage+1}} de {{pages.length}}</span> -->
         <linear-progress :percentage="percentage"></linear-progress>
         <button class="pure-button pure-button-primary" @click="next()" v-if="currentPage < pages.length - 1">Próximo</button>
-        <button class="pure-button pure-button-primary" @click="finish()" v-else>Finalizar</button>
+        <button class="pure-button pure-button-primary" @click="finish()" v-else :disabled="saving">
+            <span v-if="!saving">Finalizar</span>
+            <span v-else>Aguarde...</span>
+        </button>
     </div>
 </div>
 </template>
@@ -78,8 +81,11 @@ import options from './Options';
 import monthYear from './MonthYear';
 import LinearProgress from './LinearProgress';
 
+import helpers from '../helpers';
+import api from '../api';
+
 export default {
-    props: ['pages'],
+    props: ['pages', 'set', 'loadedAnswers'],
     components: {
         matrix,
         options,
@@ -94,7 +100,7 @@ export default {
             showPending: false,
             completedSteps: 0,
             totalSteps: 0,
-            fill: { gradient: ['red', 'green', 'blue'] },
+            saving: false
         };
     },
     mounted() {
@@ -110,6 +116,22 @@ export default {
                 }
             });
         });
+
+        if (Array.isArray(this.loadedAnswers)) {
+            this.answers = this.loadedAnswers;
+            this.updateProgress();
+            let stop = false;
+            for (let i = 0; i < this.pages.length; i++) {
+                for (let j = 0; j < this.screenQuestions.length; j++) {
+                    if (!this.validate(this.screenQuestions[j])) {
+                        stop = true;
+                        break;
+                    }
+                }
+                if (stop || this.currentPage === this.pages.length - 1) break;
+                this.currentPage++;
+            }
+        }
     },
     methods: {
         previous() {
@@ -127,7 +149,25 @@ export default {
 
         finish() {
             if (this.validatePage()) {
-                this.$emit('finished', this.answers);
+                this.saving = true;
+                api.save(
+                    helpers.PARAMETERS.key,
+                    helpers.PARAMETERS.token,
+                    this.set,
+                    this.answers)
+                    .then(() => {
+                        if (typeof Storage !== 'undefined') {
+                            localStorage.removeItem(helpers.PARAMETERS.key);
+                        }
+                        this.$emit('finished', this.answers);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        this.saving = false;
+                        swal('Oops...',
+                             'Ocorreu um erro ao enviar o questionário. Por favor tente novamente.',
+                             'error');
+                    });
             }
         },
 
@@ -265,7 +305,7 @@ export default {
     watch: {
         answers(val) {
             if (typeof Storage !== 'undefined') {
-                localStorage.setItem('answers', JSON.stringify(val));
+                localStorage.setItem(helpers.PARAMETERS.key, JSON.stringify(val));
             }
         }
     }

@@ -1,4 +1,5 @@
-import api from './api';
+const txt = document.getElementById('parameters').text;
+const PARAMETERS = JSON.parse(txt);
 
 const MONTHS = [
     'Janeiro', 'Fevereiro', 'Março',
@@ -6,17 +7,6 @@ const MONTHS = [
     'Julho', 'Agosto', 'Setembro',
     'Outubro', 'Novembro', 'Dezembro'
 ];
-
-function getQuestionnaire() {
-    return new Promise((resolve, reject) => {
-        api.getQuestionnaire()
-            .then(response => {
-                let result = prepareQuestionnaire(response);
-                resolve(result);
-            })
-            .catch(reject);
-    });
-}
 
 function prepareQuestionnaire(questionnaire) {
     let questions = [];
@@ -99,8 +89,8 @@ function hashCode(str) {
 }
 
 export default {
-    getQuestionnaire,
     prepareQuestionnaire,
     hashCode,
-    MONTHS
+    MONTHS,
+    PARAMETERS
 };

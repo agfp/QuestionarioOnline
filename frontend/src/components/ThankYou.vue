@@ -3,7 +3,7 @@
     <h1>Obrigado!</h1>
 
     <p>
-        Agradecemos de coração o tempo que você tomou para responder esse questionário e nos colocamos à disposição
+        Agradecemos o tempo que você tomou para responder esse questionário e nos colocamos à disposição
         para quaisquer esclarecimentos.
     </p>
 </div>

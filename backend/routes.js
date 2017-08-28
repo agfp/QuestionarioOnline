@@ -22,7 +22,10 @@ routes.get('/questionario/:key', (req, res) => {
             .then(response => {
                 if (response) {
                     res.render(`questionnaires/${response.questionnaire}`, {
-                        token: helpers.createToken()
+                        parameters: JSON.stringify({
+                            key: req.params.key,
+                            token: helpers.createToken()
+                        })
                     });
                 }
                 else {
@@ -41,17 +44,21 @@ routes.get('/questionario/:key', (req, res) => {
 });
 
 routes.post('/questionario/:key', (req, res) => {
+    console.log('step1');
     const d = helpers.parseToken(req.body.token);
     d.key = req.params.key;
     d.endTime = moment().format();
-    d.clientUid = req.body.uid;
     d.set = req.body.set;
     d.answers = JSON.stringify(req.body.answers);
+
+    console.log(d);
+
     db.saveQuestionnaire(d)
         .then(() => {
             res.status(200).send();
         })
         .catch(err => {
+            console.log(err);
             res.status(500).send(err);
         });
 });

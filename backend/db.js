@@ -12,8 +12,8 @@ function getQuestionnaire(key) {
 }
 
 function saveQuestionnaire(data) {
-    const cmd = `INSERT INTO answers(access_code, start_time, end_time, server_uid, client_uid, question_set, answers)
-                 VALUES ($/key/, $/startTime/, $/endTime/, $/serverUid/, $/clientUid/, $/set/, $/answers/)`;
+    const cmd = `INSERT INTO answers(access_code, start_time, end_time, server_uid, question_set, answers)
+                 VALUES ($/key/, $/startTime/, $/endTime/, $/serverUid/, $/set/, $/answers/)`;
 
     return db.none(cmd, data);
 }
