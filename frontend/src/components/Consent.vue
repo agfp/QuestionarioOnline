@@ -7,7 +7,7 @@
     <hc></hc>
 
     <div class="pagination">
-        <button class="pure-button">Quero saber mais</button>
+        <a href="http://www.qvt-ufmg.com.br/" class="pure-button">Quero saber mais</a>
         <button class="pure-button pure-button-primary" @click="finish()">Eu concordo</button>
     </div>
 </div>

@@ -32,6 +32,9 @@
                 <div v-if="question.invalidNumber || showPending" class="instruction-alert">
                     {{ question.validationMsg }}
                 </div>
+                <div v-if="question.monthYear" class="textbox-item">
+                    <month-year :question="question" :answers="answers" @date-selected="selectItem"></month-year>
+                </div>
                 <div v-if="question.textbox" class="textbox-item">
                     <input v-if="question.number"
                            type="number"
@@ -59,7 +62,8 @@
     </ul>
     <div class="pagination" v-if="pages != null">
         <button class="pure-button" :disabled="currentPage === 0" @click="previous()">Anterior</button>
-        <span>Página {{currentPage+1}} de {{pages.length}}</span>
+        <!-- <span>Página {{currentPage+1}} de {{pages.length}}</span> -->
+        <linear-progress :percentage="percentage"></linear-progress>
         <button class="pure-button pure-button-primary" @click="next()" v-if="currentPage < pages.length - 1">Próximo</button>
         <button class="pure-button pure-button-primary" @click="finish()" v-else>Finalizar</button>
     </div>
@@ -71,21 +75,26 @@ import swal from 'sweetalert';
 import VueCircle from 'vue2-circle-progress';
 import matrix from './Matrix';
 import options from './Options';
+import monthYear from './MonthYear';
+import LinearProgress from './LinearProgress';
 
 export default {
     props: ['pages'],
     components: {
         matrix,
         options,
-        VueCircle
+        monthYear,
+        VueCircle,
+        LinearProgress
     },
     data() {
         return {
             currentPage: 0,
             answers: [],
             showPending: false,
+            completedSteps: 0,
             totalSteps: 0,
-            fill: { gradient: ['red', 'green', 'blue'] }
+            fill: { gradient: ['red', 'green', 'blue'] },
         };
     },
     mounted() {
@@ -160,7 +169,7 @@ export default {
                 return true;
             }
 
-            if (question.textbox) {
+            if (question.textbox || question.monthYear) {
                 return question.number ? this.validateNumber(question) : validateAnswer(this.answers[question.id]);
             }
             else if (Array.isArray(question.matrix)) {
@@ -216,6 +225,7 @@ export default {
                     }
                 });
             });
+            this.completedSteps = completedSteps;
             this.$refs.progresscircle.updateProgress(Math.ceil((completedSteps / this.totalSteps) * 100));
         },
 
@@ -247,6 +257,16 @@ export default {
         },
         title() {
             return this.pages[this.currentPage].name;
+        },
+        percentage() {
+            return Math.ceil((this.completedSteps / this.totalSteps) * 100);
+        }
+    },
+    watch: {
+        answers(val) {
+            if (typeof Storage !== 'undefined') {
+                localStorage.setItem('answers', JSON.stringify(val));
+            }
         }
     }
 };
@@ -307,7 +327,7 @@ li.question-item {
 
 .pagination {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     background: whitesmoke;
     border-top: 1px solid lightgray;
 

@@ -7,30 +7,23 @@
         <questionnaire :pages="questionnaire" @finished="questionnaireFinished($event)"></questionnaire>
     </div>
     <div v-if="finished1">
-        <overview :questions="questions" :answers="answers" :hashCode="hashCode"></overview>
+        <thank-you></thank-you>
     </div>
-    <!-- <div v-if="consent2">
-        <consent @finished="consent2Finished"></consent>
-    </div>
-    <div v-if="q2">
-        <questionnaire :pages="stress"></questionnaire>
-    </div> -->
 </div>
 </template>
 
 <script>
 // import swal from 'sweetalert';
 import questionnaire from './Questionnaire';
-import overview from './Overview';
+import ThankYou from './ThankYou';
 import consent from './Consent';
 import Helpers from '../helpers';
-import sample from '../assets/hc.json';
-import stress from '../assets/stress.json';
+import sample from '../assets/dev.json';
 
 export default {
     components: {
         questionnaire,
-        overview,
+        ThankYou,
         consent
     },
     data() {
@@ -38,14 +31,9 @@ export default {
             textarea: null,
             consent1: true,
             finished1: false,
-            consent2: false,
-            q2: false,
-            finished2: false,
             questionnaire: null,
-            stress: null,
             questions: null,
-            answers: null,
-            hashCode: null,
+            answers: null
         };
     },
     mounted() {
@@ -58,16 +46,6 @@ export default {
         consent1Finished() {
             this.consent1 = false;
             window.scrollTo(0, 0);
-        },
-        consent2Finished() {
-            this.consent2 = false;
-            this.q2 = true;
-
-            let result = Helpers.prepareQuestionnaire(stress);
-            this.stress = result.questionnaire;
-            this.questions = result.questions;
-            window.scrollTo(0, 0);
-
         },
         questionnaireFinished(answers) {
             this.answers = answers;

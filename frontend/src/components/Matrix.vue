@@ -5,7 +5,7 @@
         <div :class="{option:true, 'option-100': question.headers.length <= 5 }" v-for="header in question.headers">{{header}}</div>
     </div>
     <div class="rows">
-        <div :class="{row: true, pending: showPending && !answers[item.id]}" v-for="item in question.matrix">
+        <div :class="{row: true, pending: showPending && !answers[item.id]}" v-for="item in question.matrix" ref="items" :key="item.id">
             <div class="question">
                 {{item.item}}
             </div>
@@ -39,6 +39,15 @@ export default {
                 that.fixedHeader = direction === 'down';
             }
         });
+
+        new Waypoint({
+            element: this.$refs.items[this.$refs.items.length - 1],
+            handler(direction) {
+                that.fixedHeader = direction === 'up';
+            }
+        });
+
+
     },
     methods: {
         selectItem(item, answer) {

@@ -1,10 +1,11 @@
 import api from './api';
 
-export default {
-    getQuestionnaire,
-    prepareQuestionnaire,
-    hashCode,
-};
+const MONTHS = [
+    'Janeiro', 'Fevereiro', 'Março',
+    'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro',
+    'Outubro', 'Novembro', 'Dezembro'
+];
 
 function getQuestionnaire() {
     return new Promise((resolve, reject) => {
@@ -96,3 +97,10 @@ function hashCode(str) {
     }
     return ((hash + 2147483647) + 1).toString(36);
 }
+
+export default {
+    getQuestionnaire,
+    prepareQuestionnaire,
+    hashCode,
+    MONTHS
+};
