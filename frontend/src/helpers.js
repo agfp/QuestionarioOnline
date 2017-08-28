@@ -22,6 +22,9 @@ function preparePages(pages, numberedQuestions) {
     pages.forEach(page => {
         counter = prepareQuestions(page.questions, counter, numberedQuestions);
     });
+    // numberedQuestions.forEach(r => {
+    //     console.log(r);
+    // });
 }
 
 function prepareQuestions(questions, counter, numberedQuestions) {

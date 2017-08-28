@@ -1,0 +1,104 @@
+[
+  {
+    "name": "Stress no trabalho",
+    "questions": [
+      {
+        "question": "Assinale a resposta que mais combina com o que está sentindo atualmente",
+        "headers": [
+          "Concordo totalmente",
+          "Concordo mais que discordo",
+          "Não concordo nem discordo",
+          "Discordo mais que concordo",
+          "Discordo totalmente"
+        ],
+        "matrix": [
+          {
+            "item": "Eu me sinto constantemente pressionado para fazer muito trabalho em pouco tempo"
+          },
+          {
+            "item": "Constantemente interrompem e atrapalham meu trabalho"
+          },
+          {
+            "item": "Eu tenho muitas responsabilidades no meu trabalho"
+          },
+          {
+            "item": "Eu sou pressionado com frequência a trabalhar além do horário"
+          },
+          {
+            "item": "Meu trabalho exige esforço físico"
+          },
+          {
+            "item": "Nos últimos anos, meu trabalho tem se tornado cada vez mais exigente"
+          },
+          {
+            "item": "Eu tenho o respeito que mereço dos meus superiores"
+          },
+          {
+            "item": "Eu recebo o respeito que mereço dos meus colegas"
+          },
+          {
+            "item": "Eu recebo apoio adequado em situações difíceis"
+          },
+          {
+            "item": "Eu sou tratado injustamente no trabalho"
+          },
+          {
+            "item": "Minhas perspectivas de promoção no trabalho são poucas"
+          },
+          {
+            "item": "Aconteceu ou está para acontecer uma mudança indesejável na minha situação de trabalho"
+          },
+          {
+            "item": "Minha garantia no emprego é pequena"
+          },
+          {
+            "item": "Minha posição atual no trabalho reflete adequadamente meu nível educacional e meu treinamento"
+          },
+          {
+            "item": "Considerando todos os meus esforços e realizações, eu recebo o respeito e o prestígio que mereço no trabalho"
+          },
+          {
+            "item": "Considerando todos os meus esforços e realizações, minhas perspectivas de trabalho são adequadas"
+          },
+          {
+            "item": "Considerando todos os meus esforços e realizações, meu salário/renda é adequado"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Stress no trabalho",
+    "questions": [
+      {
+        "question": "Assinale a resposta que mais combina com o que está sentindo atualmente",
+        "headers": [
+          "Concordo fortemente",
+          "Concordo em parte",
+          "Discordo em parte",
+          "Discordo fortemente"
+        ],
+        "matrix": [
+          {
+            "item": "Eu fico facilmente saturado pelas pressões de tempo no serviço"
+          },
+          {
+            "item": "Eu começo a pensar nos problemas de trabalho logo que acordo de manhã"
+          },
+          {
+            "item": "Quando chego em casa, eu consigo relaxar e desligar-me do trabalho com facilidade"
+          },
+          {
+            "item": "As pessoas próximas de mim dizem que eu me sacrifico demais pelo meu trabalho"
+          },
+          {
+            "item": "O trabalho raramente me deixa. Ele ainda está na minha cabeça quando eu vou para a cama"
+          },
+          {
+            "item": "Se eu adiar alguma coisa que deveria ter feito, terei dificuldades para dormir à noite"
+          }
+        ]
+      }
+    ]
+  }
+]

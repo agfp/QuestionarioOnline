@@ -8,6 +8,13 @@ function notFound(res) {
     res.send('Questionário não encontrado');
 }
 
+routes.get('/ot7jz9f39r7cnmik6nvc8d48/:set', (req, res) => {
+    db.getAnswers(req.params.set)
+    .then(response => {
+        res.render(`admin/${req.params.set}`, { data: response });
+    });
+});
+
 routes.get('/', (req, res) => {
     res.render('home/index');
 });
@@ -44,7 +51,6 @@ routes.get('/questionario/:key', (req, res) => {
 });
 
 routes.post('/questionario/:key', (req, res) => {
-    console.log('step1');
     const d = helpers.parseToken(req.body.token);
     d.key = req.params.key;
     d.endTime = moment().format();

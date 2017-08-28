@@ -1,0 +1,1446 @@
+[
+  {
+    "name": "Ficha sociodemográfica",
+    "questions": [
+      {
+        "question": "Qual a sua idade?",
+        "validationMsg": "Digite um número entre 14 e 75",
+        "number": {
+          "min": 14,
+          "max": 99
+        },
+        "textbox": true
+      },
+      {
+        "question": "Em que ano começou a trabalhar?",
+        "validationMsg": "Digite um número entre 1942 e 2017",
+        "number": {
+          "min": 1942,
+          "max": 2017
+        },
+        "textbox": true
+      },
+      {
+        "question": "Em que mês e ano começou a trabalhar no Hospital das Clínicas? (independente do vínculo)",
+        "monthYear": true
+      },
+      {
+        "question": "Em que mês e ano começou a trabalhar no cargo atual",
+        "monthYear": true
+      },
+      {
+        "question": "Sexo?",
+        "options": [
+          {
+            "item": "Masculino"
+          },
+          {
+            "item": "Feminino"
+          }
+        ]
+      },
+      {
+        "question": "Número de filhos e/ou dependentes?",
+        "validationMsg": "Digite um número entre 0 e 99",
+        "number": {
+          "min": 0,
+          "max": 99
+        },
+        "textbox": true
+      },
+      {
+        "question": "Estado civil:",
+        "options": [
+          {
+            "item": "Solteiro(a)"
+          },
+          {
+            "item": "Casado(a)"
+          },
+          {
+            "item": "Mora com companheiro(a)"
+          },
+          {
+            "item": "Divorciado(a)"
+          },
+          {
+            "item": "Viúvo(a)"
+          },
+          {
+            "item": "Outro:",
+            "textbox": true
+          }
+        ]
+      },
+      {
+        "question": "Qual seu último grau de instrução",
+        "options": [
+          {
+            "item": "Ensino fundamental incompleto"
+          },
+          {
+            "item": "Ensino fundamental completo"
+          },
+          {
+            "item": "Ensino médio incompleto"
+          },
+          {
+            "item": "Ensino médio completo"
+          },
+          {
+            "item": "Ensino superior incompleto"
+          },
+          {
+            "item": "Ensino superior completo"
+          },
+          {
+            "item": "Especialização/Pós-graduação latu sensu"
+          },
+          {
+            "item": "Mestrado"
+          },
+          {
+            "item": "Doutorado "
+          },
+          {
+            "item": "Pós-doutorado"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições contratuais e jurídicas",
+    "questions": [
+      {
+        "question": "Vinculo com a UFMG",
+        "options": [
+          {
+            "item": "Técnico administrativo de educação (RJU)"
+          },
+          {
+            "item": "Celetista concursado (p.ex. Ebserh"
+          },
+          {
+            "item": "Celetista terceirizado"
+          },
+          {
+            "item": "Professor dedicação exclusiva"
+          },
+          {
+            "item": "Professor 40 h"
+          },
+          {
+            "item": "Professor 20 h"
+          },
+          {
+            "item": "Cedido de outro órgão"
+          },
+          {
+            "item": "Voluntário, como:",
+            "textbox": true
+          },
+          {
+            "item": "Contrato temporário, como:",
+            "textbox": true
+          },
+          {
+            "item": "Estagiário"
+          },
+          {
+            "item": "Outro:",
+            "textbox": true
+          }
+        ]
+      },
+      {
+        "question": "Tipo de cargo",
+        "options": [
+          {
+            "item": "Nível básico"
+          },
+          {
+            "item": "Administrativo nível médio"
+          },
+          {
+            "item": "Administrativo nível superior"
+          },
+          {
+            "item": "Técnico ou auxiliar de enfermagem"
+          },
+          {
+            "item": "Outro técnico de nível médio"
+          },
+          {
+            "item": "Enfermeiro"
+          },
+          {
+            "item": "Médico"
+          },
+          {
+            "item": "Outro profissional assistencial, de nível superior"
+          },
+          {
+            "item": "Professor de ensino fundamental e/ou médio"
+          },
+          {
+            "item": "Professor Ensino Superior"
+          },
+          {
+            "item": "Outro:",
+            "textbox": true
+          }
+        ]
+      },
+      {
+        "question": "Qual sua principal atividade/cargo na UFMG?",
+        "textbox": true
+      },
+      {
+        "question": "Sua atuação na UFMG é sua principal atividade profissional?",
+        "options": [
+          {
+            "item": "Sim"
+          },
+          {
+            "item": "Não"
+          }
+        ]
+      },
+      {
+        "question": "Com relação a função de coordenação, supervisão ou chefia, você",
+        "multiple": true,
+        "options": [
+          {
+            "item": "Nunca exerceu"
+          },
+          {
+            "item": "Exerceu no passado e foi remunerado"
+          },
+          {
+            "item": "Exerceu no passado, mas não foi remunerado"
+          },
+          {
+            "item": "Exerce, mas não é remunerado"
+          },
+          {
+            "item": "Exerce e é remunerado"
+          }
+        ]
+      },
+      {
+        "question": "Sua Atuação na UFMG prevê contratualmente uma jornada de trabalho de quantas horas semanais",
+        "options": [
+          {
+            "item": "20 horas semanais"
+          },
+          {
+            "item": "30 horas semanais"
+          },
+          {
+            "item": "40 horas semanais"
+          },
+          {
+            "item": "44 horas semanais"
+          },
+          {
+            "item": "Outro:",
+            "textbox": true
+          },
+          {
+            "item": "Não se aplica"
+          }
+        ]
+      },
+      {
+        "question": "Na prática, quantas horas por semana você trabalha para UFMG? ",
+        "options": [
+          {
+            "item": "20 horas semanais"
+          },
+          {
+            "item": "30 horas semanais"
+          },
+          {
+            "item": "31 horas e 15 minutos semanais"
+          },
+          {
+            "item": "40 horas semanais"
+          },
+          {
+            "item": "44 horas semanais"
+          },
+          {
+            "item": "Outro:",
+            "textbox": true
+          },
+          {
+            "item": "Não se aplica"
+          }
+        ]
+      },
+      {
+        "question": "Normalmente, quantos dias por semana você trabalha na/para a UFMG? ",
+        "options": [
+          {
+            "item": "1 dia"
+          },
+          {
+            "item": "2 dias"
+          },
+          {
+            "item": "3 dias"
+          },
+          {
+            "item": "4 dias"
+          },
+          {
+            "item": "5 dias"
+          },
+          {
+            "item": "6 dias"
+          },
+          {
+            "item": "7 dias"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições contratuais e jurídicas",
+    "questions": [
+      {
+        "question": "Normalmente, quantos vezes por mês trabalha durante a noite?",
+        "instruction": "Pelo menos 2 horas, entre 10 horas da noite e 5 horas da manhã",
+        "textbox": true,
+        "validationMsg": "Digite um número entre 0 e 30",
+        "number": {
+          "min": 0,
+          "max": 30
+        }
+      },
+      {
+        "question": "Normalmente, quantos vezes por mês (em média) aos sábados e/ou domingos?",
+        "textbox": true,
+        "validationMsg": "Digite um número entre 0 e 8",
+        "number": {
+          "min": 0,
+          "max": 8
+        }
+      },
+      {
+        "question": "Gostaria de trabalhar...",
+        "options": [
+          {
+            "item": "44 horas semanais"
+          },
+          {
+            "item": "40 horas semanais"
+          },
+          {
+            "item": "30 horas semanais"
+          },
+          {
+            "item": "20 horas semanais"
+          },
+          {
+            "item": "Outro:",
+            "textbox": true
+          },
+          {
+            "item": "Não se aplica"
+          }
+        ]
+      },
+      {
+        "question": "Em média, quantos minutos por dia você demora no percurso de casa para o trabalho e do trabalho para casa (total/soma)?",
+        "textbox": true,
+        "validationMsg": "Digite um número entre 0 e 720",
+        "number": {
+          "min": 0,
+          "max": 720
+        }
+      },
+      {
+        "question": "Você trabalha...",
+        "matrix": [
+          {
+            "item": "com registro eletrônico de ponto"
+          },
+          {
+            "item": "com horários fixos de entrada e saída"
+          },
+          {
+            "item": "por turnos ou escala"
+          }
+        ]
+      },
+      {
+        "question": "Com relação às suas férias ou descansos semanais, você",
+        "multiple": true,
+        "options": [
+          {
+            "item": "Usufrue anualmente de trinta dias ou mais de férias"
+          },
+          {
+            "item": "Divide suas férias em duas ou três vezes"
+          },
+          {
+            "item": "Costuma vender parte de suas férias"
+          },
+          {
+            "item": "Tem outro trabalho durante suas férias"
+          },
+          {
+            "item": "Aproveita suas férias para realmente descansar"
+          }
+        ]
+      },
+      {
+        "question": "Com relação ao adicional de insalubridade/periculosidade, penso que:",
+        "options": [
+          {
+            "item": "Não recebo e não tenho direito a receber"
+          },
+          {
+            "item": "Não recebo, mas penso que tenho direito a receber"
+          },
+          {
+            "item": "Recebo, mas não tenho direito a receber"
+          },
+          {
+            "item": "Recebo o percentual justo"
+          },
+          {
+            "item": "Recebo, mas o percentual é injusto"
+          },
+          {
+            "item": "Não sei opinar"
+          }
+        ]
+      },
+      {
+        "question": "Com relação à sua aposentadoria, seu benefício será pago",
+        "options": [
+          {
+            "item": "Integralmente"
+          },
+          {
+            "item": "Parcialmente e complementada de alguma previdência privada (como FUNPRESP)"
+          },
+          {
+            "item": "Parcialmente e sem complementos"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições contratuais e jurídicas",
+    "questions": [
+      {
+        "question": "Você é sindicalizado?",
+        "options": [
+          {
+            "item": "Sim",
+            "subquestions": [
+              {
+                "question": "Qual o sindicato?",
+                "textbox": true
+              },
+              {
+                "question": "Com que frequencia participa das atividades sindicais?",
+                "options": [
+                  {
+                    "item": "Nunca"
+                  },
+                  {
+                    "item": "Raramente"
+                  },
+                  {
+                    "item": "Algumas vezes"
+                  },
+                  {
+                    "item": "Muitas vezes"
+                  },
+                  {
+                    "item": "Todo o tempo"
+                  },
+                  {
+                    "item": "Não se aplica"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "item": "Não"
+          }
+        ]
+      },
+      {
+        "question": "O seu salário normalmente é composto de:",
+        "multiple": true,
+        "options": [
+          {
+            "item": "Salário fixo"
+          },
+          {
+            "item": "Comissão por desempenho ou produção"
+          },
+          {
+            "item": "Beneficios pagos em dinheiro"
+          },
+          {
+            "item": "Horas extraordinárias"
+          },
+          {
+            "item": "Participação nos resultados"
+          },
+          {
+            "item": "Apenas de acordo com sua produção"
+          }
+        ]
+      },
+      {
+        "question": "Quanto você ganha por mês (salário bruto/total)",
+        "options": [
+          {
+            "item": "menos de R$1.500,00"
+          },
+          {
+            "item": "De R$1.501,00 a R$3.000,00"
+          },
+          {
+            "item": "De R$3.000,00 a R$5.000,00"
+          },
+          {
+            "item": "De R$5.001,00 a R$8.000,00"
+          },
+          {
+            "item": "De R$8.001,00 a R$11.000,00"
+          },
+          {
+            "item": "De R$11.001,00 a R$15.000,00"
+          },
+          {
+            "item": "De R$15.001,00 a R$20.000,00"
+          },
+          {
+            "item": "Acima de R$20.000,00"
+          },
+          {
+            "item": "Não se aplica"
+          }
+        ]
+      },
+      {
+        "question": "O que você ganha é",
+        "options": [
+          {
+            "item": "A única renda da sua família"
+          },
+          {
+            "item": "Quase a totalidade da renda familiar"
+          },
+          {
+            "item": "Aproximadamente a metade da renda familiar"
+          },
+          {
+            "item": "Uma parcela pequena da renda familiar"
+          }
+        ]
+      },
+      {
+        "question": "Você tem outra atividade profissional fora da UFMG?",
+        "options": [
+          {
+            "item": "Sim",
+            "subquestions": [
+              {
+                "question": "Qual atividade?",
+                "textbox": true
+              },
+              {
+                "question": "Ela é remunerada?",
+                "options": [
+                  {
+                    "item": "Sim"
+                  },
+                  {
+                    "item": "Não"
+                  }
+                ]
+              },
+              {
+                "question": "Quantas horas de trabalho aproximadamente essa(s) outra(s) atividade(s) profissional(is) lhe exige?",
+                "options": [
+                  {
+                    "item": "20 horas semanais"
+                  },
+                  {
+                    "item": "30 horas semanais"
+                  },
+                  {
+                    "item": "40 horas semanais"
+                  },
+                  {
+                    "item": "Outras:",
+                    "textbox": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "item": "Não"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições físicas e materiais",
+    "questions": [
+      {
+        "question": "Quanto você está exposto às condições de trabalho abaixo?",
+        "matrix": [
+          {
+            "item": "Vibrações provocadas por instrumentos manuais, máquinas, etc."
+          },
+          {
+            "item": "Ruídos fortes que obrigam você a levantar a voz para falar com as pessoas"
+          },
+          {
+            "item": "Calor desconfortável"
+          },
+          {
+            "item": "Exposição prolongada ao sol"
+          },
+          {
+            "item": "Frio desconfortável"
+          },
+          {
+            "item": "Mudança brusca de temperatura"
+          },
+          {
+            "item": "Umidade excessiva"
+          },
+          {
+            "item": "Falta de ventilação (exemplo: ambiente sem janela)"
+          },
+          {
+            "item": "Ventilação inadequada (exemplo: mau cheiro, ventilação contaminada)"
+          },
+          {
+            "item": "Fumaça (p. ex. de soldas, de tanque de escape e de caldeira), pó (p.ex. de giz, de algodão/tecido e de madeira) ou poeiras ( p. ex. de cimento, de terra e de fuligem)"
+          },
+          {
+            "item": "Inalação de vapores (p. ex.: de solventes, de diluentes, de inseticidas e/ou de material de limpeza"
+          },
+          {
+            "item": " Manuseio ou contato da pele com produtos ou substâncias químicas (p. ex., tinta de pincel atômico, produtos de laboratório, solventes e/ou material de limpeza)"
+          },
+          {
+            "item": " Contato com pessoas com doenças infectocontagiosas "
+          },
+          {
+            "item": "Manuseio ou contato direto com materiais que podem transmitir doenças infecciosas (p. ex. lixo, dejetos, sangue, fluidos corporais e/ou materias de laboratório)"
+          },
+          {
+            "item": "Radiação, raio x, radioatividade, luz de soldadura, raio laser"
+          },
+          {
+            "item": "Fumaça de cigarro de outras pessoas"
+          },
+          {
+            "item": "Iluminação insuficiente"
+          },
+          {
+            "item": "Iluminação excessiva"
+          },
+          {
+            "item": "Risco de acidentes físicos (p. ex. desabamentos, quedas de materiais, etc..) "
+          },
+          {
+            "item": "Riscos de acidentes com ferramentas, instrumentos e maquinários"
+          },
+          {
+            "item": "Falta de higiene no ambiente de trabalho (p. ex., sala de trabalho e/ou áreas comuns)"
+          },
+          {
+            "item": "Uso de instalações inapropriadas para suas necessidades orgânicas"
+          },
+          {
+            "item": "Riscos de pequenos acidentes de trabalho"
+          },
+          {
+            "item": "Riscos de acidentes de trabalho incapacitantes ou fatais"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições físicas e materiais",
+    "questions": [
+      {
+        "question": "Quanto você está exposto às condições de trabalho abaixo?",
+        "matrix": [
+          {
+            "item": "Riscos de acidentes no trânsito durante o desenvolvimento da atividade"
+          },
+          {
+            "item": "Posições dolorosas ou fatigantes"
+          },
+          {
+            "item": "Levantar ou deslocar pessoas"
+          },
+          {
+            "item": "Transportar ou deslocar cargas pesadas "
+          },
+          {
+            "item": "Operar máquinas e ferramentas que exigem de você acentuado esforço físico"
+          },
+          {
+            "item": "Usar máquinas, equipamentos e/ou ferramentas com defeitos"
+          },
+          {
+            "item": "Ficar em pé ou andar por longos períodos"
+          },
+          {
+            "item": "Repetir movimentos com a mão ou o braço "
+          },
+          {
+            "item": "Repetir movimentos em intervalos menores que um minuto"
+          },
+          {
+            "item": "Repetir movimentos em intervalos menores que dez minutos"
+          },
+          {
+            "item": "Manter membros superiores suspensos por longos intervalos de tempo"
+          },
+          {
+            "item": "Trabalhar em casa, desempenhando suas atividades profissionais"
+          },
+          {
+            "item": "Trabalhar em outros locais que não sejam a sua casa ou instalações da organização/instituição (p. ex., nas instalações de clientes ou usuários e/ou em viagem)"
+          },
+          {
+            "item": "Estar em contato direto com público externo (p. ex., clientes, pacientes, familiares ou fornecedores)"
+          },
+          {
+            "item": "Estar em contato direto com público interno (p. ex., alunos, professores e funcionários"
+          },
+          {
+            "item": "Trabalhar com computadores, rede de dados, servidor, atividades referentes ao trabalho"
+          },
+          {
+            "item": "Trabalhar com internet, e-mail, redes sociais"
+          },
+          {
+            "item": "Usar telefonia celular e aplicativos como what´s app para realizar comunicações necessárias ao trabalho"
+          },
+          {
+            "item": " Falta de material necessário para a realização de suas tarefas "
+          },
+          {
+            "item": " Falta de equipamentos/ferramentas adequadas "
+          },
+          {
+            "item": " Trabalhar com colegas e/ou atendendo o público interno e/ou externo em espaço insuficiente "
+          },
+          {
+            "item": "Precisar do uso de EPIs (equipamentos de proteção individual) nas suas atividades"
+          },
+          {
+            "item": "Poder contar com o fornecimentos de EPIs (equipamentos de proteção individual) pela organização"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Processos e características da atividade",
+    "questions": [
+      {
+        "question": "O horário de seu trabalho é...",
+        "matrix": [
+          {
+            "item": "definido pela organização/instituição sem possibilidade de alteração"
+          },
+          {
+            "item": "adaptado por você "
+          },
+          {
+            "item": "inteiramente determinado por você"
+          },
+          {
+            "item": "influenciado pelas demandas do usuário"
+          },
+          {
+            "item": "combinado com chefia/superiores/colegas"
+          },
+          {
+            "item": "alterado pela chefia/superiores"
+          }
+        ]
+      },
+      {
+        "question": "O seu trabalho implica...",
+        "matrix": [
+          {
+            "item": "Ritmo acelerado"
+          },
+          {
+            "item": "prazos rígidos e curtos "
+          },
+          {
+            "item": "prazos incompatíveis com a realização da tarefa"
+          },
+          {
+            "item": "incompatibilidades entre demanda(s) e seu horário de trabalho (entrada, intervalo e saída)"
+          },
+          {
+            "item": " Incompatibilidades entre demanda(s) e número de pessoas no setor de trabalho "
+          },
+          {
+            "item": "realizar atividades além das atribuições previstas para seu cargo/função"
+          },
+          {
+            "item": "o preenchimento de formulário com detalhes que você desconhece a necessidade"
+          },
+          {
+            "item": "cumprimento de sequências de tarefas e normas com detalhes cujas finalidades não se explicam"
+          },
+          {
+            "item": " Acompanhar longos trâmites administrativos-burocráticos "
+          }
+        ]
+      },
+      {
+        "question": "Seu trabalho depende...",
+        "matrix": [
+          {
+            "item": "do trabalho dos seus colegas e/ou outros setores"
+          },
+          {
+            "item": "das demandas do público interno e/ou externo"
+          },
+          {
+            "item": "da velocidade automática de uma máquina "
+          },
+          {
+            "item": "do controle direto da chefia/superiores"
+          },
+          {
+            "item": "de aprender coisas novas"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": " Processos e características da atividade ",
+    "questions": [
+      {
+        "question": "O seu trabalho lhe exige...",
+        "matrix": [
+          {
+            "item": "cumprir normas  administrativas"
+          },
+          {
+            "item": "cumprir procedimentos operacionais padronizados "
+          },
+          {
+            "item": "cumprir normas de segurança"
+          },
+          {
+            "item": "cumprir metas de produção e/ou desempenho"
+          },
+          {
+            "item": "resolver problemas por você mesmo "
+          },
+          {
+            "item": "lidar com normas e/ou legislações conflitantes "
+          },
+          {
+            "item": "realizar tarefas monótonas"
+          },
+          {
+            "item": "realizar tarefas complexas"
+          },
+          {
+            "item": "interromper uma tarefa para realizar outra(s)"
+          },
+          {
+            "item": "atender telefonemas e/ou responder mensagens por e-mail ou outras mídias"
+          }
+        ]
+      },
+      {
+        "question": "Você pode escolher ou modificar...",
+        "matrix": [
+          {
+            "item": "a sequência das suas tarefas"
+          },
+          {
+            "item": "seus métodos de trabalho (ou modos de realizar o trabalho)"
+          },
+          {
+            "item": "o ritmo da realização das tarefas"
+          }
+        ]
+      },
+      {
+        "question": "Na execução de suas atividades de trabalho, você...",
+        "matrix": [
+          {
+            "item": "recebe ajuda de colegas"
+          },
+          {
+            "item": "recebe ajuda dos seus chefes/superiores"
+          },
+          {
+            "item": "pode receber ajuda externa à organização/instituição"
+          },
+          {
+            "item": "faz pausa quando deseja "
+          },
+          {
+            "item": "pode planejar e/ou negociar o tempo necessário para terminar seu trabalho "
+          },
+          {
+            "item": "é livre para decidir quando tira férias ou dias de folga "
+          },
+          {
+            "item": "tem oportunidades para realizar o que sabe fazer melhor"
+          },
+          {
+            "item": "pode fazer um trabalho bem feito nas condições de trabalho atuais"
+          },
+          {
+            "item": "pode pôr em prática as suas ideias"
+          },
+          {
+            "item": "é desafiado intelectualmente no seu trabalho"
+          },
+          {
+            "item": "é orientado a apresentar certas emoções"
+          },
+          {
+            "item": "deve regular e/ou controlar suas emoções "
+          },
+          {
+            "item": "preenche formulários que se sobrepõem ou se repetem"
+          },
+          {
+            "item": "preenche formulários com vários itens desnecessários"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": " Processos e características da atividade ",
+    "questions": [
+      {
+        "question": "O que você faz é definido...",
+        "matrix": [
+          {
+            "item": "em manuais, regimentos, normas e/ou protocolos"
+          },
+          {
+            "item": "por seu chefe/superior sozinho ou por instância colegiada superior a você"
+          },
+          {
+            "item": "pela equipe de trabalho"
+          },
+          {
+            "item": "por você, planejando independentemente"
+          }
+        ]
+      },
+      {
+        "question": "Suas atividades e funções exigem...",
+        "matrix": [
+          {
+            "item": "qualificações e experiências que você já tem"
+          },
+          {
+            "item": "domínio de novos processos de trabalho"
+          },
+          {
+            "item": "uso de programas de informática (em rede interna ou externa"
+          },
+          {
+            "item": "uso de internet para execução do trabalho (p. ex., busca de informações/conteúdos)"
+          },
+          {
+            "item": "uso de novos meios de comunicação (p. ex., videoconferência, redes sociais)"
+          },
+          {
+            "item": "manter-se atualizados (p. ex., participar de congressos, realizar leituras e/ou estudar)"
+          },
+          {
+            "item": "formação suplementar (como titulações e outros cursos) além do que você já tem"
+          }
+        ]
+      },
+      {
+        "question": "Quanto às suas responsabilidades você responde...",
+        "matrix": [
+          {
+            "item": "por danos a equipamentos, máquinas e objetos"
+          },
+          {
+            "item": "pela qualidade dos serviços prestados às pessoas e/ou dos produtos técnicos"
+          },
+          {
+            "item": "por erros técnicos no desenvolvimento de seu trabalho"
+          },
+          {
+            "item": "pela aplicação e/ou prestação de contas de recursos públicos"
+          },
+          {
+            "item": "pela captação de recursos públicos ou privados"
+          },
+          {
+            "item": "pela guarda e preservação de documentos impressos e/ou digitais"
+          },
+          {
+            "item": "pelo recebimento e conferência de documentos, insumos e/ou materiais"
+          },
+          {
+            "item": "pelo preenchimento de formulários e registro de informações"
+          }
+        ]
+      },
+      {
+        "question": "Quanto à concepção do seu trabalho, você pode afirmar que seu setor:",
+        "matrix": [
+          {
+            "item": "O bom planejamento das atividades facilita sua execução com qualidade"
+          },
+          {
+            "item": "Os objetivos maiores da universidade guia o estabelecimento adequado de prioridade "
+          },
+          {
+            "item": "Todos estão seguros da relevância dos objetivos de cada atividade "
+          },
+          {
+            "item": "As tarefas sempre envolvem aspectos que não se sabe o que os justificaria "
+          },
+          {
+            "item": "É evidente a necessidade de melhor organização e racionalização "
+          },
+          {
+            "item": "Ocorre “retrabalho” por equívocos de organização e planejamento "
+          },
+          {
+            "item": "O ritmo e/ou a morosidade das decisões dificultam a consecução dos objetivos de trabalho "
+          },
+          {
+            "item": "Todos têm clareza dos objetivos do que fazem "
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições sociogerenciais",
+    "questions": [
+      {
+        "question": "Na sua organização/instituição o investimento em capacitação pessoal é em forma de...",
+        "matrix": [
+          {
+            "item": "liberação sem suspensão de salário"
+          },
+          {
+            "item": "liberação com suspensão do seu salário "
+          },
+          {
+            "item": "aumento salarial por capacitação"
+          },
+          {
+            "item": "custeio total ou parcial (p. ex. bolsas, auxílios, isenções de taxas ou mensalidades)"
+          },
+          {
+            "item": "oferta de cursos, treinamentos e/ou palestras"
+          }
+        ]
+      },
+      {
+        "question": "Desde que está nesta organização/instituição, você realizou/participou de...",
+        "matrix": [
+          {
+            "item": "formação (p. ex., graduação, especialização, mestrado)"
+          },
+          {
+            "item": "treinamento introdutório"
+          },
+          {
+            "item": "treinamento de atualização/reciclagem"
+          },
+          {
+            "item": "programa de tutorização"
+          },
+          {
+            "item": "eventos e/ou congressos"
+          },
+          {
+            "item": "ações de autoaprendizagem, atualizações, etc."
+          }
+        ]
+      },
+      {
+        "question": "Na sua organização/instituição o plano de carreira...",
+        "matrix": [
+          {
+            "item": "é aplicado adequadamente"
+          },
+          {
+            "item": "estimula seu desempenho"
+          },
+          {
+            "item": "aumenta sua dedicação "
+          },
+          {
+            "item": "fortalece sua permanência"
+          }
+        ]
+      },
+      {
+        "question": "Você...",
+        "matrix": [
+          {
+            "item": "influencia a escolha dos seus colegas de trabalho"
+          },
+          {
+            "item": "participa da escolha dos seus chefes/superiores"
+          },
+          {
+            "item": "mantém um diálogo de qualidade com o seu chefe/superior acerca do seu trabalho"
+          },
+          {
+            "item": "participa do planejamento de mudanças na organização do trabalho e/ou nas suas condições de trabalho"
+          },
+          {
+            "item": "observa que os conflitos são bem administrados"
+          },
+          {
+            "item": " observa que a qualidade das decisões melhoram e se incorporam melhor, quando são discutidas no colegiado e outras instâncias "
+          },
+          {
+            "item": "observa conflitos na aplicação das normas e/ou regimento"
+          },
+          {
+            "item": "observa conflitos na forma de aplicação de direitos informais (direitos adquiridos pelo costume)"
+          },
+          {
+            "item": "tem seu desempenho avaliado"
+          },
+          {
+            "item": "recebe feedback (retorno) sobre seu desempenho"
+          },
+          {
+            "item": "é orientado sobre os riscos de acidentes no trabalho"
+          },
+          {
+            "item": "é orientado sobre os riscos de adoecimento decorrente do trabalho"
+          },
+          {
+            "item": "é respeitado nas suas necessidades de tratamento de saúde"
+          },
+          {
+            "item": "é pressionado a trabalhar além de suas condições de saúde"
+          },
+          {
+            "item": "é respeitado na necessidade de afastamento por problemas de saúde"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições sociogerenciais",
+    "questions": [
+      {
+        "question": "Em seu trabalho, você está exposto a:",
+        "matrix": [
+          {
+            "item": "pressão por decisões rápidas"
+          },
+          {
+            "item": " dificuldades de aquisição/solicitação do material necessário para a realização de suas tarefas "
+          },
+          {
+            "item": " dificuldades de aquisição e atualização de equipamentos, aparelhos e/ou softwares necessários a realização de suas atribuições "
+          },
+          {
+            "item": " dificuldades para consertos e ajustes nas instalações utilizadas "
+          },
+          {
+            "item": "falta de equipamentos/ferramentas adequadas"
+          },
+          {
+            "item": "exigências desproporcionais às condições de trabalho"
+          },
+          {
+            "item": "conflitos com colegas de trabalho"
+          },
+          {
+            "item": "conflitos com superiores/chefias"
+          },
+          {
+            "item": "exigências conflitantes com seus princípios e valores"
+          },
+          {
+            "item": "realizar tarefas diferentes das suas atribuições"
+          },
+          {
+            "item": "sobrecarga de tarefas"
+          },
+          {
+            "item": "realizar tarefas conflitivas ou contraditórias"
+          },
+          {
+            "item": "ficar sem fazer nada"
+          },
+          {
+            "item": "assumir responsabilidade por aplicar punições ou sanções "
+          }
+        ]
+      },
+      {
+        "question": "No último ano, você observou no seu ambiente de trabalho...",
+        "matrix": [
+          {
+            "item": "agressões verbais"
+          },
+          {
+            "item": "situações de constrangimento"
+          },
+          {
+            "item": "ameaça de transferência e/ou remoção de setor"
+          },
+          {
+            "item": "transferência e/ou remoção de setor de maneira arbitrária (sem motivo justo)."
+          },
+          {
+            "item": "designações para locais ou atividades incompatíveis com o cargo ou função"
+          },
+          {
+            "item": "ameaças de violência física "
+          },
+          {
+            "item": "violência física"
+          },
+          {
+            "item": "intimidações / perseguições"
+          },
+          {
+            "item": "elogios inadequados e/ou inapropriados"
+          },
+          {
+            "item": "assédio moral"
+          },
+          {
+            "item": "discriminação de sexo (homem x mulher)"
+          },
+          {
+            "item": "insinuações de natureza sexual"
+          },
+          {
+            "item": "assédio sexual"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Condições sociogerenciais",
+    "questions": [
+      {
+        "question": "No último ano, você observou no seu ambiente de trabalho insinuações relacionadas... ",
+        "matrix": [
+          {
+            "item": "à idade"
+          },
+          {
+            "item": "à nacionalidade, regiões e/ou microrregiões"
+          },
+          {
+            "item": "ao setor e/ou atividade de trabalho"
+          },
+          {
+            "item": "aos aspectos raciais"
+          },
+          {
+            "item": "à classe social"
+          },
+          {
+            "item": "à religião "
+          },
+          {
+            "item": "ao vínculo empregatício"
+          },
+          {
+            "item": "aos posicionamentos políticos"
+          },
+          {
+            "item": "às características pessoais (p. ex., peso, altura)"
+          },
+          {
+            "item": "às deficiências físicas e mentais"
+          },
+          {
+            "item": "às preferências/orientações/identidades sexuais"
+          },
+          {
+            "item": "à história pessoal (p. ex., prostituição, ex-presidiários, portadores de doenças contagiosas ou crônicas)"
+          }
+        ]
+      },
+      {
+        "question": "No último ano, você observou no seu ambiente de trabalho exclusão e/ou diminuição de oportunidades relacionadas...",
+        "matrix": [
+          {
+            "item": "à idade"
+          },
+          {
+            "item": "à nacionalidade, regiões e/ou microrregiões"
+          },
+          {
+            "item": "ao setor e/ou atividade de trabalho"
+          },
+          {
+            "item": "aos aspectos raciais"
+          },
+          {
+            "item": "à classe social"
+          },
+          {
+            "item": "à religião "
+          },
+          {
+            "item": "ao vínculo empregatício"
+          },
+          {
+            "item": "aos posicionamentos políticos"
+          },
+          {
+            "item": "às características pessoais (p. ex., peso, altura)"
+          },
+          {
+            "item": "às deficiências físicas e mentais"
+          },
+          {
+            "item": "às preferências/orientações/identidades sexuais"
+          },
+          {
+            "item": "à história pessoal (p. ex., prostituição, ex-presidiários, portadores de doenças contagiosas ou crônicas)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Avaliação de estresse no trabalho",
+    "questions": [
+      {
+        "question": "Assinale a resposta que mais combina com o que está sentindo atualmente",
+        "headers": [
+          "Concordo totalmente",
+          "Concordo mais que discordo",
+          "Não concordo e nem discordo",
+          "Discordo mais que concordo",
+          "Discordo totalmente"
+        ],
+        "matrix": [
+          {
+            "item": "Eu me sinto constantemente pressionado para fazer muito trabalho em pouco tempo"
+          },
+          {
+            "item": "Constantemente interrompem e atrapalham meu trabalho"
+          },
+          {
+            "item": "Eu tenho muitas responsabilidades no meu trabalho"
+          },
+          {
+            "item": "Eu sou pressionado com frequência a trabalhar além do horário"
+          },
+          {
+            "item": "Meu trabalho exige esforço físico"
+          },
+          {
+            "item": "Nos últimos anos, meu trabalho tem se tornado cada vez mais exigente"
+          },
+          {
+            "item": "Eu tenho o respeito que mereço dos meus superiores"
+          },
+          {
+            "item": "Eu recebo o respeito que mereço dos meus colegas"
+          },
+          {
+            "item": "Eu recebo apoio adequado em situações difíceis"
+          },
+          {
+            "item": "Eu sou tratado injustamente no trabalho"
+          },
+          {
+            "item": "Minhas perspectivas de promoção no trabalho são poucas"
+          },
+          {
+            "item": "Aconteceu ou está para acontecer uma mudança indesejável na minha situação de trabalho"
+          },
+          {
+            "item": "Minha garantia no emprego é pequena"
+          },
+          {
+            "item": "Minha posição atual no trabalho reflete adequadamente meu nível educacional e meu treinamento"
+          },
+          {
+            "item": "Considerando todos os meus esforços e realizações, eu recebo o respeito e o prestígio que mereço no trabalho"
+          },
+          {
+            "item": "Considerando todos os meus esforços e realizações, minhas perspectivas de  trabalho são adequadas"
+          },
+          {
+            "item": "Considerando todos os meus esforços e realizações, meu salário/renda é adequado"
+          }
+        ]
+      },
+      {
+        "question": "Assinale a resposta que mais combina com o que está sentindo atualmente",
+        "headers": [
+          "Concordo fortemente",
+          "Concordo em parte",
+          "Discordo em parte",
+          "Discordo fortemente"
+        ],
+        "matrix": [
+          {
+            "item": "Eu fico facilmente saturado pelas pressões de tempo no serviço"
+          },
+          {
+            "item": "Eu começo a pensar nos problemas de trabalho logo que acordo de manhã"
+          },
+          {
+            "item": "Quando chego em casa, eu consigo relaxar e desligar-me do trabalho com facilidade"
+          },
+          {
+            "item": "As pessoas próximas de mim dizem que eu me sacrifico demais pelo meu trabalho"
+          },
+          {
+            "item": "O trabalho raramente me deixa. Ele ainda está na minha cabeça quando eu vou para a cama"
+          },
+          {
+            "item": "Se eu adiar alguma coisa que deveria ter feito, terei dificuldades para dormir à noite"
+          }
+        ]
+      }
+    ]
+  }
+]

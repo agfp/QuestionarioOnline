@@ -18,7 +18,18 @@ function saveQuestionnaire(data) {
     return db.none(cmd, data);
 }
 
+function getAnswers(set) {
+    const cmd = `SELECT to_char(start_time, 'YYYY-MM-DD HH:mm:SS') AS start_time,
+                        to_char(end_time, 'YYYY-MM-DD HH:mm:SS') AS end_time,
+                        answers
+                 FROM answers
+                 WHERE question_set = $1`;
+                 
+    return db.any(cmd, set);
+}
+
 module.exports = {
     getQuestionnaire,
-    saveQuestionnaire
+    saveQuestionnaire,
+    getAnswers
 };

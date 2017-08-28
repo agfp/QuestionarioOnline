@@ -1,0 +1,447 @@
+[
+  [
+    {
+      "question": "Vinculo com a UFMG",
+      "options": [
+        {
+          "item": "Técnico administrativo de educação (RJU)"
+        },
+        {
+          "item": "Celetista concursado (p.ex. Ebserh"
+        },
+        {
+          "item": "Celetista terceirizado"
+        },
+        {
+          "item": "Professor dedicação exclusiva"
+        },
+        {
+          "item": "Professor 40 h"
+        },
+        {
+          "item": "Professor 20 h"
+        },
+        {
+          "item": "Cedido de outro órgão"
+        },
+        {
+          "item": "Voluntário"
+        },
+        {
+          "item": "Estagiário"
+        },
+        {
+          "item": "Outro",
+          "textbox": true
+        }
+      ]
+    },
+    {
+      "question": "Tipo de cargo",
+      "options": [
+        {
+          "item": "Nível básico"
+        },
+        {
+          "item": "Administrativo nível médio"
+        },
+        {
+          "item": "Administrativo nível superior"
+        },
+        {
+          "item": "Técnico ou auxiliar de enfermagem"
+        },
+        {
+          "item": "Técnico assistencial, exceto enfermagem"
+        },
+        {
+          "item": "Enfermeiro"
+        },
+        {
+          "item": "Médico"
+        },
+        {
+          "item": "Profissional assistencial, exceto médico ou enfermeiro"
+        },
+        {
+          "item": "Professor Ensino Fundamental/médio"
+        },
+        {
+          "item": "Professor Ensino Superior"
+        },
+        {
+          "item": "Outro. Especifique",
+          "textbox": true
+        }
+      ]
+    },
+    {
+      "question": "Qual sua principal atividade/cargo na UFMG?",
+      "textbox": true
+    },
+    {
+      "question": "Sua atuação na UFMG é sua principal atividade profissional?",
+      "options": [
+        {
+          "item": "SIM"
+        },
+        {
+          "item": "NÃO"
+        }
+      ]
+    },
+    {
+      "question": "Com relação a função de coordenação, supervisão ou chefia, você (pode marcar mais de uma alternativa)",
+      "options": [
+        {
+          "item": "Nunca exerceu"
+        },
+        {
+          "item": "Exerceu no passado e foi remunerado"
+        },
+        {
+          "item": "Exerceu no passado, mas não foi remunerado"
+        },
+        {
+          "item": "Exerce, mas não é remunerado"
+        },
+        {
+          "item": "Exerce e é remunerado"
+        }
+      ]
+    },
+    {
+      "question": "Sua Atuação na UFMG prevê contratualmente uma jornada de trabalho de quantas horas semanais",
+      "options": [
+        {
+          "item": "20 horas semanais"
+        },
+        {
+          "item": "30 horas semanais"
+        },
+        {
+          "item": "40 horas semanais"
+        },
+        {
+          "item": "44 horas semanais"
+        },
+        {
+          "item": "Outro. Especifique",
+          "textbox": true
+        },
+        {
+          "item": "Não se aplica"
+        }
+      ]
+    },
+    {
+      "question": "Na prática, quantas horas por semana você trabalha para UFMG? ",
+      "options": [
+        {
+          "item": "20 horas semanais"
+        },
+        {
+          "item": "30 horas semanais"
+        },
+        {
+          "item": "31 horas e 15 minutos semanais"
+        },
+        {
+          "item": "40 horas semanais"
+        },
+        {
+          "item": "44 horas semanais"
+        },
+        {
+          "item": "Outro. Especifique",
+          "textbox": true
+        },
+        {
+          "item": "Não se aplica"
+        }
+      ]
+    },
+    {
+      "question": "Normalmente, quantos dias por semana você trabalha na/para a UFMG?",
+      "textbox": true
+    },
+    {
+      "question": "Normalmente, quantos vezes por mês trabalha durante a noite (pelo menos 2 horas, entre 10 horas da noite e 5 horas da manhã?",
+      "textbox": true
+    },
+    {
+      "question": "Normalmente, quantos vezes por mês(em média) aos sábados e/ou domingos?",
+      "textbox": true
+    },
+    {
+      "question": "Gostaria de trabalhar...",
+      "options": [
+        {
+          "item": "20 horas semanais"
+        },
+        {
+          "item": "30 horas semanais"
+        },
+        {
+          "item": "40 horas semanais"
+        },
+        {
+          "item": "44 horas semanais"
+        },
+        {
+          "item": "Outro. Especifique",
+          "textbox": true
+        },
+        {
+          "item": "Não se aplica"
+        }
+      ]
+    },
+    {
+      "question": "Em média, quantos minutos por dia  você demora no percurso de casa para o trabalho e do trabalho para casa (total/soma)?",
+      "textbox": true
+    },
+    {
+      "question": "Você trabalha...",
+      "matrix": [
+        {
+          "item": "Com registro eletrônico de ponto"
+        },
+        {
+          "item": "Com horários fixos de entrada e saída"
+        },
+        {
+          "item": "Por turnos ou escala"
+        }
+      ]
+    },
+    {
+      "question": "Com relação às suas férias ou descansos semanais, você ( PODE MARCAR MAIS DE UMA ALTERNATIVA) ",
+      "multiple": true,
+      "options": [
+        {
+          "item": "Usufrue anualmente de trinta dias ou mais de férias"
+        },
+        {
+          "item": "Divide suas férias em duas ou três vezes"
+        },
+        {
+          "item": "Costuma vender parte de suas férias"
+        },
+        {
+          "item": "Tem outro trabalho durante suas férias"
+        },
+        {
+          "item": "Aproveita suas férias para realmente descansar"
+        }
+      ]
+    },
+    {
+      "question": "Com relação ao adicional de insalubridade/periculosidade, penso que:",
+      "options": [
+        {
+          "item": "Não recebo e não tenho direito a receber"
+        },
+        {
+          "item": "Não recebo, mas penso que tenho direito a receber"
+        },
+        {
+          "item": "Recebo, mas não tenho direito a receber"
+        },
+        {
+          "item": "Recebo o percentual justo"
+        },
+        {
+          "item": "Recebo, mas o percentual é injusto"
+        },
+        {
+          "item": "não sei opinar"
+        }
+      ]
+    },
+    {
+      "question": "Com relação à sua aposentadoria, seu beneficio será pago",
+      "options": [
+        {
+          "item": "Integralmente"
+        },
+        {
+          "item": "Parcialmente e complementada de alguma previdência privada (como FUNPRESP)"
+        },
+        {
+          "item": "Parcialmente e sem complementos"
+        }
+      ]
+    },
+    {
+      "question": "Você é sindicalizado?",
+      "options": [
+        {
+          "item": "SIM"
+        },
+        {
+          "item": "NÃO"
+        }
+      ]
+    },
+    {
+      "question": "Qual sindicato?",
+      "options": [
+        {
+          "item": "Outro. Especifique",
+          "textbox": true
+        },
+        {
+          "item": "Não se aplica"
+        }
+      ]
+    },
+    {
+      "question": "Com que frequencia participa das atividades sindicais?",
+      "options": [
+        {
+          "item": "Nunca"
+        },
+        {
+          "item": "Raramente"
+        },
+        {
+          "item": "Algumas vezes"
+        },
+        {
+          "item": "Muitas vezes"
+        },
+        {
+          "item": "Sempre"
+        },
+        {
+          "item": "Não se aplica"
+        }
+      ]
+    },
+    {
+      "question": "O seu salário normalmente é composto de ( PODE MARCAR MAIS DE UMA ALTERNATIVA)",
+      "multiple": true,
+      "options": [
+        {
+          "item": "Salário fixo"
+        },
+        {
+          "item": "Comissão por desempenho ou produção"
+        },
+        {
+          "item": "Beneficios pagos em dinheiro"
+        },
+        {
+          "item": "Horas extraordinárias"
+        },
+        {
+          "item": "Participação nos resultados"
+        },
+        {
+          "item": "Apenas de acordo com sua produção"
+        }
+      ]
+    },
+    {
+      "question": "Quanto você ganha por mês (salário bruto/total)",
+      "options": [
+        {
+          "item": "menos de R$1.500,00"
+        },
+        {
+          "item": "De R$1.501,00 a R$3.000,00"
+        },
+        {
+          "item": "De R$3.000,00 a R$5.000,00"
+        },
+        {
+          "item": "De R$5.001,00 a R$10.000,00"
+        },
+        {
+          "item": "De R$10.001,00 a R$15.000,00"
+        },
+        {
+          "item": "De R$15.001,00 a R$20.000,00"
+        },
+        {
+          "item": "Acima de R$20.000,00"
+        }
+      ]
+    },
+    {
+      "question": "O que você ganha é",
+      "options": [
+        {
+          "item": "A única renda da sua família"
+        },
+        {
+          "item": "Quase a totalidade da renda familiar"
+        },
+        {
+          "item": "Aproximadamente a metade da renda familiar"
+        },
+        {
+          "item": "Uma parcela pequena da renda familiar"
+        }
+      ]
+    },
+    {
+      "question": "Você tem outra atividade profissional fora da UFMG?",
+      "options": [
+        {
+          "item": "SIM"
+        },
+        {
+          "item": "NÃO"
+        }
+      ]
+    },
+    {
+      "question": "Sim",
+      "options": [
+        {
+          "item": "Especifique",
+          "textbox": true
+        },
+        {
+          "item": "Não"
+        }
+      ]
+    },
+    {
+      "question": "Se sim, ela é remunerada?",
+      "options": [
+        {
+          "item": "SIM"
+        },
+        {
+          "item": "NÃO"
+        }
+      ]
+    },
+    {
+      "question": "Se sim, quantas horas de trabalho aproximadamente essa(s) outra(s) atividade(s) profissional(is) lhe exige?",
+      "options": [
+        {
+          "item": "menos de 10 horas semanais"
+        },
+        {
+          "item": "10 horas semanais"
+        },
+        {
+          "item": "20 horas semanais"
+        },
+        {
+          "item": "30 horas semanais"
+        },
+        {
+          "item": "40 horas semanais"
+        },
+        {
+          "item": "mais de 40 horas semanais"
+        }
+      ]
+    }
+  ]
+]
