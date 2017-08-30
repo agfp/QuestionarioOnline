@@ -21,7 +21,7 @@ import questionnaire from './Questionnaire';
 import ThankYou from './ThankYou';
 import consent from './Consent';
 import Helpers from '../helpers';
-import sample from '../assets/hc.json';
+import sample from '../assets/dev.json';
 
 export default {
     components: {
@@ -48,10 +48,10 @@ export default {
         this.questions = result.questions;
 
         try {
-            let answers = localStorage.getItem(Helpers.PARAMETERS.key);
-            if (answers) {
-                let arr = JSON.parse(answers);
-                if (Array.isArray(arr)) {
+            let txt = localStorage.getItem(Helpers.PARAMETERS.key);
+            if (txt) {
+                let stored = JSON.parse(txt);
+                if (Array.isArray(stored.answers)) {
                     swal({
                         title: 'Existe um questionário em andamento',
                         text: 'Você deseja continuar respondendo ou recomeçar?',
@@ -63,13 +63,14 @@ export default {
                     },
                     () => {
                         that.consent = false;
-                        that.loadedAnswers = arr;
+                        that.loadedAnswers = stored.answers;
+                        Helpers.loadStorageItem(stored);
                         window.scrollTo(0, 0);
                     });
                 }
             }
         }
-        catch (err) { }
+        catch (err) { } // eslint-disable-line
 
         window.scrollTo(0, 0);
     },

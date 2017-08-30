@@ -8,6 +8,17 @@ const MONTHS = [
     'Outubro', 'Novembro', 'Dezembro'
 ];
 
+function getStorageItem(answers) {
+    return {
+        token: PARAMETERS.token,
+        answers
+    };
+}
+
+function loadStorageItem(storage) {
+    PARAMETERS.token = storage.token;
+}
+
 function prepareQuestionnaire(questionnaire) {
     let questions = [];
     preparePages(questionnaire, questions);
@@ -94,6 +105,8 @@ function hashCode(str) {
 export default {
     prepareQuestionnaire,
     hashCode,
+    getStorageItem,
+    loadStorageItem,
     MONTHS,
     PARAMETERS
 };

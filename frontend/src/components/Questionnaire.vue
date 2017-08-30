@@ -161,8 +161,7 @@ export default {
                         }
                         this.$emit('finished', this.answers);
                     })
-                    .catch(err => {
-                        console.log(err);
+                    .catch(() => {
                         this.saving = false;
                         swal('Oops...',
                              'Ocorreu um erro ao enviar o questionário. Por favor tente novamente.',
@@ -305,7 +304,8 @@ export default {
     watch: {
         answers(val) {
             if (typeof Storage !== 'undefined') {
-                localStorage.setItem(helpers.PARAMETERS.key, JSON.stringify(val));
+                let store = helpers.getStorageItem(val);
+                localStorage.setItem(helpers.PARAMETERS.key, JSON.stringify(store));
             }
         }
     }
