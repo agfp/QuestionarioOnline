@@ -2,7 +2,7 @@
 
 DEPLOY_FOLDER="../deploys/questionario/"
 
-rsync -avh  backend/* $DEPLOY_FOLDER --exclude node_modules --delete
+rsync -avh  backend/* $DEPLOY_FOLDER --exclude node_modules --exclude *.map  --delete
 #cd frontend
 #npm run build
 #cd ..

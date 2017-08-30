@@ -2,17 +2,48 @@ const routes = require('express').Router();
 const moment = require('moment');
 const helpers = require('./helpers');
 const db = require('./db');
+const excelbuilder = require('msexcel-builder');
 
 function notFound(res) {
     res.status(404);
     res.send('Questionário não encontrado');
 }
 
-routes.get('/ot7jz9f39r7cnmik6nvc8d48/:set', (req, res) => {
+routes.get('/ot7jz9f39r7cnmik6nvc8d48/:set/download', (req, res) => {
     db.getAnswers(req.params.set)
-    .then(response => {
-        res.render(`admin/${req.params.set}`, { data: response });
-    });
+        .then(response => {
+            const workbook = excelbuilder.createWorkbook('./download/', `${req.params.set}.xlsx`);
+            const sheet1 = workbook.createSheet('Respostas', response[0].answers.length + 2, response.length + 1);
+            sheet1.set(1, 1, 'Início');
+            sheet1.font(1, 1, { bold: 'true' });
+            sheet1.set(2, 1, 'Fim');
+            sheet1.font(2, 1, { bold: 'true' });
+            for (let index = 0; index < response[0].answers.length; index++) {
+                sheet1.set(3 + index, 1, index + 1);
+                sheet1.font(3 + index, 1, { bold: 'true' });
+            }
+            for (let row = 0; row < response.length; row++) {
+                sheet1.set(1, 2 + row, response[row].start_time);
+                sheet1.set(2, 2 + row, response[row].end_time);
+                for (let index = 0; index < response[row].answers.length; index++) {
+                    sheet1.set(3 + index, 2 + row, response[row].answers[index]);
+                }
+            }
+            workbook.save(() => {
+                const file = `${__dirname}/download/${req.params.set}.xlsx`;
+                res.download(file);
+            });
+        });
+});
+
+routes.get('/ot7jz9f39r7cnmik6nvc8d48/:set', (req, res) => {
+    db.getAnswers(req.params.set, true)
+        .then(response => {
+            res.render(`admin/${req.params.set}`, {
+                data: response,
+                download: `/ot7jz9f39r7cnmik6nvc8d48/${req.params.set}/download`
+            });
+        });
 });
 
 routes.get('/', (req, res) => {

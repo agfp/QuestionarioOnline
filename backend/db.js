@@ -7,25 +7,28 @@ const databaseUrl = process.env.DATABASE_URL ||
 const db = pgp(`${databaseUrl}?ssl=true`);
 
 function getQuestionnaire(key) {
-    const cmd = 'SELECT questionnaire FROM access_codes WHERE access_code = $1';
-    return db.oneOrNone(cmd, key);
+    const query = 'SELECT questionnaire FROM access_codes WHERE access_code = $1';
+    return db.oneOrNone(query, key);
 }
 
 function saveQuestionnaire(data) {
-    const cmd = `INSERT INTO answers(access_code, start_time, end_time, server_uid, question_set, answers)
-                 VALUES ($/key/, $/startTime/, $/endTime/, $/serverUid/, $/set/, $/answers/)`;
+    const query = `INSERT INTO answers(access_code, start_time, end_time, server_uid, question_set, answers)
+                   VALUES ($/key/, $/startTime/, $/endTime/, $/serverUid/, $/set/, $/answers/)`;
 
-    return db.none(cmd, data);
+    return db.none(query, data);
 }
 
-function getAnswers(set) {
-    const cmd = `SELECT to_char(start_time, 'YYYY-MM-DD HH:mm:SS') AS start_time,
-                        to_char(end_time, 'YYYY-MM-DD HH:mm:SS') AS end_time,
-                        answers
-                 FROM answers
-                 WHERE question_set = $1`;
-                 
-    return db.any(cmd, set);
+function getAnswers(set, limited) {
+    const query = `SET timezone='America/Sao_Paulo';
+                   SELECT to_char(start_time AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI:SS') AS start_time,
+                          to_char(end_time   AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI:SS') AS end_time,
+                          answers
+                   FROM answers
+                   WHERE question_set = $1
+                   ${limited ? 'ORDER BY answers.start_time DESC' : ''}
+                   ${limited ? 'LIMIT 5' : ''}`;
+
+    return db.any(query, set);
 }
 
 module.exports = {

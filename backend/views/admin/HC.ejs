@@ -2,37 +2,36 @@
 <html>
 
 <body>
-    <h1>Respostas</h1>
-    <table border="1">
+    <h1>Questionário Hospital das Clínicas</h1>
+
+    <hr />
+
+    <h2>Todas respostas: <a href="<%= download %>">
+        <img src="/static/xls-icon-3390.png" style="width: 70px; vertical-align: middle" />
+    </a></h1>
+
+    <p>
+
+    </p>
+
+    <h2>Últimas respostas:</h3>
+    <table border="1" style="white-space: nowrap;">
         <tr>
-            <th style="min-width: 150px">Início</th>
-            <th style="min-width: 150px">Fim</th>
-            <% for(var j=0; j<data[0].answers.length; j++) { %>
-                <th>
-                    <%= j+1 %>
-                </th>
-                <% } %>
+            <th>Início</th>
+            <th>Fim</th>
+            <% for(var j=0; j<data[0].answers.length; j++) { %><th><%= j+1 %></th><% } %>
         </tr>
-
         <% for(var i=0; i<data.length; i++) { %>
-            <tr>
-                <td>
-                    <%= data[i].start_time %>
-                </td>
-                <td>
-                    <%= data[i].end_time %>
-                </td>
-                <% for(var j=0; j<data[i].answers.length; j++) { %>
-                    <td>
-                        <%= data[i].answers[j] %>
-                    </td>
-                    <% } %>
-            </tr>
-            <% } %>
-
+        <tr>
+            <td><%= data[i].start_time %></td><td><%= data[i].end_time %></td>
+            <% for(var j=0; j<data[i].answers.length; j++) { %><td><%= data[i].answers[j] %></td><% } %>
+        </tr>
+        <% } %>
     </table>
 
-<h1>Perguntas</h1>
+
+
+<h2>Perguntas:</h1>
 <pre>
 1 - Qual a sua idade?
 2 - Em que ano começou a trabalhar?
