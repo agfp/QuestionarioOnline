@@ -25,7 +25,7 @@ function getAnswers(set, limited) {
                           answers
                    FROM answers
                    WHERE question_set = $1
-                   ${limited ? 'ORDER BY answers.start_time DESC' : ''}
+                   ORDER BY answers.start_time ${limited ? 'DESC' : ''}
                    ${limited ? 'LIMIT 5' : ''}`;
 
     return db.any(query, set);
