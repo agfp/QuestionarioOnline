@@ -5,8 +5,6 @@ const excelbuilder = require('msexcel-builder');
 const secretPath = 'ot7jz9f39r7h';
 const downloadPath = `${__dirname}/../download`;
 
-console.log(downloadPath);
-
 routes.get(`/${secretPath}/:set/download`, (req, res) => {
     db.getAnswers(req.params.set)
         .then(response => {

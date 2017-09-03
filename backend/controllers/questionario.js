@@ -17,6 +17,7 @@ routes.get('/:key', (req, res) => {
         db.getQuestionnaire(req.params.key)
             .then(response => {
                 if (response) {
+                    console.log(`questionnaires/${response.questionnaire}`);
                     res.render(`questionnaires/${response.questionnaire}`, {
                         parameters: JSON.stringify({
                             key: req.params.key,

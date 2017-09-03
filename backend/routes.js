@@ -1,6 +1,6 @@
 const routes = require('express').Router();
-const admin = require('./api/admin');
-const questionario = require('./api/questionario');
+const admin = require('./controllers/admin');
+const questionario = require('./controllers/questionario');
 
 routes.get('/', (req, res) => {
     res.render('home/index');
