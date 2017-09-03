@@ -1,12 +1,14 @@
 #/bin/bash
 
-DEPLOY_FOLDER="../deploys/questionario/"
+BUILD_NAME="HC"
 
-rsync -avh  backend/* $DEPLOY_FOLDER --exclude node_modules --exclude *.map  --delete
-#cd frontend
-#npm run build
-#cd ..
-#rsync -av frontend/dist/* $DEPLOY_FOLDER/public --exclude *.map
+cd frontend
+npm run build
+cd ..
+rsync -av frontend/dist/* backend/public --exclude *.map --exclude index.html
 
+cp frontend/dist/index.html backend/views/questionnaires/$BUILD_NAME.ejs
 
-
+cd backend/views/questionnaires
+sed -i -- 's/{"key":"key","token":"token"}/<%- parameters %>/g' $BUILD_NAME.ejs
+cd ../..

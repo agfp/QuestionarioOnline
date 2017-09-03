@@ -119,7 +119,7 @@
             "item": "Técnico administrativo de educação (RJU)"
           },
           {
-            "item": "Celetista concursado (p.ex. Ebserh"
+            "item": "Celetista concursado (p.ex. Ebserh)"
           },
           {
             "item": "Celetista terceirizado"
@@ -431,6 +431,9 @@
           },
           {
             "item": "Parcialmente e sem complementos"
+          },
+          {
+            "item": "Não sei informar"
           }
         ]
       }
@@ -549,6 +552,9 @@
           },
           {
             "item": "Uma parcela pequena da renda familiar"
+          },
+          {
+            "item": "Não se aplica"
           }
         ]
       },
@@ -740,7 +746,7 @@
             "item": "Trabalhar com internet, e-mail, redes sociais"
           },
           {
-            "item": "Usar telefonia celular e aplicativos como what´s app para realizar comunicações necessárias ao trabalho"
+            "item": "Usar telefonia celular e aplicativos como WhatsApp para realizar comunicações necessárias ao trabalho"
           },
           {
             "item": " Falta de material necessário para a realização de suas tarefas "
@@ -1018,7 +1024,7 @@
         ]
       },
       {
-        "question": "Quanto à concepção do seu trabalho, você pode afirmar que seu setor:",
+        "question": "Quanto à concepção do seu trabalho, você pode afirmar que em seu setor:",
         "matrix": [
           {
             "item": "O bom planejamento das atividades facilita sua execução com qualidade"
@@ -1293,7 +1299,7 @@
             "item": "às características pessoais (p. ex., peso, altura)"
           },
           {
-            "item": "às deficiências físicas e mentais"
+            "item": "às deficiências físicas e/ou mentais"
           },
           {
             "item": "às preferências/orientações/identidades sexuais"

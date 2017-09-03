@@ -27,27 +27,13 @@ export default {
     props: ['question', 'showPending', 'answers'],
     data() {
         return {
-            fixedHeader: false
+            fixedHeader: false,
+            waypointTop: null,
+            waypointBottom: null
         };
     },
     mounted() {
-        let that = this;
-        /* eslint-disable no-new */
-        new Waypoint({
-            element: this.$refs.header,
-            handler(direction) {
-                that.fixedHeader = direction === 'down';
-            }
-        });
-
-        new Waypoint({
-            element: this.$refs.items[this.$refs.items.length - 1],
-            handler(direction) {
-                that.fixedHeader = direction === 'up';
-            }
-        });
-
-
+        this.setWaypoints();
     },
     methods: {
         selectItem(item, answer) {
@@ -55,6 +41,34 @@ export default {
         },
         validateItem() {
             return true;
+        },
+        setWaypoints() {
+            if (this.waypointTop) {
+                this.waypointTop.destroy();
+                this.waypointBottom.destroy();
+            }
+            let that = this;
+            if (this.question.matrix.length > 10) {
+                setTimeout(() => {
+                    this.waypointTop = new Waypoint({
+                        element: this.$refs.header,
+                        handler(direction) {
+                            that.fixedHeader = direction === 'down';
+                        }
+                    });
+                    this.waypointBottom = new Waypoint({
+                        element: this.$refs.items[this.$refs.items.length - 2],
+                        handler(direction) {
+                            that.fixedHeader = direction === 'up';
+                        }
+                    });
+                }, 300);
+            }
+        }
+    },
+    watch: {
+        question() {
+            this.setWaypoints();
         }
     }
 };
@@ -101,6 +115,7 @@ $border-color: lightgray;
     width: $matrix-width;
     font-weight: bold;
     font-size: 11pt;
+    min-height: 54px;
 
     .question {
         background: white;

@@ -26,6 +26,7 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    'prefer-template': 'warn',
     'comma-dangle': 'off',
     'no-unused-vars': 'warn',
     'arrow-parens': 'off',

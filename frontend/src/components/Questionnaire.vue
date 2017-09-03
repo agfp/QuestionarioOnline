@@ -141,9 +141,9 @@ export default {
 
         next() {
             if (this.validatePage()) {
+                window.scrollTo(0, 0);
                 this.showPending = false;
                 this.currentPage++;
-                window.scrollTo(0, 0);
             }
         },
 

@@ -21,7 +21,7 @@ import questionnaire from './Questionnaire';
 import ThankYou from './ThankYou';
 import consent from './Consent';
 import Helpers from '../helpers';
-import sample from '../assets/dev.json';
+import HC from '../assets/hc.json';
 
 export default {
     components: {
@@ -43,7 +43,7 @@ export default {
     },
     mounted() {
         let that = this;
-        let result = Helpers.prepareQuestionnaire(sample);
+        let result = Helpers.prepareQuestionnaire(HC);
         this.questionnaire = result.questionnaire;
         this.questions = result.questions;
 
