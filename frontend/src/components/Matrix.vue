@@ -44,11 +44,13 @@ export default {
         },
         setWaypoints() {
             if (this.waypointTop) {
+                console.log('-');
                 this.waypointTop.destroy();
                 this.waypointBottom.destroy();
             }
             let that = this;
             if (this.question.matrix.length > 10) {
+                console.log('+');
                 setTimeout(() => {
                     this.waypointTop = new Waypoint({
                         element: this.$refs.header,
@@ -64,6 +66,7 @@ export default {
                     });
                 }, 300);
             }
+            this.fixedHeader = false;
         }
     },
     watch: {
