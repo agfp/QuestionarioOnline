@@ -25,7 +25,8 @@ import ThankYou from './ThankYou';
 import consent from './Consent';
 import Helpers from '../helpers';
 import HC from '../assets/hc.json';
-import UFMG from '../assets/dev.json';
+import UFMG1 from '../assets/dev.json';
+import UFMG2 from '../assets/dev2.json';
 
 export default {
     components: {
@@ -78,24 +79,27 @@ export default {
     },
     methods: {
         loadQuestions(questionSet) {
-            let questions;
-            switch (questionSet) {
+            let sets = {
+                HC,
+                UFMG1,
+                UFMG2
+            };
+            let result = Helpers.prepareQuestionnaire(sets[questionSet]);
+            this.questionnaire = result.questionnaire;
+        },
+        onUnitChosen(unit) {
+            let rnd;
+            switch (unit) {
                 case 'HC':
-                    questions = HC;
+                    this.questionSet = unit;
                     break;
 
                 default:
-                    questions = UFMG;
+                    rnd = parseInt(Math.random() * 100, 0) % 2;
+                    this.questionSet = rnd ? 'UFMG1' : 'UFMG2';
                     break;
             }
-            let result = Helpers.prepareQuestionnaire(questions);
-            this.questionnaire = result.questionnaire;
-            // this.questions = result.questions;
-        },
-
-        onUnitChosen(unit) {
             window.scrollTo(0, 0);
-            this.questionSet = unit;
             this.step = 1;
         },
         onConsented() {

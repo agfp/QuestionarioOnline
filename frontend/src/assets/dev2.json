@@ -1,0 +1,105 @@
+[{
+        "name": "Condições contratuais e jurídicas2",
+        "questions": [{
+                "question": "Vinculo com a UFMG",
+                "options": [{
+                        "item": "Técnico administrativo de educação (RJU)"
+                    },
+                    {
+                        "item": "Celetista concursado (p.ex. Ebserh"
+                    },
+                    {
+                        "item": "Celetista terceirizado"
+                    },
+                    {
+                        "item": "Professor dedicação exclusiva"
+                    },
+                    {
+                        "item": "Professor 40 h"
+                    },
+                    {
+                        "item": "Professor 20 h"
+                    },
+                    {
+                        "item": "Cedido de outro órgão"
+                    },
+                    {
+                        "item": "Voluntário, como:",
+                        "textbox": true
+                    },
+                    {
+                        "item": "Contrato temporário, como:",
+                        "textbox": true
+                    },
+                    {
+                        "item": "Estagiário"
+                    },
+                    {
+                        "item": "Outro:",
+                        "textbox": true
+                    }
+                ]
+            },
+            {
+                "question": "Tipo de cargo",
+                "options": [{
+                        "item": "Nível básico"
+                    },
+                    {
+                        "item": "Administrativo nível médio"
+                    },
+                    {
+                        "item": "Administrativo nível superior"
+                    },
+                    {
+                        "item": "Técnico ou auxiliar de enfermagem"
+                    },
+                    {
+                        "item": "Outro técnico de nível médio"
+                    },
+                    {
+                        "item": "Enfermeiro"
+                    },
+                    {
+                        "item": "Médico"
+                    },
+                    {
+                        "item": "Outro profissional assistencial, de nível superior"
+                    },
+                    {
+                        "item": "Professor de ensino fundamental e/ou médio"
+                    },
+                    {
+                        "item": "Professor Ensino Superior"
+                    },
+                    {
+                        "item": "Outro:",
+                        "textbox": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Ficha sociodemográfica2",
+        "questions": [{
+                "question": "Qual a sua idade?",
+                "validationMsg": "Digite um número entre 14 e 75",
+                "number": {
+                    "min": 14,
+                    "max": 99
+                },
+                "textbox": true
+            },
+            {
+                "question": "Em que ano começou a trabalhar?",
+                "validationMsg": "Digite um número entre 1942 e 2017",
+                "number": {
+                    "min": 1942,
+                    "max": 2017
+                },
+                "textbox": true
+            }
+        ]
+    }
+]
