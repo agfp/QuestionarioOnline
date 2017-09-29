@@ -1,17 +1,27 @@
 <template>
 <div>
-    <div :class="{header: true, fixed: fixedHeader}" ref="header">
+    <div :class="{header: true, fixed: fixedHeader}"
+        ref="header">
         <div class="question">&nbsp;</div>
-        <div :class="{option:true, 'option-100': question.headers.length <= 5 }" v-for="header in question.headers">{{header}}</div>
+        <div :class="{option:true, 'option-100': question.headers.length <= 5 }"
+            v-for="header in question.headers">{{header}}</div>
     </div>
     <div class="rows">
-        <div :class="{row: true, pending: showPending && !answers[item.id]}" v-for="item in question.matrix" ref="items" :key="item.id">
+        <div :class="{row: true, pending: showPending && !answers[item.id]}"
+            v-for="item in question.matrix"
+            ref="items"
+            :key="item.id">
             <div class="question">
                 {{item.item}}
             </div>
-            <div v-for="(option, index) in question.headers" @click="selectItem(item, index + 1)" :class="{option:true, 'option-100': question.headers.length <= 5 }">
+            <div v-for="(option, index) in question.headers"
+                @click="selectItem(item, index + 1)"
+                :class="{option:true, 'option-100': question.headers.length <= 5 }">
                 <div class="pure-radiobutton">
-                    <input :name="item.id" :value="index + 1" v-model="answers[item.id]" type="radio">
+                    <input :name="item.id"
+                        :value="index + 1"
+                        v-model="answers[item.id]"
+                        type="radio">
                     <label></label>
                 </div>
             </div>
@@ -22,7 +32,6 @@
 
 <script>
 /* global Waypoint */
-
 export default {
     props: ['question', 'showPending', 'answers'],
     data() {
@@ -44,13 +53,13 @@ export default {
         },
         setWaypoints() {
             if (this.waypointTop) {
-                console.log('-');
+                // console.log('-');
                 this.waypointTop.destroy();
                 this.waypointBottom.destroy();
             }
             let that = this;
             if (this.question.matrix.length > 10) {
-                console.log('+');
+                // console.log('+');
                 setTimeout(() => {
                     this.waypointTop = new Waypoint({
                         element: this.$refs.header,

@@ -3,69 +3,86 @@
     <div class="title-bar">
         <h1>{{ title }}</h1>
     </div>
-    <vue-circle
-          id="progress-circle"
-          class="progress-circle"
-          ref="progresscircle"
-          :start-angle="-(Math.PI / 2)"
-          :progress="0"
-          :fill="{ gradient: ['#0683C3', '#06A4C2', '#06C3C1'] }"
-          :size="100"
-          :thickness="10"
-          :show-percent="true">
+    <vue-circle id="progress-circle"
+        class="progress-circle"
+        ref="progresscircle"
+        :start-angle="-(Math.PI / 2)"
+        :progress="0"
+        :fill="{ gradient: ['#0683C3', '#06A4C2', '#06C3C1'] }"
+        :size="100"
+        :thickness="10"
+        :show-percent="true">
     </vue-circle>
 
     <ul class="question-list pure-form">
-        <li class="question-item" v-for="question in screenQuestions">
-            <div v-if="Array.isArray(question.matrix)" class="item-box">
+        <li class="question-item"
+            v-for="question in screenQuestions">
+            <div v-if="Array.isArray(question.matrix)"
+                class="item-box">
                 <div class="question">{{ question.question }}</div>
                 <matrix :question="question"
-                        :show-pending="showPending"
-                        :answers="answers"
-                        @select="selectItem"></matrix>
+                    :show-pending="showPending"
+                    :answers="answers"
+                    @select="selectItem"></matrix>
             </div>
-            <div v-else :class="{ pending: showPending && !validate(question), 'item-box': true }">
+            <div v-else
+                :class="{ pending: showPending && !validate(question), 'item-box': true }">
                 <div class="question">{{ question.question }}</div>
-                <div class="instruction" v-if="question.instruction">
+                <div class="instruction"
+                    v-if="question.instruction">
                     {{ question.instruction }}
                 </div>
-                <div v-if="question.invalidNumber || showPending" class="instruction-alert">
+                <div v-if="question.invalidNumber || showPending"
+                    class="instruction-alert">
                     {{ question.validationMsg }}
                 </div>
-                <div v-if="question.monthYear" class="textbox-item">
-                    <month-year :question="question" :answers="answers" @date-selected="selectItem"></month-year>
+                <div v-if="question.monthYear"
+                    class="textbox-item">
+                    <month-year :question="question"
+                        :answers="answers"
+                        @date-selected="selectItem"></month-year>
                 </div>
-                <div v-if="question.textbox" class="textbox-item">
+                <div v-if="question.textbox"
+                    class="textbox-item">
                     <input v-if="question.number"
-                           type="number"
-                           v-model.lazy="answers[question.id]"
-                           placeholder="Digite sua resposta"
-                           @change="validateNumberAndUpdateProgress(question)" />
+                        type="number"
+                        v-model.lazy="answers[question.id]"
+                        placeholder="Digite sua resposta"
+                        @change="validateNumberAndUpdateProgress(question)" />
 
                     <input v-else
-                           type="text"
-                           v-model.lazy="answers[question.id]"
-                           placeholder="Digite sua resposta"
-                           @change="updateProgress" />
+                        type="text"
+                        v-model.lazy="answers[question.id]"
+                        placeholder="Digite sua resposta"
+                        @change="updateProgress" />
                 </div>
                 <div v-if="Array.isArray(question.options)">
-                    <div v-if="question.multiple" class="instruction-alert">
+                    <div v-if="question.multiple"
+                        class="instruction-alert">
                         Pode marcar mais de uma alternativa
                     </div>
                     <options :question="question"
-                             :answers="answers"
-                             @select="selectItem"
-                             @toggle="toggleItem"></options>
+                        :answers="answers"
+                        @select="selectItem"
+                        @toggle="toggleItem"></options>
                 </div>
             </div>
         </li>
     </ul>
-    <div class="pagination" v-if="pages != null">
-        <button class="pure-button" :disabled="currentPage === 0" @click="previous()">Anterior</button>
+    <div class="pagination"
+        v-if="pages != null">
+        <button class="pure-button"
+            :disabled="currentPage === 0"
+            @click="previous()">Anterior</button>
         <!-- <span>Página {{currentPage+1}} de {{pages.length}}</span> -->
         <linear-progress :percentage="percentage"></linear-progress>
-        <button class="pure-button pure-button-primary" @click="next()" v-if="currentPage < pages.length - 1">Próximo</button>
-        <button class="pure-button pure-button-primary" @click="finish()" v-else :disabled="saving">
+        <button class="pure-button pure-button-primary"
+            @click="next()"
+            v-if="currentPage < pages.length - 1">Próximo</button>
+        <button class="pure-button pure-button-primary"
+            @click="finish()"
+            v-else
+            :disabled="saving">
             <span v-if="!saving">Finalizar</span>
             <span v-else>Aguarde...</span>
         </button>
@@ -109,8 +126,7 @@ export default {
                 if (!question.multiple) {
                     if (Array.isArray(question.matrix)) {
                         this.totalSteps += question.matrix.length;
-                    }
-                    else {
+                    } else {
                         this.totalSteps++;
                     }
                 }
@@ -138,7 +154,6 @@ export default {
             this.showPending = false;
             this.currentPage--;
         },
-
         next() {
             if (this.validatePage()) {
                 window.scrollTo(0, 0);
@@ -146,15 +161,14 @@ export default {
                 this.currentPage++;
             }
         },
-
         finish() {
             if (this.validatePage()) {
                 this.saving = true;
                 api.save(
-                    helpers.PARAMETERS.key,
-                    helpers.PARAMETERS.token,
-                    this.set,
-                    this.answers)
+                        helpers.PARAMETERS.key,
+                        helpers.PARAMETERS.token,
+                        this.set,
+                        this.answers)
                     .then(() => {
                         if (typeof Storage !== 'undefined') {
                             localStorage.removeItem(helpers.PARAMETERS.key);
@@ -164,26 +178,22 @@ export default {
                     .catch(() => {
                         this.saving = false;
                         swal('Oops...',
-                             'Ocorreu um erro ao enviar o questionário. Por favor tente novamente.',
-                             'error');
+                            'Ocorreu um erro ao enviar o questionário. Por favor tente novamente.',
+                            'error');
                     });
             }
         },
-
         validateNumber(question) {
             let answer = parseInt(this.answers[question.id], 10);
             return answer >= question.number.min && answer <= question.number.max;
         },
-
         validateNumberAndUpdateProgress(question) {
             if (this.validateNumber(question)) {
                 this.updateProgress();
-            }
-            else {
+            } else {
                 question.invalidNumber = true;
             }
         },
-
         validatePage() {
             for (let i = 0; i < this.screenQuestions.length; i++) {
                 if (!this.validate(this.screenQuestions[i])) {
@@ -194,11 +204,9 @@ export default {
             }
             return true;
         },
-
         validateItem(item) {
             return Boolean(this.answers[item.id]);
         },
-
         validate(question) {
             function validateAnswer(answer) {
                 return answer ? Boolean(answer.trim()) : false;
@@ -210,8 +218,7 @@ export default {
 
             if (question.textbox || question.monthYear) {
                 return question.number ? this.validateNumber(question) : validateAnswer(this.answers[question.id]);
-            }
-            else if (Array.isArray(question.matrix)) {
+            } else if (Array.isArray(question.matrix)) {
                 for (let i = 0; i < question.matrix.length; i++) {
                     let item = question.matrix[i];
                     if (!this.validateItem(item)) {
@@ -231,7 +238,6 @@ export default {
             }
             return false;
         },
-
         selectItem(item, answer) {
             let a = JSON.parse(JSON.stringify(this.answers));
             a[item.id] = answer;
@@ -239,13 +245,11 @@ export default {
             this.answers = a;
             this.updateProgress();
         },
-
         toggleItem(item) {
             let a = JSON.parse(JSON.stringify(this.answers));
             a[item.id] = a[item.id] === 1 ? null : 1;
             this.answers = a;
         },
-
         updateProgress() {
             let completedSteps = 0;
             this.pages.forEach(page => {
@@ -257,8 +261,7 @@ export default {
                                     completedSteps++;
                                 }
                             });
-                        }
-                        else if (this.validate(question)) {
+                        } else if (this.validate(question)) {
                             completedSteps++;
                         }
                     }
@@ -267,7 +270,6 @@ export default {
             this.completedSteps = completedSteps;
             this.$refs.progresscircle.updateProgress(Math.ceil((completedSteps / this.totalSteps) * 100));
         },
-
         loadSubquestions(question) {
             let subQuestions = [];
             if (this.answers[question.id] && question.options) {
@@ -304,7 +306,7 @@ export default {
     watch: {
         answers(val) {
             if (typeof Storage !== 'undefined') {
-                let store = helpers.getStorageItem(val);
+                let store = helpers.getStorageItem(this.set, val);
                 localStorage.setItem(helpers.PARAMETERS.key, JSON.stringify(store));
             }
         }
@@ -324,8 +326,8 @@ export default {
     }
 }
 
-input[type=text],
-input[type=number] {
+input[type=number],
+input[type=text] {
     width: 320px;
 }
 
@@ -362,7 +364,7 @@ li.question-item {
 }
 
 .textbox-item {
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 .pagination {
@@ -381,5 +383,4 @@ li.question-item {
     right: 10px;
     top: 22px;
 }
-
 </style>

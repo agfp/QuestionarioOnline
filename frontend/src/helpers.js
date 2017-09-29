@@ -8,9 +8,10 @@ const MONTHS = [
     'Outubro', 'Novembro', 'Dezembro'
 ];
 
-function getStorageItem(answers) {
+function getStorageItem(set, answers) {
     return {
         token: PARAMETERS.token,
+        set,
         answers
     };
 }
@@ -58,16 +59,14 @@ function prepareQuestions(questions, counter, numberedQuestions) {
                 item.pending = true;
             });
             numberedQuestions.push('---');
-        }
-        else if (question.multiple) {
+        } else if (question.multiple) {
             numberedQuestions.push(`--- ${question.question}`);
             question.options.forEach(option => {
                 numberedQuestions.push(`${counter + 1} - ${option.item}`);
                 option.id = counter++;
             });
             numberedQuestions.push('---');
-        }
-        else {
+        } else {
             numberedQuestions.push(`${counter + 1} - ${question.question}`);
             question.id = counter++;
             question.pending = true;

@@ -2,26 +2,30 @@
 <div :class="question.options.length > 3 ? 'options-columns' : ''">
     <div v-if="question.multiple">
         <div v-for="option in question.options">
-            <div class="option-item pure-checkbox" @click="toggleItem(option)">
-                <input :name="option.id" value="1" v-model="answers[option.id]" type="checkbox">
+            <div class="option-item pure-checkbox"
+                @click="toggleItem(option)">
+                <input :name="option.id"
+                    value="1"
+                    v-model="answers[option.id]"
+                    type="checkbox">
                 <label><span class="option-item-text">{{ option.item }}</span></label>
             </div>
         </div>
     </div>
     <div v-else>
         <div v-for="(option, index) in question.options">
-            <div class="option-item pure-radiobutton" @click="selectItem(question, index + 1)">
-                <input :name="question.id" :value="index + 1" v-model="answers[question.id]" type="radio">
+            <div class="option-item pure-radiobutton"
+                @click="selectItem(question, index + 1)">
+                <input :name="question.id"
+                    :value="index + 1"
+                    v-model="answers[question.id]"
+                    type="radio">
                 <label>
                     <span class="option-item-text">
                         {{ option.item }}
-                       <input type="text" v-if="option.textbox" class="pure-input" v-model="answers[option.id]" placeholder="Especifique" />    
+                       <input type="text" v-if="option.textbox" class="pure-input" v-model="answers[option.id]" placeholder="Especifique" />
                     </span>
                 </label>
-                <!-- <label v-else>
-                    {{ option.item }}
-                    <input type="text" class="pure-input" v-model="answers[option.id]" placeholder="Especifique" />
-                </label> -->
             </div>
         </div>
     </div>

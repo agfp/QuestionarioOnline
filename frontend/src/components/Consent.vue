@@ -4,21 +4,27 @@
         <h1>Termo de Consentimento Livre e Esclarecido</h1>
     </div>
 
-    <hc></hc>
+    <hc v-if="questionSet === 'HC'"></hc>
+    <generic v-else></generic>
 
     <div class="pagination">
-        <a href="http://www.qvt-ufmg.com.br/" class="pure-button">Quero saber mais</a>
-        <button class="pure-button pure-button-primary" @click="finish()">Eu concordo</button>
+        <a href="http://www.qvt-ufmg.com.br/"
+            class="pure-button">Quero saber mais</a>
+        <button class="pure-button pure-button-primary"
+            @click="finish()">Eu concordo</button>
     </div>
 </div>
 </template>
 
 <script>
 import hc from './consents/HC';
+import generic from './consents/Generic';
 
 export default {
+    props: ['questionSet'],
     components: {
-        hc
+        hc,
+        generic
     },
     data() {
         return {};
