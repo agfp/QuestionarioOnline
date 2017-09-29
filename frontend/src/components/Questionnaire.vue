@@ -14,6 +14,11 @@
         :show-percent="true">
     </vue-circle>
 
+    <div v-if="pageInstruction"
+        class="page-instruction">
+        <h2>{{ pageInstruction }}</h2>
+    </div>
+
     <ul class="question-list pure-form">
         <li class="question-item"
             v-for="question in screenQuestions">
@@ -299,6 +304,9 @@ export default {
         title() {
             return this.pages[this.currentPage].name;
         },
+        pageInstruction() {
+            return this.pages[this.currentPage].instruction;
+        },
         percentage() {
             return Math.ceil((this.completedSteps / this.totalSteps) * 100);
         }
@@ -323,6 +331,14 @@ export default {
     h1 {
         padding: 0;
         margin: 0;
+    }
+}
+
+.page-instruction {
+    padding: 12px 30px 0;
+
+    h2 {
+        font-weight: normal;
     }
 }
 

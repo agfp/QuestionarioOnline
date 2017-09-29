@@ -25,8 +25,8 @@ import ThankYou from './ThankYou';
 import consent from './Consent';
 import Helpers from '../helpers';
 import HC from '../assets/hc.json';
-import UFMG1 from '../assets/dev.json';
-import UFMG2 from '../assets/dev2.json';
+import UFMG1 from '../assets/ufmg1.json';
+// import UFMG2 from '../assets/dev.json';
 
 export default {
     components: {
@@ -82,7 +82,7 @@ export default {
             let sets = {
                 HC,
                 UFMG1,
-                UFMG2
+                UFMG2: UFMG1
             };
             let result = Helpers.prepareQuestionnaire(sets[questionSet]);
             this.questionnaire = result.questionnaire;
