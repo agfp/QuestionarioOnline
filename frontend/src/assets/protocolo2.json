@@ -12,13 +12,8 @@
         "textbox": true
       },
       {
-        "question": "Em que ano começou a trabalhar?",
-        "validationMsg": "Digite um número entre 1942 e 2017",
-        "number": {
-          "min": 1942,
-          "max": 2017
-        },
-        "textbox": true
+        "question": "Em que mês e ano começou a trabalhar?",
+        "monthYear": true
       },
       {
         "question": "Em que mês e ano começou a trabalhar na UFMG? (independente do vínculo)",
@@ -220,31 +215,7 @@
         ]
       },
       {
-        "question": "Sua Atuação na UFMG prevê contratualmente uma jornada de trabalho de quantas horas semanais",
-        "options": [
-          {
-            "item": "20 horas semanais"
-          },
-          {
-            "item": "30 horas semanais"
-          },
-          {
-            "item": "40 horas semanais"
-          },
-          {
-            "item": "44 horas semanais"
-          },
-          {
-            "item": "Outro:",
-            "textbox": true
-          },
-          {
-            "item": "Não se aplica"
-          }
-        ]
-      },
-      {
-        "question": "Na prática, quantas horas por semana você trabalha para UFMG? ",
+        "question": "Na prática, quantas horas por semana você trabalha normalmente para UFMG? ",
         "options": [
           {
             "item": "20 horas semanais"
@@ -312,7 +283,7 @@
         }
       },
       {
-        "question": "Normalmente, quantas vezes por mês (em média) aos sábados e/ou domingos?",
+        "question": "Quantas vezes por mês (em média) aos sábados e/ou domingos?",
         "textbox": true,
         "validationMsg": "Digite um número entre 0 e 8",
         "number": {
@@ -368,7 +339,7 @@
         ]
       },
       {
-        "question": "Com relação às suas férias ou descansos semanais, você",
+        "question": "Com relação às suas férias ou descansos semanais, você (pode marcar mais de uma alternativa)",
         "multiple": true,
         "options": [
           {
@@ -474,7 +445,7 @@
         ]
       },
       {
-        "question": "O seu salário normalmente é composto de:",
+        "question": "O seu salário normalmente é composto de (pode marcar mais de uma alternativa):",
         "multiple": true,
         "options": [
           {
@@ -759,7 +730,7 @@
     ]
   },
   {
-        "name": "Processos e características da atividade",
+    "name": "Processos e características da atividade",
     "questions": [
       {
         "question": "O horário de seu trabalho é...",
@@ -1344,411 +1315,166 @@
     ]
   },
   {
-    "name": "Questionário Geral de Saúde de Goldberg",
-    "instruction": "Gostaríamos de saber se você tem tido algumas dificuldades e como tem estado sua saúde nas últimas semanas. Por favor, responda a TODAS as perguntas deste questionário simplesmente sublinhando as respostas que, em sua opinião, mais se aproximam ao que sente ou  tem sentido. Lembre que queremos conhecer os problemas recentes e atuais, não os que ocorreram no passado.",
+    "name": "Inventário de perfis de valores organizacionais – IPVO",
+    "instruction": "Ao responder este questionário, pense na organização em que você trabalha como um todo. Descrevemos, a seguir, algumas organizações. Leia cada descrição e avalie o quanto cada uma dessas organizações é semelhante àquela na qual você trabalha. Marque a opção que indica o quanto cada organização descrita se parece com a sua.",
     "questions": [
       {
-        "question": "Você tem conseguido se concentrar bem naquilo que faz?",
-        "options": [
-          {
-            "item": "Melhor que o de costume"
-          },
-          {
-            "item": "Igual ao de costume"
-          },
-          {
-            "item": "Menos que o de costume"
-          },
-          {
-            "item": "Muito menos que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem perdido o sono frequentemente por causa das suas preocupações?",
-        "options": [
-          {
-            "item": "Não, de modo algum"
-          },
-          {
-            "item": "Não mais que o de costume"
-          },
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Muito mais que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem sentido que está desempenhando um papel útil na vida?",
-        "options": [
-          {
-            "item": "Mais útil que o de costume"
-          },
-          {
-            "item": "Igual ao de costume"
-          },
-          {
-            "item": "Menos útil que o de costume"
-          },
-          {
-            "item": "Muito menos que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem se sentido capaz de tomar decisões?",
-        "options": [
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Igual ao de costume"
-          },
-          {
-            "item": "Menos que o de costume"
-          },
-          {
-            "item": "Muito menos que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem se sentido constantemente esgotado e sob tensão?",
-        "options": [
-          {
-            "item": "Não, de modo algum"
-          },
-          {
-            "item": "Não mais que o de costume"
-          },
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Muito mais que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem tido a sensação de que não pode superar suas dificuldades?",
-        "options": [
-          {
-            "item": "Não, de modo algum"
-          },
-          {
-            "item": "Não mais que o de costume"
-          },
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Muito mais que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem realizado com satisfação suas atividades normais do dia a dia?",
-        "options": [
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Igual ao de costume"
-          },
-          {
-            "item": "Menos que o de costume"
-          },
-          {
-            "item": "Muito menos que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem sido capaz de enfrentar seus problemas adequadamente?",
-        "options": [
-          {
-            "item": "Mais capaz que o de costume"
-          },
-          {
-            "item": "Igual ao de costume"
-          },
-          {
-            "item": "Menos capaz que o de costume"
-          },
-          {
-            "item": "Muito menos capaz que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem se sentido infeliz e deprimido?",
-        "options": [
-          {
-            "item": "Não, de modo algum"
-          },
-          {
-            "item": "Não mais que o de costume"
-          },
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Muito mais que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem perdido a confiança em si mesmo?",
-        "options": [
-          {
-            "item": "Não, de modo algum"
-          },
-          {
-            "item": "Não mais que o de costume"
-          },
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Muito mais que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você tem pensado que é uma pessoa inútil?",
-        "options": [
-          {
-            "item": "Não, de modo algum"
-          },
-          {
-            "item": "Não mais que o de costume"
-          },
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Muito mais que o de costume"
-          }
-        ]
-      },
-      {
-        "question": "Você se sente razoavelmente feliz, considerando todas as circunstâncias?",
-        "options": [
-          {
-            "item": "Mais que o de costume"
-          },
-          {
-            "item": "Aproximadamente o mesmo que o de costume"
-          },
-          {
-            "item": "Menos que o de costume"
-          },
-          {
-            "item": "Muito menos que o de costume"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Escala de Autoestima de Rosemberg",
-    "questions": [
-      {
-        "question": "Leia cada frase com atenção e marque a opção mais adequada",
+        "question": "Quanto esta organização aqui descrita se parece com aquela na qual você trabalha?",
         "headers": [
-          "Discordo totalmente",
-          "Discordo",
-          "Concordo",
-          "Concordo totalmente"
+          "Muito parecida",
+          "Parecida",
+          "Mais ou menos parecida",
+          "Pouco parecida",
+          "Não se parece",
+          "Não se parece em nada"
         ],
         "matrix": [
           {
-            "item": "Eu sinto que sou uma pessoa de valor, no mínimo tanto quanto as outras pessoas"
+            "item": "Esta organização estimula os empregados a enfrentarem desafios. Para ela, os desafios tornam o trabalho do empregado mais interessante."
           },
           {
-            "item": "Eu acho que tenho várias boas qualidades"
+            "item": "Esta organização estimula os empregados a enfrentarem desafios. Para ela, os desafios tornam o trabalho do empregado mais interessante."
           },
           {
-            "item": "Levando tudo em conta, eu penso que sou um fracasso"
+            "item": "A sinceridade entre as pessoas é encorajada por esta organização. Ser verdadeiro com os outros é importante para ela."
           },
           {
-            "item": "Eu acho que sou capaz de fazer as coisas tão bem quanto a maioria das pessoas"
+            "item": "Para esta organização, todas as pessoas devem ser tratadas com igualdade. Na visão dela, as pessoas merecem oportunidades iguais."
           },
           {
-            "item": "Eu acho que eu não tenho muito do que me orgulhar"
+            "item": "Esta organização valoriza a competência. Para ela, é importante que o empregado demonstre as habilidades e os conhecimentos que possui."
           },
           {
-            "item": "Eu tenho uma atitude positiva com relação a mim mesmo"
+            "item": "É muito importante para esta organização ajudar seus empregados. Ela deseja cuidar do bem-estar deles."
           },
           {
-            "item": "No conjunto, eu estou satisfeito comigo"
+            "item": "A tradição é uma marca desta organização. Ela tem práticas que dão continuidade aos seus costumes."
           },
           {
-            "item": "Eu gostaria de poder ter eis respeito por mim mesmo"
+            "item": "Esta organização influencia outras organizações. Ela tem muito prestígio."
           },
           {
-            "item": "Às vezes eu me sinto inútil"
+            "item": "Esta organização acha que é importante ser competente. Ela quer demonstrar o quanto é capaz."
           },
           {
-            "item": "Às vezes eu acho que não presto para nada"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Escala de Conflito Trabalho-Família",
-    "questions": [
-      {
-        "question": "Como você avalia a relação entre a sua vida no trabalho e na família? Avalie, de acordo com a escala abaixo, cada um dos itens, que descrevem o seu trabalho interfere na sua vida familiar e vice-versa. Na coluna ao lado de cada item assinale seu nível de concordância com a ideia apresentada",
-        "headers": [
-          "Discordo totalmente",
-          "Discordo muito",
-          "Discordo pouco",
-          "Concordo pouco",
-          "Concordo muito",
-          "Concordo totalmente"
-        ],
-        "matrix": [
-          {
-            "item": "As demandas do meu trabalho interferem na minha vida familiar"
+            "item": "Esta organização oferece oportunidades de diversão aos empregados. Ela acha importante que eles tenham prazer no trabalho."
           },
           {
-            "item": "Devido à quantidade de tempo que dedico ao trabalho, tenho dificuldade em cumprir minhas responsabilidades familiares"
+            "item": "É importante para esta organização ser rica. Ela quer ter lucros nos negócios."
           },
           {
-            "item": "Por causa das demandas do meu trabalho, não consigo fazer as coisas que quero fazer em casa"
+            "item": "Para esta organização, é importante que os empregados se comportem de forma educada no ambiente de trabalho. Ela acredita que as boas maneiras devem ser praticadas."
           },
           {
-            "item": "As pressões do meu trabalho restringem a liberdade de planejar as minhas atividades familiares"
+            "item": "Esta organização preserva os costumes antigos. Ela respeita a tradição."
           },
           {
-            "item": "Os meus deveres no trabalho me levam a mudar meus planos para as atividades familiares"
+            "item": "Esta organização incentiva o sucesso profissional dos empregados. Ela estimula a trabalharem de maneira competente."
           },
           {
-            "item": "As demandas da minha família interferem nas minhas atividades de trabalho"
+            "item": "Nesta organização, os empregados são premiados. A satisfação deles com a organização é uma meta importante."
           },
           {
-            "item": "Eu preciso adiar atividades de trabalho por causa de demandas que surgem quando estou em casa"
+            "item": "Esta organização acredita no valor da honestidade. Ela honra seus compromissos com pessoas e organizações com as quais se relaciona."
           },
           {
-            "item": "Por causa das demandas da minha família, não consigo fazer as coisas que preciso no trabalho"
+            "item": "Para esta organização é importante que todas as pessoas sejam tratadas de maneira justa. É importante, para ela, respeitar os direitos dos outros."
           },
           {
-            "item": "Minha vidas doméstica interfere nas minhas responsabilidades no trabalho (como chegar no horário, cumprir as tarefas e a jornada de trabalho)"
+            "item": "Esta organização acha importante ter modelos de comportamento definidos. Para ela, os empregados devem ter um jeito correto de se comportar no trabalho."
           },
           {
-            "item": "As Pressões geradas pela minha família interferem no meu desempenho"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Escala de Bem-estar Afetivo no Trabalho",
-    "questions": [
-      {
-        "question": "Leia cada frase com atenção e marque a opção mais adequada",
-        "headers": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "matrix": [
-          {
-            "item": "Tranquilo"
+            "item": "Esta organização busca o domínio do mercado. Ela quer eliminar a concorrência."
           },
           {
-            "item": "Com raiva"
+            "item": "Esta organização evita mudanças. Ela prefere manter sua forma de trabalhar."
           },
           {
-            "item": "Chateado"
+            "item": "Nesta organização, é importante que os empregados conheçam bem o trabalho que fazem. Ela reconhece os empregados competentes."
           },
           {
-            "item": "Ansioso"
+            "item": "Esta organização acha importante ser fiel a seus empregados e clientes. Ela cumpre seus compromissos com eles."
           },
           {
-            "item": "Incomodado"
+            "item": "Para esta organização é importante manter clubes destinados ao lazer dos empregados. Ela considera que a diversão é uma parte importante da vida do empregado."
           },
           {
-            "item": "Alegre"
+            "item": "Esta organização valoriza empregados curiosos. Ela gosta de empregados que procuram se informar a respeito do trabalho."
           },
           {
-            "item": "Calmo"
+            "item": "Esta organização gosta de empregados que mostram suas habilidades. Ela procura desenvolver a competência desses empregados."
           },
           {
-            "item": "Confuso"
+            "item": "Esta organização tem prestígio na sociedade. Ela acha importante ser admirada por todos."
           },
           {
-            "item": "Contente"
+            "item": "Esta organização procura se aperfeiçoar constantemente. Para ela, o aperfeiçoamento é uma forma de melhorar a qualidade de seus produtos e serviços."
           },
           {
-            "item": "Depressivo"
+            "item": "Esta organização acredita que as regras são importantes. Para ela, os empregados deveriam obedecê-las."
           },
           {
-            "item": "Desgostoso"
+            "item": "O respeito à hierarquia faz parte das tradições desta organização. Para ela, a hierarquia deve ser respeitada pelos empregados."
           },
           {
-            "item": "Desencorajado"
+            "item": "Esta organização valoriza empregados que buscam realização no trabalho. Ela reconhece quando um empregado tem objetivos profissionais."
           },
           {
-            "item": "Orgulho do que faço"
+            "item": "Para esta organização é importante ser criativa. Ela gosta de ser original."
           },
           {
-            "item": "Com energia"
+            "item": "Esta organização procura manter práticas consagradas. Ela acredita que é importante trabalhar sempre do mesmo modo."
           },
           {
-            "item": "Animado"
+            "item": "Esta organização preocupa-se com a qualidade de vida dos empregados. Ela realiza projetos sociais que contribuem para o bem-estar deles."
           },
           {
-            "item": "Empolgado"
+            "item": "Esta organização tem prestígio. Ela oferece produtos e serviços que são respeitados pelos clientes."
           },
           {
-            "item": "Entusiasmado"
+            "item": "Esta organização acredita que a cortesia é importante. Para ela, as boas maneiras fazem parte do relacionamento entre os empregados e as organizações."
           },
           {
-            "item": "Assustado"
+            "item": "Esta organização tem influência na sociedade. Ela acha importante ser respeitada por todos."
           },
           {
-            "item": "Malsucedido"
+            "item": "Para esta organização, planejar metas é essencial. Ela considera a realização das metas uma prova de sua competência."
           },
           {
-            "item": "Furioso"
+            "item": "Esta organização acha importante ser competitiva. Ela quer ganhar novos mercados."
           },
           {
-            "item": "Triste"
+            "item": "Esta organização acredita que a pessoa deve ser honesta em qualquer situação. Dizer a verdade faz parte dos princípios desta organização."
           },
           {
-            "item": "Cansado"
+            "item": "O prazer para esta organização é obter lucros. Ela sente-se satisfeita quando os rendimentos superam as despesas."
           },
           {
-            "item": "Pressionado"
+            "item": "Esta organização deseja que o empregado tenha uma vida profissional variada. Ela valoriza o empregado que tem experiências profissionais diferentes."
           },
           {
-            "item": "Feliz"
+            "item": "Nesta organização, as regras de convivência são consideradas importantes. Para ela, os empregados, clientes e outras organizações deveriam respeitá-las."
           },
           {
-            "item": "Inspirado"
+            "item": "Esta organização considera a segurança dos negócios muito importante. Ela está atenta às ameaças do mercado."
           },
           {
-            "item": "Miserável"
+            "item": "Esta organização acredita que os empregados devem aceitar o trabalho que têm a fazer. Para ela, os empregados devem cumprir suas obrigações."
           },
           {
-            "item": "Agradecido"
+            "item": "Esta organização considera lealdade importante. Ela é leal às pessoas e organizações próximas dela."
           },
           {
-            "item": "Honrado"
+            "item": "Esta organização estimula, nos clientes, o desejo de adquirir novidades. Ela encoraja os clientes a provarem produtos e serviços novos."
           },
           {
-            "item": "Satisfeito"
+            "item": "Esta organização incentiva o empregado a ser criativo. Ela estimula a criação de produtos e serviços originais."
           },
           {
-            "item": "À vontade"
+            "item": "O comportamento do empregado, nesta organização, deve mostrar respeito aos costumes. Para ela, a tradição deve ser preservada."
+          },
+          {
+            "item": "Esta organização propõe atividades que dão prazer ao empregado. Na visão dela, é importante o empregado sentir-se satisfeito consigo mesmo."
           }
         ]
       }

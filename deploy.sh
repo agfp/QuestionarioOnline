@@ -1,6 +1,6 @@
 #/bin/bash
 
-DEPLOY_FOLDER="../deploys/questionario/"
+DEPLOY_FOLDER="../deploys/questionario-test/"
 
 #cd views/questionnaires
 #sed -i -- 's/{"key":"key","token":"token"}/<%- parameters %>/g' *.ejs

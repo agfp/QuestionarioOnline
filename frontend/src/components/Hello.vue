@@ -24,9 +24,10 @@ import questionnaire from './Questionnaire';
 import ThankYou from './ThankYou';
 import consent from './Consent';
 import Helpers from '../helpers';
+// questionnaires
 import HC from '../assets/hc.json';
-import UFMG1 from '../assets/ufmg1.json';
-// import UFMG2 from '../assets/dev.json';
+import Protocolo1 from '../assets/protocolo1.json';
+import Protocolo2 from '../assets/protocolo2.json';
 
 export default {
     components: {
@@ -81,8 +82,8 @@ export default {
         loadQuestions(questionSet) {
             let sets = {
                 HC,
-                UFMG1,
-                UFMG2: UFMG1
+                Protocolo1,
+                Protocolo2,
             };
             let result = Helpers.prepareQuestionnaire(sets[questionSet]);
             this.questionnaire = result.questionnaire;
@@ -95,14 +96,16 @@ export default {
                     break;
 
                 default:
-                    rnd = parseInt(Math.random() * 100, 0) % 2;
-                    this.questionSet = rnd ? 'UFMG1' : 'UFMG2';
+                    rnd = parseInt(Math.random() * 100, 10) % 2;
+                    this.questionSet = rnd ? 'Protocolo1' : 'Protocolo2';
                     break;
             }
             window.scrollTo(0, 0);
             this.step = 1;
         },
         onConsented() {
+            // alert(this.questionSet);
+
             window.scrollTo(0, 0);
             this.loadQuestions(this.questionSet);
             this.step = 2;
