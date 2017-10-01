@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<h1>Questionário Geral - Protocolo 1</h1>
+<hr />
+<h2>
+    Todas respostas:
+    <a href="<%= download %>">
+        <img src="/static/xls-icon-3390.png" style="width: 70px; vertical-align: middle" />
+    </a>
+</h2>
+
+<h2>Últimas respostas:</h2>
+<table border="1" style="white-space: nowrap;">
+    <tr>
+        <th>Fim</th>
+        <th>Início</th>
+        <% for(var j=0; j<data[0].answers.length; j++) { %><th><%= j+1 %></th><% } %>
+    </tr>
+    <% for(var i=0; i<data.length; i++) { %>
+    <tr>
+        <td><%= data[i].end_time %></td>
+        <td><%= data[i].start_time %></td>
+        <% for(var j=0; j<data[i].answers.length; j++) { %><td><%= data[i].answers[j] %></td><% } %>
+    </tr>
+    <% } %>
+</table>
+
+<h2>Perguntas:</h2>
+<pre>
+1 - Qual a sua idade?
+2 - Em que ano começou a trabalhar?
+3 - Em que mês e ano começou a trabalhar na UFMG? (independente do vínculo)
+4 - Em que mês e ano começou a trabalhar no cargo atual
+5 - Sexo?
+6 - Número de filhos e/ou dependentes?
+7 - Estado civil:
+8 - Estado civil: - Outro:
+9 - Qual seu último grau de instrução
+10 - Vinculo com a UFMG
+11 - Vinculo com a UFMG - Voluntário, como:
+12 - Vinculo com a UFMG - Contrato temporário, como:
+13 - Vinculo com a UFMG - Outro:
+14 - Tipo de cargo
+15 - Tipo de cargo - Outro. Qual:
+16 - Qual sua principal atividade/cargo na UFMG?
+17 - Sua atuação na UFMG é sua principal atividade profissional?
+--- Com relação a função de coordenação, supervisão ou chefia, você
+18 - Nunca exerceu
+19 - Exerceu no passado e foi remunerado
+20 - Exerceu no passado, mas não foi remunerado
+21 - Exerce, mas não é remunerado
+22 - Exerce e é remunerado
+---
+23 - Sua Atuação na UFMG prevê contratualmente uma jornada de trabalho de quantas horas semanais
+24 - Sua Atuação na UFMG prevê contratualmente uma jornada de trabalho de quantas horas semanais - Outro:
+25 - Na prática, quantas horas por semana você trabalha para UFMG?
+26 - Na prática, quantas horas por semana você trabalha para UFMG?  - Outro:
+27 - Normalmente, quantos dias por semana você trabalha na/para a UFMG?
+28 - Normalmente, quantos vezes por mês trabalha durante a noite?
+29 - Normalmente, quantas vezes por mês (em média) aos sábados e/ou domingos?
+30 - Gostaria de trabalhar...
+31 - Gostaria de trabalhar... - Outro:
+32 - Em média, quantos minutos por dia você demora no percurso de casa para o trabalho e do trabalho para casa (total/soma)?
+--- Você trabalha...
+33 - com registro eletrônico de ponto
+34 - com horários fixos de entrada e saída
+35 - por turnos ou escala
+---
+--- Com relação às suas férias ou descansos semanais, você
+36 - Usufrue anualmente de trinta dias ou mais de férias
+37 - Divide suas férias em duas ou três vezes
+38 - Costuma vender parte de suas férias
+39 - Tem outro trabalho durante suas férias
+40 - Aproveita suas férias para realmente descansar
+---
+41 - Com relação ao adicional de insalubridade/periculosidade, penso que:
+42 - Com relação à sua aposentadoria, seu benefício será pago
+43 - Você é sindicalizado?
+44 - Qual o sindicato?
+45 - Com que frequencia participa das atividades sindicais?
+--- O seu salário normalmente é composto de:
+46 - Salário fixo
+47 - Comissão por desempenho ou produção
+48 - Beneficios pagos em dinheiro
+49 - Horas extraordinárias
+50 - Participação nos resultados
+51 - Apenas de acordo com sua produção
+---
+52 - Quanto você ganha por mês (salário bruto/total)
+53 - O que você ganha é
+54 - Você tem outra atividade profissional fora da UFMG?
+55 - Qual atividade?
+56 - Ela é remunerada?
+57 - Quantas horas de trabalho aproximadamente essa(s) outra(s) atividade(s) profissional(is) lhe exige?
+58 - Quantas horas de trabalho aproximadamente essa(s) outra(s) atividade(s) profissional(is) lhe exige? - Outras:
+--- Quanto você está exposto às condições de trabalho abaixo?
+59 - Vibrações provocadas por instrumentos manuais, máquinas, etc.
+60 - Ruídos fortes que obrigam você a levantar a voz para falar com as pessoas
+61 - Calor desconfortável
+62 - Exposição prolongada ao sol
+63 - Frio desconfortável
+64 - Mudança brusca de temperatura
+65 - Umidade excessiva
+66 - Falta de ventilação (exemplo: ambiente sem janela)
+67 - Ventilação inadequada (exemplo: mau cheiro, ventilação contaminada)
+68 - Fumaça (p. ex. de soldas, de tanque de escape e de caldeira), pó (p.ex. de giz, de algodão/tecido e de madeira) ou poeiras ( p. ex. de cimento, de terra e de fuligem)
+69 - Inalação de vapores (p. ex.: de solventes, de diluentes, de inseticidas e/ou de material de limpeza
+70 -  Manuseio ou contato da pele com produtos ou substâncias químicas (p. ex., tinta de pincel atômico, produtos de laboratório, solventes e/ou material de limpeza)
+71 -  Contato com pessoas com doenças infectocontagiosas
+72 - Manuseio ou contato direto com materiais que podem transmitir doenças infecciosas (p. ex. lixo, dejetos, sangue, fluidos corporais e/ou materias de laboratório)
+73 - Radiação, raio x, radioatividade, luz de soldadura, raio laser
+74 - Fumaça de cigarro de outras pessoas
+75 - Iluminação insuficiente
+76 - Iluminação excessiva
+77 - Risco de acidentes físicos (p. ex. desabamentos, quedas de materiais, etc..)
+78 - Riscos de acidentes com ferramentas, instrumentos e maquinários
+79 - Falta de higiene no ambiente de trabalho (p. ex., sala de trabalho e/ou áreas comuns)
+80 - Uso de instalações inapropriadas para suas necessidades orgânicas
+81 - Riscos de pequenos acidentes de trabalho
+82 - Riscos de acidentes de trabalho incapacitantes ou fatais
+---
+--- Quanto você está exposto às condições de trabalho abaixo?
+83 - Riscos de acidentes no trânsito durante o desenvolvimento da atividade
+84 - Posições dolorosas ou fatigantes
+85 - Levantar ou deslocar pessoas
+86 - Transportar ou deslocar cargas pesadas
+87 - Operar máquinas e ferramentas que exigem de você acentuado esforço físico
+88 - Usar máquinas, equipamentos e/ou ferramentas com defeitos
+89 - Ficar em pé ou andar por longos períodos
+90 - Repetir movimentos com a mão ou o braço
+91 - Repetir movimentos em intervalos menores que um minuto
+92 - Repetir movimentos em intervalos menores que dez minutos
+93 - Manter membros superiores suspensos por longos intervalos de tempo
+94 - Trabalhar em casa, desempenhando suas atividades profissionais
+95 - Trabalhar em outros locais que não sejam a sua casa ou instalações da organização/instituição (p. ex., nas instalações de clientes ou usuários e/ou em viagem)
+96 - Estar em contato direto com público externo (p. ex., clientes, pacientes, familiares ou fornecedores)
+97 - Estar em contato direto com público interno (p. ex., alunos, professores e funcionários
+98 - Trabalhar com computadores, rede de dados, servidor, atividades referentes ao trabalho
+99 - Trabalhar com internet, e-mail, redes sociais
+100 - Usar telefonia celular e aplicativos como WhatsApp para realizar comunicações necessárias ao trabalho
+101 -  Falta de material necessário para a realização de suas tarefas
+102 -  Falta de equipamentos/ferramentas adequadas
+103 -  Trabalhar com colegas e/ou atendendo o público interno e/ou externo em espaço insuficiente
+104 - Precisar do uso de EPIs (equipamentos de proteção individual) nas suas atividades
+105 - Poder contar com o fornecimentos de EPIs (equipamentos de proteção individual) pela organização
+---
+--- O horário de seu trabalho é...
+106 - definido pela organização/instituição sem possibilidade de alteração
+107 - adaptado por você
+108 - inteiramente determinado por você
+109 - influenciado pelas demandas do usuário
+110 - combinado com chefia/superiores/colegas
+111 - alterado pela chefia/superiores
+---
+--- O seu trabalho implica...
+112 - Ritmo acelerado
+113 - prazos rígidos e curtos
+114 - prazos incompatíveis com a realização da tarefa
+115 - incompatibilidades entre demanda(s) e seu horário de trabalho (entrada, intervalo e saída)
+116 -  Incompatibilidades entre demanda(s) e número de pessoas no setor de trabalho
+117 - realizar atividades além das atribuições previstas para seu cargo/função
+118 - o preenchimento de formulário com detalhes que você desconhece a necessidade
+119 - cumprimento de sequências de tarefas e normas com detalhes cujas finalidades não se explicam
+120 -  Acompanhar longos trâmites administrativos-burocráticos
+---
+--- Seu trabalho depende...
+121 - do trabalho dos seus colegas e/ou outros setores
+122 - das demandas do público interno e/ou externo
+123 - da velocidade automática de uma máquina
+124 - do controle direto da chefia/superiores
+125 - de aprender coisas novas
+---
+--- O seu trabalho lhe exige...
+126 - cumprir normas  administrativas
+127 - cumprir procedimentos operacionais padronizados
+128 - cumprir normas de segurança
+129 - cumprir metas de produção e/ou desempenho
+130 - resolver problemas por você mesmo
+131 - lidar com normas e/ou legislações conflitantes
+132 - realizar tarefas monótonas
+133 - realizar tarefas complexas
+134 - interromper uma tarefa para realizar outra(s)
+135 - atender telefonemas e/ou responder mensagens por e-mail ou outras mídias
+---
+--- Você pode escolher ou modificar...
+136 - a sequência das suas tarefas
+137 - seus métodos de trabalho (ou modos de realizar o trabalho)
+138 - o ritmo da realização das tarefas
+---
+--- Na execução de suas atividades de trabalho, você...
+139 - recebe ajuda de colegas
+140 - recebe ajuda dos seus chefes/superiores
+141 - pode receber ajuda externa à organização/instituição
+142 - faz pausa quando deseja
+143 - pode planejar e/ou negociar o tempo necessário para terminar seu trabalho
+144 - é livre para decidir quando tira férias ou dias de folga
+145 - tem oportunidades para realizar o que sabe fazer melhor
+146 - pode fazer um trabalho bem feito nas condições de trabalho atuais
+147 - pode pôr em prática as suas ideias
+148 - é desafiado intelectualmente no seu trabalho
+149 - é orientado a apresentar certas emoções
+150 - deve regular e/ou controlar suas emoções
+151 - preenche formulários que se sobrepõem ou se repetem
+152 - preenche formulários com vários itens desnecessários
+---
+--- O que você faz é definido...
+153 - em manuais, regimentos, normas e/ou protocolos
+154 - por seu chefe/superior sozinho ou por instância colegiada superior a você
+155 - pela equipe de trabalho
+156 - por você, planejando independentemente
+---
+--- Suas atividades e funções exigem...
+157 - qualificações e experiências que você já tem
+158 - domínio de novos processos de trabalho
+159 - uso de programas de informática (em rede interna ou externa
+160 - uso de internet para execução do trabalho (p. ex., busca de informações/conteúdos)
+161 - uso de novos meios de comunicação (p. ex., videoconferência, redes sociais)
+162 - manter-se atualizados (p. ex., participar de congressos, realizar leituras e/ou estudar)
+163 - formação suplementar (como titulações e outros cursos) além do que você já tem
+---
+--- Quanto às suas responsabilidades você responde...
+164 - por danos a equipamentos, máquinas e objetos
+165 - pela qualidade dos serviços prestados às pessoas e/ou dos produtos técnicos
+166 - por erros técnicos no desenvolvimento de seu trabalho
+167 - pela aplicação e/ou prestação de contas de recursos públicos
+168 - pela captação de recursos públicos ou privados
+169 - pela guarda e preservação de documentos impressos e/ou digitais
+170 - pelo recebimento e conferência de documentos, insumos e/ou materiais
+171 - pelo preenchimento de formulários e registro de informações
+---
+--- Quanto à concepção do seu trabalho, você pode afirmar que em seu setor:
+172 - O bom planejamento das atividades facilita sua execução com qualidade
+173 - Os objetivos maiores da universidade guia o estabelecimento adequado de prioridade
+174 - Todos estão seguros da relevância dos objetivos de cada atividade
+175 - As tarefas sempre envolvem aspectos que não se sabe o que os justificaria
+176 - É evidente a necessidade de melhor organização e racionalização
+177 - Ocorre “retrabalho” por equívocos de organização e planejamento
+178 - O ritmo e/ou a morosidade das decisões dificultam a consecução dos objetivos de trabalho
+179 - Todos têm clareza dos objetivos do que fazem
+---
+--- Na sua organização/instituição o investimento em capacitação pessoal é em forma de...
+180 - liberação sem suspensão de salário
+181 - liberação com suspensão do seu salário
+182 - aumento salarial por capacitação
+183 - custeio total ou parcial (p. ex. bolsas, auxílios, isenções de taxas ou mensalidades)
+184 - oferta de cursos, treinamentos e/ou palestras
+---
+--- Desde que está nesta organização/instituição, você realizou/participou de...
+185 - formação (p. ex., graduação, especialização, mestrado)
+186 - treinamento introdutório
+187 - treinamento de atualização/reciclagem
+188 - programa de tutorização
+189 - eventos e/ou congressos
+190 - ações de autoaprendizagem, atualizações, etc.
+---
+--- Na sua organização/instituição o plano de carreira...
+191 - é aplicado adequadamente
+192 - estimula seu desempenho
+193 - aumenta sua dedicação
+194 - fortalece sua permanência
+---
+--- Você...
+195 - influencia a escolha dos seus colegas de trabalho
+196 - participa da escolha dos seus chefes/superiores
+197 - mantém um diálogo de qualidade com o seu chefe/superior acerca do seu trabalho
+198 - participa do planejamento de mudanças na organização do trabalho e/ou nas suas condições de trabalho
+199 - observa que os conflitos são bem administrados
+200 -  observa que a qualidade das decisões melhoram e se incorporam melhor, quando são discutidas no colegiado e outras instâncias
+201 - observa conflitos na aplicação das normas e/ou regimento
+202 - observa conflitos na forma de aplicação de direitos informais (direitos adquiridos pelo costume)
+203 - tem seu desempenho avaliado
+204 - recebe feedback (retorno) sobre seu desempenho
+205 - é orientado sobre os riscos de acidentes no trabalho
+206 - é orientado sobre os riscos de adoecimento decorrente do trabalho
+207 - é respeitado nas suas necessidades de tratamento de saúde
+208 - é pressionado a trabalhar além de suas condições de saúde
+209 - é respeitado na necessidade de afastamento por problemas de saúde
+---
+--- Em seu trabalho, você está exposto a:
+210 - pressão por decisões rápidas
+211 -  dificuldades de aquisição/solicitação do material necessário para a realização de suas tarefas
+212 -  dificuldades de aquisição e atualização de equipamentos, aparelhos e/ou softwares necessários a realização de suas atribuições
+213 -  dificuldades para consertos e ajustes nas instalações utilizadas
+214 - falta de equipamentos/ferramentas adequadas
+215 - exigências desproporcionais às condições de trabalho
+216 - conflitos com colegas de trabalho
+217 - conflitos com superiores/chefias
+218 - exigências conflitantes com seus princípios e valores
+219 - realizar tarefas diferentes das suas atribuições
+220 - sobrecarga de tarefas
+221 - realizar tarefas conflitivas ou contraditórias
+222 - ficar sem fazer nada
+223 - assumir responsabilidade por aplicar punições ou sanções
+---
+--- No último ano, você observou no seu ambiente de trabalho...
+224 - agressões verbais
+225 - situações de constrangimento
+226 - ameaça de transferência e/ou remoção de setor
+227 - transferência e/ou remoção de setor de maneira arbitrária (sem motivo justo).
+228 - designações para locais ou atividades incompatíveis com o cargo ou função
+229 - ameaças de violência física
+230 - violência física
+231 - intimidações / perseguições
+232 - elogios inadequados e/ou inapropriados
+233 - assédio moral
+234 - discriminação de sexo (homem x mulher)
+235 - insinuações de natureza sexual
+236 - assédio sexual
+---
+--- No último ano, você observou no seu ambiente de trabalho insinuações relacionadas...
+237 - à idade
+238 - à nacionalidade, regiões e/ou microrregiões
+239 - ao setor e/ou atividade de trabalho
+240 - aos aspectos raciais
+241 - à classe social
+242 - à religião
+243 - ao vínculo empregatício
+244 - aos posicionamentos políticos
+245 - às características pessoais (p. ex., peso, altura)
+246 - às deficiências físicas e/ou mentais
+247 - às preferências/orientações/identidades sexuais
+248 - à história pessoal (p. ex., prostituição, ex-presidiários, portadores de doenças contagiosas ou crônicas)
+---
+--- No último ano, você observou no seu ambiente de trabalho exclusão e/ou diminuição de oportunidades relacionadas...
+249 - à idade
+250 - à nacionalidade, regiões e/ou microrregiões
+251 - ao setor e/ou atividade de trabalho
+252 - aos aspectos raciais
+253 - à classe social
+254 - à religião
+255 - ao vínculo empregatício
+256 - aos posicionamentos políticos
+257 - às características pessoais (p. ex., peso, altura)
+258 - às deficiências físicas e mentais
+259 - às preferências/orientações/identidades sexuais
+260 - à história pessoal (p. ex., prostituição, ex-presidiários, portadores de doenças contagiosas ou crônicas)
+---
+261 - Você tem conseguido se concentrar bem naquilo que faz?
+262 - Você tem perdido o sono frequentemente por causa das suas preocupações?
+263 - Você tem sentido que está desempenhando um papel útil na vida?
+264 - Você tem se sentido capaz de tomar decisões?
+265 - Você tem se sentido constantemente esgotado e sob tensão?
+266 - Você tem tido a sensação de que não pode superar suas dificuldades?
+267 - Você tem realizado com satisfação suas atividades normais do dia a dia?
+268 - Você tem sido capaz de enfrentar seus problemas adequadamente?
+269 - Você tem se sentido infeliz e deprimido?
+270 - Você tem perdido a confiança em si mesmo?
+271 - Você tem pensado que é uma pessoa inútil?
+272 - Você se sente razoavelmente feliz, considerando todas as circunstâncias?
+--- Leia cada frase com atenção e marque a opção mais adequada
+273 - Eu sinto que sou uma pessoa de valor, no mínimo tanto quanto as outras pessoas
+274 - Eu acho que tenho várias boas qualidades
+275 - Levando tudo em conta, eu penso que sou um fracasso
+276 - Eu acho que sou capaz de fazer as coisas tão bem quanto a maioria das pessoas
+277 - Eu acho que eu não tenho muito do que me orgulhar
+278 - Eu tenho uma atitude positiva com relação a mim mesmo
+279 - No conjunto, eu estou satisfeito comigo
+280 - Eu gostaria de poder ter eis respeito por mim mesmo
+281 - Às vezes eu me sinto inútil
+282 - Às vezes eu acho que não presto para nada
+---
+--- Como você avalia a relação entre a sua vida no trabalho e na família? Avalie, de acordo com a escala abaixo, cada um dos itens, que descrevem o seu trabalho interfere na sua vida familiar e vice-versa. Na coluna ao lado de cada item assinale seu nível de concordância com a ideia apresentada
+283 - As demandas do meu trabalho interferem na minha vida familiar
+284 - Devido à quantidade de tempo que dedico ao trabalho, tenho dificuldade em cumprir minhas responsabilidades familiares
+285 - Por causa das demandas do meu trabalho, não consigo fazer as coisas que quero fazer em casa
+286 - As pressões do meu trabalho restringem a liberdade de planejar as minhas atividades familiares
+287 - Os meus deveres no trabalho me levam a mudar meus planos para as atividades familiares
+288 - As demandas da minha família interferem nas minhas atividades de trabalho
+289 - Eu preciso adiar atividades de trabalho por causa de demandas que surgem quando estou em casa
+290 - Por causa das demandas da minha família, não consigo fazer as coisas que preciso no trabalho
+291 - Minha vidas doméstica interfere nas minhas responsabilidades no trabalho (como chegar no horário, cumprir as tarefas e a jornada de trabalho)
+292 - As Pressões geradas pela minha família interferem no meu desempenho
+---
+--- Leia cada frase com atenção e marque a opção mais adequada
+293 - Tranquilo
+294 - Com raiva
+295 - Chateado
+296 - Ansioso
+297 - Incomodado
+298 - Alegre
+299 - Calmo
+300 - Confuso
+301 - Contente
+302 - Depressivo
+303 - Desgostoso
+304 - Desencorajado
+305 - Orgulho do que faço
+306 - Com energia
+307 - Animado
+308 - Empolgado
+309 - Entusiasmado
+310 - Assustado
+311 - Malsucedido
+312 - Furioso
+313 - Triste
+314 - Cansado
+315 - Pressionado
+316 - Feliz
+317 - Inspirado
+318 - Miserável
+319 - Agradecido
+320 - Honrado
+321 - Satisfeito
+322 - À vontade
+---
+</pre>
+
+</body>
+
+</html>

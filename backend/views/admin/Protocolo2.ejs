@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<h1>Questionário Geral - Protocolo 2</h1>
+<hr />
+<h2>
+    Todas respostas:
+    <a href="<%= download %>">
+        <img src="/static/xls-icon-3390.png" style="width: 70px; vertical-align: middle" />
+    </a>
+</h2>
+
+<h2>Últimas respostas:</h2>
+<table border="1" style="white-space: nowrap;">
+    <tr>
+        <th>Fim</th>
+        <th>Início</th>
+        <% for(var j=0; j<data[0].answers.length; j++) { %><th><%= j+1 %></th><% } %>
+    </tr>
+    <% for(var i=0; i<data.length; i++) { %>
+    <tr>
+        <td><%= data[i].end_time %></td>
+        <td><%= data[i].start_time %></td>
+        <% for(var j=0; j<data[i].answers.length; j++) { %><td><%= data[i].answers[j] %></td><% } %>
+    </tr>
+    <% } %>
+</table>
+
+<h2>Perguntas:</h2>
+<pre>
+1 - Qual a sua idade?
+2 - Em que mês e ano começou a trabalhar?
+3 - Em que mês e ano começou a trabalhar na UFMG? (independente do vínculo)
+4 - Em que mês e ano começou a trabalhar no cargo atual
+5 - Sexo?
+6 - Número de filhos e/ou dependentes?
+7 - Estado civil:
+8 - Estado civil: - Outro:
+9 - Qual seu último grau de instrução
+10 - Vinculo com a UFMG
+11 - Vinculo com a UFMG - Voluntário, como:
+12 - Vinculo com a UFMG - Contrato temporário, como:
+13 - Vinculo com a UFMG - Outro:
+14 - Tipo de cargo
+15 - Tipo de cargo - Outro. Qual:
+16 - Qual sua principal atividade/cargo na UFMG?
+17 - Sua atuação na UFMG é sua principal atividade profissional?
+--- Com relação a função de coordenação, supervisão ou chefia, você
+18 - Nunca exerceu
+19 - Exerceu no passado e foi remunerado
+20 - Exerceu no passado, mas não foi remunerado
+21 - Exerce, mas não é remunerado
+22 - Exerce e é remunerado
+---
+23 - Na prática, quantas horas por semana você trabalha normalmente para UFMG?
+24 - Na prática, quantas horas por semana você trabalha normalmente para UFMG?  - Outro:
+25 - Normalmente, quantos dias por semana você trabalha na/para a UFMG?
+26 - Normalmente, quantos vezes por mês trabalha durante a noite?
+27 - Quantas vezes por mês (em média) aos sábados e/ou domingos?
+28 - Gostaria de trabalhar...
+29 - Gostaria de trabalhar... - Outro:
+30 - Em média, quantos minutos por dia você demora no percurso de casa para o trabalho e do trabalho para casa (total/soma)?
+--- Você trabalha...
+31 - com registro eletrônico de ponto
+32 - com horários fixos de entrada e saída
+33 - por turnos ou escala
+---
+--- Com relação às suas férias ou descansos semanais, você (pode marcar mais de uma alternativa)
+34 - Usufrue anualmente de trinta dias ou mais de férias
+35 - Divide suas férias em duas ou três vezes
+36 - Costuma vender parte de suas férias
+37 - Tem outro trabalho durante suas férias
+38 - Aproveita suas férias para realmente descansar
+---
+39 - Com relação ao adicional de insalubridade/periculosidade, penso que:
+40 - Com relação à sua aposentadoria, seu benefício será pago
+41 - Você é sindicalizado?
+42 - Qual o sindicato?
+43 - Com que frequencia participa das atividades sindicais?
+--- O seu salário normalmente é composto de (pode marcar mais de uma alternativa):
+44 - Salário fixo
+45 - Comissão por desempenho ou produção
+46 - Beneficios pagos em dinheiro
+47 - Horas extraordinárias
+48 - Participação nos resultados
+49 - Apenas de acordo com sua produção
+---
+50 - Quanto você ganha por mês (salário bruto/total)
+51 - O que você ganha é
+52 - Você tem outra atividade profissional fora da UFMG?
+53 - Qual atividade?
+54 - Ela é remunerada?
+55 - Quantas horas de trabalho aproximadamente essa(s) outra(s) atividade(s) profissional(is) lhe exige?
+56 - Quantas horas de trabalho aproximadamente essa(s) outra(s) atividade(s) profissional(is) lhe exige? - Outras:
+--- Quanto você está exposto às condições de trabalho abaixo?
+57 - Vibrações provocadas por instrumentos manuais, máquinas, etc.
+58 - Ruídos fortes que obrigam você a levantar a voz para falar com as pessoas
+59 - Calor desconfortável
+60 - Exposição prolongada ao sol
+61 - Frio desconfortável
+62 - Mudança brusca de temperatura
+63 - Umidade excessiva
+64 - Falta de ventilação (exemplo: ambiente sem janela)
+65 - Ventilação inadequada (exemplo: mau cheiro, ventilação contaminada)
+66 - Fumaça (p. ex. de soldas, de tanque de escape e de caldeira), pó (p.ex. de giz, de algodão/tecido e de madeira) ou poeiras ( p. ex. de cimento, de terra e de fuligem)
+67 - Inalação de vapores (p. ex.: de solventes, de diluentes, de inseticidas e/ou de material de limpeza
+68 -  Manuseio ou contato da pele com produtos ou substâncias químicas (p. ex., tinta de pincel atômico, produtos de laboratório, solventes e/ou material de limpeza)
+69 -  Contato com pessoas com doenças infectocontagiosas
+70 - Manuseio ou contato direto com materiais que podem transmitir doenças infecciosas (p. ex. lixo, dejetos, sangue, fluidos corporais e/ou materias de laboratório)
+71 - Radiação, raio x, radioatividade, luz de soldadura, raio laser
+72 - Fumaça de cigarro de outras pessoas
+73 - Iluminação insuficiente
+74 - Iluminação excessiva
+75 - Risco de acidentes físicos (p. ex. desabamentos, quedas de materiais, etc..)
+76 - Riscos de acidentes com ferramentas, instrumentos e maquinários
+77 - Falta de higiene no ambiente de trabalho (p. ex., sala de trabalho e/ou áreas comuns)
+78 - Uso de instalações inapropriadas para suas necessidades orgânicas
+79 - Riscos de pequenos acidentes de trabalho
+80 - Riscos de acidentes de trabalho incapacitantes ou fatais
+---
+--- Quanto você está exposto às condições de trabalho abaixo?
+81 - Riscos de acidentes no trânsito durante o desenvolvimento da atividade
+82 - Posições dolorosas ou fatigantes
+83 - Levantar ou deslocar pessoas
+84 - Transportar ou deslocar cargas pesadas
+85 - Operar máquinas e ferramentas que exigem de você acentuado esforço físico
+86 - Usar máquinas, equipamentos e/ou ferramentas com defeitos
+87 - Ficar em pé ou andar por longos períodos
+88 - Repetir movimentos com a mão ou o braço
+89 - Repetir movimentos em intervalos menores que um minuto
+90 - Repetir movimentos em intervalos menores que dez minutos
+91 - Manter membros superiores suspensos por longos intervalos de tempo
+92 - Trabalhar em casa, desempenhando suas atividades profissionais
+93 - Trabalhar em outros locais que não sejam a sua casa ou instalações da organização/instituição (p. ex., nas instalações de clientes ou usuários e/ou em viagem)
+94 - Estar em contato direto com público externo (p. ex., clientes, pacientes, familiares ou fornecedores)
+95 - Estar em contato direto com público interno (p. ex., alunos, professores e funcionários
+96 - Trabalhar com computadores, rede de dados, servidor, atividades referentes ao trabalho
+97 - Trabalhar com internet, e-mail, redes sociais
+98 - Usar telefonia celular e aplicativos como WhatsApp para realizar comunicações necessárias ao trabalho
+99 -  Falta de material necessário para a realização de suas tarefas
+100 -  Falta de equipamentos/ferramentas adequadas
+101 -  Trabalhar com colegas e/ou atendendo o público interno e/ou externo em espaço insuficiente
+102 - Precisar do uso de EPIs (equipamentos de proteção individual) nas suas atividades
+103 - Poder contar com o fornecimentos de EPIs (equipamentos de proteção individual) pela organização
+---
+--- O horário de seu trabalho é...
+104 - definido pela organização/instituição sem possibilidade de alteração
+105 - adaptado por você
+106 - inteiramente determinado por você
+107 - influenciado pelas demandas do usuário
+108 - combinado com chefia/superiores/colegas
+109 - alterado pela chefia/superiores
+---
+--- O seu trabalho implica...
+110 - Ritmo acelerado
+111 - prazos rígidos e curtos
+112 - prazos incompatíveis com a realização da tarefa
+113 - incompatibilidades entre demanda(s) e seu horário de trabalho (entrada, intervalo e saída)
+114 -  Incompatibilidades entre demanda(s) e número de pessoas no setor de trabalho
+115 - realizar atividades além das atribuições previstas para seu cargo/função
+116 - o preenchimento de formulário com detalhes que você desconhece a necessidade
+117 - cumprimento de sequências de tarefas e normas com detalhes cujas finalidades não se explicam
+118 -  Acompanhar longos trâmites administrativos-burocráticos
+---
+--- Seu trabalho depende...
+119 - do trabalho dos seus colegas e/ou outros setores
+120 - das demandas do público interno e/ou externo
+121 - da velocidade automática de uma máquina
+122 - do controle direto da chefia/superiores
+123 - de aprender coisas novas
+---
+--- O seu trabalho lhe exige...
+124 - cumprir normas  administrativas
+125 - cumprir procedimentos operacionais padronizados
+126 - cumprir normas de segurança
+127 - cumprir metas de produção e/ou desempenho
+128 - resolver problemas por você mesmo
+129 - lidar com normas e/ou legislações conflitantes
+130 - realizar tarefas monótonas
+131 - realizar tarefas complexas
+132 - interromper uma tarefa para realizar outra(s)
+133 - atender telefonemas e/ou responder mensagens por e-mail ou outras mídias
+---
+--- Você pode escolher ou modificar...
+134 - a sequência das suas tarefas
+135 - seus métodos de trabalho (ou modos de realizar o trabalho)
+136 - o ritmo da realização das tarefas
+---
+--- Na execução de suas atividades de trabalho, você...
+137 - recebe ajuda de colegas
+138 - recebe ajuda dos seus chefes/superiores
+139 - pode receber ajuda externa à organização/instituição
+140 - faz pausa quando deseja
+141 - pode planejar e/ou negociar o tempo necessário para terminar seu trabalho
+142 - é livre para decidir quando tira férias ou dias de folga
+143 - tem oportunidades para realizar o que sabe fazer melhor
+144 - pode fazer um trabalho bem feito nas condições de trabalho atuais
+145 - pode pôr em prática as suas ideias
+146 - é desafiado intelectualmente no seu trabalho
+147 - é orientado a apresentar certas emoções
+148 - deve regular e/ou controlar suas emoções
+149 - preenche formulários que se sobrepõem ou se repetem
+150 - preenche formulários com vários itens desnecessários
+---
+--- O que você faz é definido...
+151 - em manuais, regimentos, normas e/ou protocolos
+152 - por seu chefe/superior sozinho ou por instância colegiada superior a você
+153 - pela equipe de trabalho
+154 - por você, planejando independentemente
+---
+--- Suas atividades e funções exigem...
+155 - qualificações e experiências que você já tem
+156 - domínio de novos processos de trabalho
+157 - uso de programas de informática (em rede interna ou externa
+158 - uso de internet para execução do trabalho (p. ex., busca de informações/conteúdos)
+159 - uso de novos meios de comunicação (p. ex., videoconferência, redes sociais)
+160 - manter-se atualizados (p. ex., participar de congressos, realizar leituras e/ou estudar)
+161 - formação suplementar (como titulações e outros cursos) além do que você já tem
+---
+--- Quanto às suas responsabilidades você responde...
+162 - por danos a equipamentos, máquinas e objetos
+163 - pela qualidade dos serviços prestados às pessoas e/ou dos produtos técnicos
+164 - por erros técnicos no desenvolvimento de seu trabalho
+165 - pela aplicação e/ou prestação de contas de recursos públicos
+166 - pela captação de recursos públicos ou privados
+167 - pela guarda e preservação de documentos impressos e/ou digitais
+168 - pelo recebimento e conferência de documentos, insumos e/ou materiais
+169 - pelo preenchimento de formulários e registro de informações
+---
+--- Quanto à concepção do seu trabalho, você pode afirmar que em seu setor:
+170 - O bom planejamento das atividades facilita sua execução com qualidade
+171 - Os objetivos maiores da universidade guia o estabelecimento adequado de prioridade
+172 - Todos estão seguros da relevância dos objetivos de cada atividade
+173 - As tarefas sempre envolvem aspectos que não se sabe o que os justificaria
+174 - É evidente a necessidade de melhor organização e racionalização
+175 - Ocorre “retrabalho” por equívocos de organização e planejamento
+176 - O ritmo e/ou a morosidade das decisões dificultam a consecução dos objetivos de trabalho
+177 - Todos têm clareza dos objetivos do que fazem
+---
+--- Na sua organização/instituição o investimento em capacitação pessoal é em forma de...
+178 - liberação sem suspensão de salário
+179 - liberação com suspensão do seu salário
+180 - aumento salarial por capacitação
+181 - custeio total ou parcial (p. ex. bolsas, auxílios, isenções de taxas ou mensalidades)
+182 - oferta de cursos, treinamentos e/ou palestras
+---
+--- Desde que está nesta organização/instituição, você realizou/participou de...
+183 - formação (p. ex., graduação, especialização, mestrado)
+184 - treinamento introdutório
+185 - treinamento de atualização/reciclagem
+186 - programa de tutorização
+187 - eventos e/ou congressos
+188 - ações de autoaprendizagem, atualizações, etc.
+---
+--- Na sua organização/instituição o plano de carreira...
+189 - é aplicado adequadamente
+190 - estimula seu desempenho
+191 - aumenta sua dedicação
+192 - fortalece sua permanência
+---
+--- Você...
+193 - influencia a escolha dos seus colegas de trabalho
+194 - participa da escolha dos seus chefes/superiores
+195 - mantém um diálogo de qualidade com o seu chefe/superior acerca do seu trabalho
+196 - participa do planejamento de mudanças na organização do trabalho e/ou nas suas condições de trabalho
+197 - observa que os conflitos são bem administrados
+198 -  observa que a qualidade das decisões melhoram e se incorporam melhor, quando são discutidas no colegiado e outras instâncias
+199 - observa conflitos na aplicação das normas e/ou regimento
+200 - observa conflitos na forma de aplicação de direitos informais (direitos adquiridos pelo costume)
+201 - tem seu desempenho avaliado
+202 - recebe feedback (retorno) sobre seu desempenho
+203 - é orientado sobre os riscos de acidentes no trabalho
+204 - é orientado sobre os riscos de adoecimento decorrente do trabalho
+205 - é respeitado nas suas necessidades de tratamento de saúde
+206 - é pressionado a trabalhar além de suas condições de saúde
+207 - é respeitado na necessidade de afastamento por problemas de saúde
+---
+--- Em seu trabalho, você está exposto a:
+208 - pressão por decisões rápidas
+209 -  dificuldades de aquisição/solicitação do material necessário para a realização de suas tarefas
+210 -  dificuldades de aquisição e atualização de equipamentos, aparelhos e/ou softwares necessários a realização de suas atribuições
+211 -  dificuldades para consertos e ajustes nas instalações utilizadas
+212 - falta de equipamentos/ferramentas adequadas
+213 - exigências desproporcionais às condições de trabalho
+214 - conflitos com colegas de trabalho
+215 - conflitos com superiores/chefias
+216 - exigências conflitantes com seus princípios e valores
+217 - realizar tarefas diferentes das suas atribuições
+218 - sobrecarga de tarefas
+219 - realizar tarefas conflitivas ou contraditórias
+220 - ficar sem fazer nada
+221 - assumir responsabilidade por aplicar punições ou sanções
+---
+--- No último ano, você observou no seu ambiente de trabalho...
+222 - agressões verbais
+223 - situações de constrangimento
+224 - ameaça de transferência e/ou remoção de setor
+225 - transferência e/ou remoção de setor de maneira arbitrária (sem motivo justo).
+226 - designações para locais ou atividades incompatíveis com o cargo ou função
+227 - ameaças de violência física
+228 - violência física
+229 - intimidações / perseguições
+230 - elogios inadequados e/ou inapropriados
+231 - assédio moral
+232 - discriminação de sexo (homem x mulher)
+233 - insinuações de natureza sexual
+234 - assédio sexual
+---
+--- No último ano, você observou no seu ambiente de trabalho insinuações relacionadas...
+235 - à idade
+236 - à nacionalidade, regiões e/ou microrregiões
+237 - ao setor e/ou atividade de trabalho
+238 - aos aspectos raciais
+239 - à classe social
+240 - à religião
+241 - ao vínculo empregatício
+242 - aos posicionamentos políticos
+243 - às características pessoais (p. ex., peso, altura)
+244 - às deficiências físicas e/ou mentais
+245 - às preferências/orientações/identidades sexuais
+246 - à história pessoal (p. ex., prostituição, ex-presidiários, portadores de doenças contagiosas ou crônicas)
+---
+--- No último ano, você observou no seu ambiente de trabalho exclusão e/ou diminuição de oportunidades relacionadas...
+247 - à idade
+248 - à nacionalidade, regiões e/ou microrregiões
+249 - ao setor e/ou atividade de trabalho
+250 - aos aspectos raciais
+251 - à classe social
+252 - à religião
+253 - ao vínculo empregatício
+254 - aos posicionamentos políticos
+255 - às características pessoais (p. ex., peso, altura)
+256 - às deficiências físicas e mentais
+257 - às preferências/orientações/identidades sexuais
+258 - à história pessoal (p. ex., prostituição, ex-presidiários, portadores de doenças contagiosas ou crônicas)
+---
+--- Quanto esta organização aqui descrita se parece com aquela na qual você trabalha?
+259 - Esta organização estimula os empregados a enfrentarem desafios. Para ela, os desafios tornam o trabalho do empregado mais interessante.
+260 - Esta organização estimula os empregados a enfrentarem desafios. Para ela, os desafios tornam o trabalho do empregado mais interessante.
+261 - A sinceridade entre as pessoas é encorajada por esta organização. Ser verdadeiro com os outros é importante para ela.
+262 - Para esta organização, todas as pessoas devem ser tratadas com igualdade. Na visão dela, as pessoas merecem oportunidades iguais.
+263 - Esta organização valoriza a competência. Para ela, é importante que o empregado demonstre as habilidades e os conhecimentos que possui.
+264 - É muito importante para esta organização ajudar seus empregados. Ela deseja cuidar do bem-estar deles.
+265 - A tradição é uma marca desta organização. Ela tem práticas que dão continuidade aos seus costumes.
+266 - Esta organização influencia outras organizações. Ela tem muito prestígio.
+267 - Esta organização acha que é importante ser competente. Ela quer demonstrar o quanto é capaz.
+268 - Esta organização oferece oportunidades de diversão aos empregados. Ela acha importante que eles tenham prazer no trabalho.
+269 - É importante para esta organização ser rica. Ela quer ter lucros nos negócios.
+270 - Para esta organização, é importante que os empregados se comportem de forma educada no ambiente de trabalho. Ela acredita que as boas maneiras devem ser praticadas.
+271 - Esta organização preserva os costumes antigos. Ela respeita a tradição.
+272 - Esta organização incentiva o sucesso profissional dos empregados. Ela estimula a trabalharem de maneira competente.
+273 - Nesta organização, os empregados são premiados. A satisfação deles com a organização é uma meta importante.
+274 - Esta organização acredita no valor da honestidade. Ela honra seus compromissos com pessoas e organizações com as quais se relaciona.
+275 - Para esta organização é importante que todas as pessoas sejam tratadas de maneira justa. É importante, para ela, respeitar os direitos dos outros.
+276 - Esta organização acha importante ter modelos de comportamento definidos. Para ela, os empregados devem ter um jeito correto de se comportar no trabalho.
+277 - Esta organização busca o domínio do mercado. Ela quer eliminar a concorrência.
+278 - Esta organização evita mudanças. Ela prefere manter sua forma de trabalhar.
+279 - Nesta organização, é importante que os empregados conheçam bem o trabalho que fazem. Ela reconhece os empregados competentes.
+280 - Esta organização acha importante ser fiel a seus empregados e clientes. Ela cumpre seus compromissos com eles.
+281 - Para esta organização é importante manter clubes destinados ao lazer dos empregados. Ela considera que a diversão é uma parte importante da vida do empregado.
+282 - Esta organização valoriza empregados curiosos. Ela gosta de empregados que procuram se informar a respeito do trabalho.
+283 - Esta organização gosta de empregados que mostram suas habilidades. Ela procura desenvolver a competência desses empregados.
+284 - Esta organização tem prestígio na sociedade. Ela acha importante ser admirada por todos.
+285 - Esta organização procura se aperfeiçoar constantemente. Para ela, o aperfeiçoamento é uma forma de melhorar a qualidade de seus produtos e serviços.
+286 - Esta organização acredita que as regras são importantes. Para ela, os empregados deveriam obedecê-las.
+287 - O respeito à hierarquia faz parte das tradições desta organização. Para ela, a hierarquia deve ser respeitada pelos empregados.
+288 - Esta organização valoriza empregados que buscam realização no trabalho. Ela reconhece quando um empregado tem objetivos profissionais.
+289 - Para esta organização é importante ser criativa. Ela gosta de ser original.
+290 - Esta organização procura manter práticas consagradas. Ela acredita que é importante trabalhar sempre do mesmo modo.
+291 - Esta organização preocupa-se com a qualidade de vida dos empregados. Ela realiza projetos sociais que contribuem para o bem-estar deles.
+292 - Esta organização tem prestígio. Ela oferece produtos e serviços que são respeitados pelos clientes.
+293 - Esta organização acredita que a cortesia é importante. Para ela, as boas maneiras fazem parte do relacionamento entre os empregados e as organizações.
+294 - Esta organização tem influência na sociedade. Ela acha importante ser respeitada por todos.
+295 - Para esta organização, planejar metas é essencial. Ela considera a realização das metas uma prova de sua competência.
+296 - Esta organização acha importante ser competitiva. Ela quer ganhar novos mercados.
+297 - Esta organização acredita que a pessoa deve ser honesta em qualquer situação. Dizer a verdade faz parte dos princípios desta organização.
+298 - O prazer para esta organização é obter lucros. Ela sente-se satisfeita quando os rendimentos superam as despesas.
+299 - Esta organização deseja que o empregado tenha uma vida profissional variada. Ela valoriza o empregado que tem experiências profissionais diferentes.
+300 - Nesta organização, as regras de convivência são consideradas importantes. Para ela, os empregados, clientes e outras organizações deveriam respeitá-las.
+301 - Esta organização considera a segurança dos negócios muito importante. Ela está atenta às ameaças do mercado.
+302 - Esta organização acredita que os empregados devem aceitar o trabalho que têm a fazer. Para ela, os empregados devem cumprir suas obrigações.
+303 - Esta organização considera lealdade importante. Ela é leal às pessoas e organizações próximas dela.
+304 - Esta organização estimula, nos clientes, o desejo de adquirir novidades. Ela encoraja os clientes a provarem produtos e serviços novos.
+305 - Esta organização incentiva o empregado a ser criativo. Ela estimula a criação de produtos e serviços originais.
+306 - O comportamento do empregado, nesta organização, deve mostrar respeito aos costumes. Para ela, a tradição deve ser preservada.
+307 - Esta organização propõe atividades que dão prazer ao empregado. Na visão dela, é importante o empregado sentir-se satisfeito consigo mesmo.
+---
+</pre>
+
+
+
+</body>
+
+</html>
