@@ -2,17 +2,17 @@
 <div>
     <div class="title-bar">
         <h1>{{ title }}</h1>
+        <vue-circle id="progress-circle"
+            class="progress-circle"
+            ref="progresscircle"
+            :start-angle="-(Math.PI / 2)"
+            :progress="0"
+            :fill="{ gradient: ['#0683C3', '#06A4C2', '#06C3C1'] }"
+            :size="100"
+            :thickness="10"
+            :show-percent="true">
+        </vue-circle>
     </div>
-    <vue-circle id="progress-circle"
-        class="progress-circle"
-        ref="progresscircle"
-        :start-angle="-(Math.PI / 2)"
-        :progress="0"
-        :fill="{ gradient: ['#0683C3', '#06A4C2', '#06C3C1'] }"
-        :size="100"
-        :thickness="10"
-        :show-percent="true">
-    </vue-circle>
 
     <div v-if="pageInstruction"
         class="page-instruction">
@@ -331,6 +331,8 @@ export default {
     h1 {
         padding: 0;
         margin: 0;
+        position: relative;
+        z-index: 10;
     }
 }
 
