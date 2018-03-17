@@ -1345,7 +1345,7 @@
   },
   {
     "name": "Questionário Geral de Saúde de Goldberg",
-    "instruction": "Gostaríamos de saber se você tem tido algumas dificuldades e como tem estado sua saúde nas últimas semanas. Por favor, responda a TODAS as perguntas deste questionário simplesmente sublinhando as respostas que, em sua opinião, mais se aproximam ao que sente ou  tem sentido. Lembre que queremos conhecer os problemas recentes e atuais, não os que ocorreram no passado.",
+    "instruction": "Gostaríamos de saber se você tem tido algumas dificuldades e como tem estado sua saúde nas últimas semanas. Por favor, responda a TODAS as perguntas deste questionário simplesmente marcando as respostas que, em sua opinião, mais se aproximam ao que sente ou  tem sentido. Lembre que queremos conhecer os problemas recentes e atuais, não os que ocorreram no passado.",
     "questions": [
       {
         "question": "Você tem conseguido se concentrar bem naquilo que faz?",
@@ -1587,7 +1587,7 @@
             "item": "No conjunto, eu estou satisfeito comigo"
           },
           {
-            "item": "Eu gostaria de poder ter eis respeito por mim mesmo"
+            "item": "Eu gostaria de poder ter mais respeito por mim mesmo"
           },
           {
             "item": "Às vezes eu me sinto inútil"

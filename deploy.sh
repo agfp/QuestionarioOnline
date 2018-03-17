@@ -11,6 +11,3 @@ rsync -avh  backend/* $DEPLOY_FOLDER --exclude node_modules --exclude *.map  --d
 #npm run build
 #cd ..
 #rsync -av frontend/dist/* $DEPLOY_FOLDER/public --exclude *.map
-
-
-
